@@ -1,0 +1,453 @@
+---
+description: PressKit Pro AI Assistant - Root Directory Organization Rules
+alwaysApply: true
+---
+
+# PressKit Pro AI Assistant - Root Directory Organization Rules
+
+## Overview
+This rule file ensures the root directory of PressKit Pro AI Assistant remains clean, organized, and follows consistent patterns for optimal developer experience and project maintainability.
+
+## Core Organization Principles
+
+### 1. Directory Structure Standards (MANDATORY)
+**RULE**: The root directory MUST follow this exact structure:
+
+```
+presskit-pro-ai-assistant/
+├── 📁 apps/                          # Application packages ONLY
+│   ├── web/                          # Next.js frontend
+│   ├── api/                          # NestJS backend
+│   └── pdf-service/                  # .NET PDF service
+├── 📁 packages/                      # Shared packages ONLY
+│   └── shared/                       # Shared utilities and types
+├── 📁 infrastructure/                # Infrastructure configuration ONLY
+│   ├── docker/                       # Docker configurations
+│   ├── k8s/                          # Kubernetes configurations
+│   └── scripts/                      # Infrastructure scripts
+├── 📁 docs/                          # Project documentation ONLY
+│   ├── README.md                     # Main project README
+│   ├── DEVELOPMENT.md                # Development guide
+│   ├── DEPLOYMENT.md                 # Deployment guide
+│   ├── API.md                        # API documentation
+│   ├── ARCHITECTURE.md               # Architecture overview
+│   └── *.md                          # Other documentation files
+├── 📁 .specify/                      # Spec-driven development ONLY
+│   ├── specs/                        # Feature specifications
+│   ├── templates/                    # Spec templates
+│   └── memory/                       # Project memory
+├── 📁 .cursor/                       # Cursor IDE configuration ONLY
+│   └── rules/                        # Development rules
+├── 📁 .playwright-mcp/               # Playwright MCP configuration ONLY
+├── 📁 config/                        # Configuration files ONLY
+│   ├── eslint.config.js
+│   ├── prettier.config.js
+│   ├── tsconfig.json
+│   └── pnpm-workspace.yaml
+├── 📁 scripts/                       # Development scripts ONLY
+│   ├── dev.sh                        # Development setup
+│   ├── build.sh                      # Build script
+│   ├── test.sh                       # Test script
+│   ├── deploy.sh                     # Deployment script
+│   └── organize-root.sh              # Root organization script
+├── 📁 tools/                         # Development tools ONLY
+│   ├── mcp/                          # MCP server configurations
+│   │   ├── MCP_SERVERS_GUIDE.md
+│   │   ├── MCP_INTEGRATION_RULES.md
+│   │   ├── MCP_SERVER_SPECIFICATIONS.md
+│   │   └── MCP_IMPLEMENTATION_GUIDE.md
+│   └── agents/                       # AI agent configurations
+│       ├── AGENTS.md
+│       └── CLAUDE.md
+├── 📄 package.json                   # Root package.json ONLY
+├── 📄 pnpm-lock.yaml                 # Lock file ONLY
+├── 📄 .gitignore                     # Git ignore rules ONLY
+├── 📄 .env.example                   # Environment template ONLY
+└── 📄 README.md                      # Project overview ONLY
+```
+
+### 2. File Placement Rules (MANDATORY)
+
+#### Root Directory Files (ONLY these files allowed in root)
+```yaml
+Allowed Root Files:
+  - package.json (root package configuration)
+  - pnpm-lock.yaml (dependency lock file)
+  - .gitignore (git ignore rules)
+  - .env.example (environment template)
+  - README.md (project overview)
+  - .env (local environment - gitignored)
+  - .env.local (local environment - gitignored)
+```
+
+#### Forbidden Root Files
+```yaml
+Forbidden in Root:
+  - Any .md files except README.md
+  - Any configuration files (.eslintrc, .prettierrc, etc.)
+  - Any Docker files (docker-compose.yml, Dockerfile)
+  - Any Kubernetes files (k8s/ directory)
+  - Any development scripts
+  - Any documentation files
+  - Any MCP or agent configuration files
+  - Any temporary or test files
+  - Any build artifacts
+  - Any IDE-specific files (except .cursor/)
+```
+
+### 3. Directory-Specific Rules
+
+#### Apps Directory Rules
+```yaml
+apps/ Directory Rules:
+  - ONLY application packages allowed
+  - Each app must be self-contained
+  - No shared code between apps
+  - Each app has its own package.json
+  - No configuration files in apps/
+  - No documentation files in apps/
+  - No scripts in apps/
+```
+
+#### Packages Directory Rules
+```yaml
+packages/ Directory Rules:
+  - ONLY shared packages allowed
+  - Each package must be reusable
+  - No application-specific code
+  - Each package has its own package.json
+  - No configuration files in packages/
+  - No documentation files in packages/
+  - No scripts in packages/
+```
+
+#### Infrastructure Directory Rules
+```yaml
+infrastructure/ Directory Rules:
+  - ONLY infrastructure-related files
+  - Docker configurations in docker/
+  - Kubernetes configurations in k8s/
+  - Infrastructure scripts in scripts/
+  - No application code
+  - No documentation files
+  - No configuration files (except infrastructure-specific)
+```
+
+#### Docs Directory Rules
+```yaml
+docs/ Directory Rules:
+  - ONLY documentation files (.md, .rst, .txt)
+  - No code files
+  - No configuration files
+  - No scripts
+  - No binary files
+  - Organized by topic/feature
+```
+
+#### Config Directory Rules
+```yaml
+config/ Directory Rules:
+  - ONLY configuration files
+  - No documentation files
+  - No scripts
+  - No application code
+  - Standardized naming conventions
+  - No environment-specific configs (use .env files)
+```
+
+#### Scripts Directory Rules
+```yaml
+scripts/ Directory Rules:
+  - ONLY executable scripts (.sh, .bat, .ps1)
+  - No documentation files
+  - No configuration files
+  - No application code
+  - All scripts must be executable
+  - Clear naming conventions
+```
+
+#### Tools Directory Rules
+```yaml
+tools/ Directory Rules:
+  - ONLY development tools and configurations
+  - MCP server configs in mcp/
+  - AI agent configs in agents/
+  - No application code
+  - No infrastructure files
+  - No documentation files (except tool-specific)
+```
+
+## File Naming Conventions
+
+### 1. Configuration Files
+```yaml
+Configuration File Naming:
+  - eslint.config.js (not .eslintrc.js)
+  - prettier.config.js (not .prettierrc)
+  - tsconfig.json (standard)
+  - pnpm-workspace.yaml (standard)
+  - All configs in config/ directory
+```
+
+### 2. Script Files
+```yaml
+Script File Naming:
+  - dev.sh (development setup)
+  - build.sh (build process)
+  - test.sh (testing)
+  - deploy.sh (deployment)
+  - organize-root.sh (organization)
+  - All scripts in scripts/ directory
+  - All scripts must be executable (chmod +x)
+```
+
+### 3. Documentation Files
+```yaml
+Documentation File Naming:
+  - README.md (project overview)
+  - DEVELOPMENT.md (development guide)
+  - DEPLOYMENT.md (deployment guide)
+  - API.md (API documentation)
+  - ARCHITECTURE.md (architecture overview)
+  - All docs in docs/ directory
+  - Use UPPERCASE for main docs
+  - Use lowercase for specific topics
+```
+
+## Automatic Organization Rules
+
+### 1. New File Placement (AUTOMATIC)
+**RULE**: When adding new files, they MUST be placed in the correct directory:
+
+```yaml
+Automatic File Placement:
+  - .md files → docs/ (except README.md)
+  - .js/.ts config files → config/
+  - .sh/.bat/.ps1 scripts → scripts/
+  - Docker files → infrastructure/docker/
+  - K8s files → infrastructure/k8s/
+  - MCP files → tools/mcp/
+  - Agent files → tools/agents/
+  - App code → apps/
+  - Shared code → packages/
+```
+
+### 2. File Movement Rules (AUTOMATIC)
+**RULE**: Files in wrong locations MUST be moved automatically:
+
+```yaml
+Automatic File Movement:
+  - MCP_*.md → tools/mcp/
+  - AGENTS.md, CLAUDE.md → tools/agents/
+  - docker-compose.yml → infrastructure/docker/
+  - k8s/ → infrastructure/k8s/
+  - setup-*.sh → infrastructure/scripts/
+  - .eslintrc.* → config/eslint.config.js
+  - .prettierrc* → config/prettier.config.js
+  - tsconfig.json → config/ (if in root)
+  - pnpm-workspace.yaml → config/ (if in root)
+```
+
+### 3. Cleanup Rules (AUTOMATIC)
+**RULE**: Unwanted files MUST be removed automatically:
+
+```yaml
+Automatic Cleanup:
+  - Remove test files (quicksort.js, test-*.js)
+  - Remove temporary files (*.tmp, *.temp)
+  - Remove build artifacts (dist/, build/, .next/)
+  - Remove node_modules/ (use .gitignore)
+  - Remove IDE files (.vscode/, .idea/)
+  - Remove OS files (.DS_Store, Thumbs.db)
+```
+
+## Validation Rules
+
+### 1. Structure Validation (AUTOMATIC)
+**RULE**: Root structure MUST be validated regularly:
+
+```yaml
+Structure Validation:
+  - Check for forbidden files in root
+  - Verify directory structure
+  - Validate file placements
+  - Check naming conventions
+  - Verify script executability
+  - Validate configuration files
+```
+
+### 2. Content Validation (AUTOMATIC)
+**RULE**: File contents MUST be validated:
+
+```yaml
+Content Validation:
+  - Check package.json structure
+  - Validate configuration files
+  - Verify script functionality
+  - Check documentation completeness
+  - Validate .gitignore patterns
+  - Verify environment templates
+```
+
+## Maintenance Rules
+
+### 1. Regular Cleanup (AUTOMATIC)
+**RULE**: Root directory MUST be cleaned regularly:
+
+```yaml
+Regular Cleanup Schedule:
+  - Daily: Remove temporary files
+  - Weekly: Validate structure
+  - Monthly: Update documentation
+  - Quarterly: Review organization rules
+  - Before releases: Full organization check
+```
+
+### 2. Organization Script Execution (AUTOMATIC)
+**RULE**: Organization script MUST be run:
+
+```yaml
+Organization Script Triggers:
+  - Before each commit
+  - Before each release
+  - When adding new files
+  - When changing structure
+  - On CI/CD pipeline
+  - On developer request
+```
+
+## Quality Gates
+
+### 1. Pre-Commit Organization Check (MANDATORY)
+**RULE**: No commit allowed without organization validation:
+
+```yaml
+Pre-Commit Checks:
+  - Root directory structure valid
+  - No forbidden files in root
+  - All files in correct locations
+  - Scripts are executable
+  - Configuration files valid
+  - Documentation up to date
+```
+
+### 2. Pre-Release Organization Check (MANDATORY)
+**RULE**: No release allowed without full organization validation:
+
+```yaml
+Pre-Release Checks:
+  - Complete structure validation
+  - All documentation updated
+  - All scripts tested
+  - All configurations validated
+  - Organization script executed
+  - No temporary files present
+```
+
+## Error Handling
+
+### 1. Organization Violations (AUTOMATIC)
+**RULE**: Organization violations MUST be handled automatically:
+
+```yaml
+Violation Handling:
+  - Log violation details
+  - Attempt automatic correction
+  - Notify developer if manual intervention needed
+  - Block commit if critical violation
+  - Provide correction suggestions
+```
+
+### 2. Recovery Procedures (AUTOMATIC)
+**RULE**: Organization recovery MUST be automated:
+
+```yaml
+Recovery Procedures:
+  - Backup current state
+  - Run organization script
+  - Validate corrections
+  - Restore if needed
+  - Report results
+```
+
+## Integration with Development Workflow
+
+### 1. Git Hooks Integration (AUTOMATIC)
+**RULE**: Organization checks MUST be integrated with git:
+
+```yaml
+Git Hooks Integration:
+  - Pre-commit: Run organization check
+  - Pre-push: Run full validation
+  - Post-merge: Run organization script
+  - Pre-rebase: Validate structure
+```
+
+### 2. CI/CD Integration (AUTOMATIC)
+**RULE**: Organization validation MUST be part of CI/CD:
+
+```yaml
+CI/CD Integration:
+  - Build pipeline: Validate structure
+  - Test pipeline: Run organization tests
+  - Deploy pipeline: Verify organization
+  - Release pipeline: Full validation
+```
+
+## Monitoring and Reporting
+
+### 1. Organization Metrics (AUTOMATIC)
+**RULE**: Organization metrics MUST be tracked:
+
+```yaml
+Organization Metrics:
+  - Structure compliance score
+  - File placement accuracy
+  - Cleanup frequency
+  - Violation count
+  - Correction success rate
+```
+
+### 2. Reporting (AUTOMATIC)
+**RULE**: Organization status MUST be reported:
+
+```yaml
+Reporting:
+  - Daily organization status
+  - Weekly compliance report
+  - Monthly improvement suggestions
+  - Quarterly rule updates
+```
+
+## Enforcement Rules
+
+### 1. Rule Violations (AUTOMATIC)
+**RULE**: Organization rule violations MUST be enforced:
+
+```yaml
+Violation Enforcement:
+  - First violation: Warning and auto-correction
+  - Second violation: Block commit with correction
+  - Third violation: Require manual review
+  - Repeated violations: Escalate to team lead
+```
+
+### 2. Compliance Monitoring (AUTOMATIC)
+**RULE**: Organization compliance MUST be monitored:
+
+```yaml
+Compliance Monitoring:
+  - Track compliance percentage
+  - Monitor improvement trends
+  - Identify common violations
+  - Suggest rule improvements
+```
+
+**CRITICAL**: These root organization rules are mandatory and will be automatically enforced. All development work must follow these comprehensive organization patterns to ensure consistent, clean, and maintainable project structure for PressKit Pro AI Assistant.
+
+## Related Rules Files
+
+- `mcp-master-rules.mdc` - MCP server integration
+- `presskit-pro-cursor-rules.mdc` - Development patterns
+- `mcp-project-management-rules.mdc` - Project management
+- `mcp-integration-rules.mdc` - Integration patterns

@@ -1,0 +1,546 @@
+---
+description: AI rules derived by SpecStory from the project AI interaction history
+globs: *
+---
+
+---
+description: AI rules derived by SpecStory from the project AI interaction history
+alwaysApply: true
+---
+
+## PROJECT RULES & CODING STANDARDS
+
+### GENERAL GUIDELINES
+- Follow spec-driven development, breaking down projects into small, traceable tasks based on a central specification.
+- Development should proceed in phases (MVP, Post-MVP).
+- Phase 1 (MVP) should prioritize P0 and P1 requirements.
+- Every code change must be traceable to specifications.
+- Documentation must sync requirements.
+- Development should be inspired by the Driven workflow.
+
+### TECH STACK
+- Python
+- Jinja2 templating engine
+- click
+- pyyaml
+- rich
+- pydantic
+- email-validator
+- requests (>=2.28.0) - For downloading templates from URLs. Added in Phase 2, Week 1.
+- semantic-version (>=2.10.0) - For version management. Added in Phase 2, Week 1.
+- markdown (>=3.4.0) - For document formatting. Added on 2025-09-19.
+- pdfkit (>=1.0.0) - For generating PDFs. Added on 2025-09-19.
+- Playwright - For browser automation. Added on 2025-09-19.
+- numpy (>=1.24.0) - For numerical computations. Added on 2025-09-20.
+- scikit-learn (>=1.3.0) - For machine learning algorithms. Added on 2025-09-20.
+- joblib (>=1.3.0) - For model persistence and parallel processing. Added on 2025-09-20.
+- watchdog (>=6.0.0) - For monitoring file system events.
+
+### PROJECT STRUCTURE
+- Foundational directory structure: `core/`, `cli/`, `templates/`, `tests/`, `docs/`
+- Data should be stored in a `data/` directory.
+- Recommended project structure:
+  ```
+  my-project/
+  ├── .cursor/
+  │   └── rules            ← AI behavior rules
+  ├── assets/    ← All project folders consolidated here
+  │   ├── specs/
+  │   │   ├── requirements.md   ← WHAT
+  │   │   ├── tech.md          ← HOW
+  │   │   └── tasks.md         ← WHEN / WHO
+  ├── assets/templates/       ← Templates
+  ├── assets/scripts/         ← Scripts
+  ├── assets/memory/          ← Memory
+  ├── assets/docs/            ← Documentation
+  ├── assets/data/            ← Data files
+  ├── src/
+  │   ├── ...              ← Generated code goes here
+  ├── tests/
+  │   └── ...              ← AI-generated tests
+  ├── .gitignore
+  ├── README.md
+  └── pyproject.toml
+  ```
+- The `specs/` directory houses specification documents (requirements, tech specs, tasks).
+- Source code should reside in the `src/` directory. All modules (commands, models, utils) should be placed in `src/`. Templates should reside in `src/templates/`.
+- Documentation files go into the `docs/` directory with historical files in `docs/archive/` and generated documentation in `docs/generated/`. Note: The `docs/generated_docs/` folder is identical in content to the `docs/generated/` folder.
+- All project folders (`templates/`, `specs/`, `scripts/`, `memory/`, `docs/`, `data/`) are consolidated into a single `assets/` folder. This change was implemented on 2025-09-19.
+- When the project structure is edited, the `README.md` and structure documentation must be updated to reflect the changes. This was initiated on 2025-09-19.
+- The project assets folder name must be changed from `assets/` to `assets/`. This change was requested on 2025-09-19.
+- The project `scripts/` directory has been moved to `assets/scripts/`. This change was implemented on 2025-09-19.
+- The project `contracts/` directory has been moved to `assets/contracts/`. This change was implemented on 2025-09-19.
+- The `docs/` folder is deprecated and should be removed, as there is already one inside `assets/`. This has been completed as of 2025-09-19.
+- The current project structure is as follows:
+```text
+DocGen/
+├── assets/                     # Project assets and resources
+│   ├── configuration/          # Configuration files
+│   │   ├── mcp/               # MCP server configurations
+│   │   └── memory/            # Project memory and constitution
+│   ├── contracts/              # API and data contracts - MOVED from specifications/contracts/
+│   │   ├── README.md                # Contract documentation
+│   │   ├── api_contracts.md         # API contracts and interface specifications
+│   │   ├── data_contracts.md        # Data model contracts and validation rules
+│   │   └── template_contracts.md    # Template system contracts and rendering specifications
+│   ├── data/                   # Sample data files
+│   ├── development/            # Development tools and scripts - DEPRECATED, scripts moved to assets/scripts/
+│   ├── documentation/          # Documentation
+│   │   ├── archive/           # Historical documentation
+│   │   ├── generated/         # Generated documentation
+│   │   └── *.md              # Project documentation
+│   ├── reports/                # Generated reports
+│   ├── scripts/               # Development and automation scripts - MOVED from assets/development/scripts/
+│   ├── specifications/         # Specification documents
+│   └── templates/              # Template specifications
+├── src/                        # Source code
+│   ├── cli/                    # CLI interface
+│   ├── commands/               # CLI commands
+│   ├── core/                    # Core functionality
+│   ├── models/                  # Data models
+│   ├── templates/              # Jinja2 templates
+│   └── utils/                   # Utility functions
+├── venv/                       # Virtual environment
+├── pyproject.toml              # Project configuration
+├── requirements.txt            # Python dependencies
+└── README.md                   # Project overview
+```
+- The `scripts/` directory has been moved to `assets/development/scripts/`. This change was implemented on 2025-09-19.
+- The `contracts/` directory has been moved to `assets/specifications/contracts/`. This change was implemented on 2025-09-19.
+- The project `tests/` directory has been moved to `assets/development/tests/`. This change was implemented on 2025-09-19.
+- The project `testsprite_tests/tmp/` directory has been moved to `assets/reports/testsprite/`. This change was implemented on 2025-09-19.
+- The folders in `assets/` have been reorganized into categories: `development/`, `documentation/`, `configuration/`, `specifications/`, `templates/`, `data/`, `reports/`, and `logs/`. This change was implemented on 2025-09-19.
+- Here is a more detailed view of the current project structure:
+```text
+assets/
+├── 📁 development/          # Development tools and scripts
+│   ├── scripts/            # All development scripts
+│   ├── tools/              # Development tools and utilities
+│   ├── automation/         # Workflow automation
+│   └── tests/              # Test files
+│       ├── unit/         # Unit tests
+│       ├── integration/  # Integration tests
+│       └── README.md     # Test documentation
+├── 📁 documentation/        # All documentation
+│   ├── user/               # User documentation
+│   ├── developer/          # Developer documentation
+│   ├── generated/          # Generated documents
+│   └── archive/            # Historical documentation
+├── 📁 configuration/        # Configuration files
+│   ├── mcp/                # MCP server configuration
+│   ├── workflow/           # Workflow configuration
+│   └── setup/              # Setup scripts
+├── 📁 specifications/       # Project specifications
+│   ├── requirements/       # Requirements documents
+│   ├── technical/          # Technical specifications
+│   └── contracts/          # API and data contracts
+├── 📁 templates/           # Jinja2 templates
+│   ├── documents/          # Document templates
+│   └── components/         # Template components
+├── 📁 data/                # Data files
+│   ├── samples/            # Sample data
+│   └── fixtures/           # Test fixtures
+├── 📁 reports/             # Generated reports
+│   ├── project/            # Project reports
+│   ├── mcp/                # MCP integration reports
+│   ├── testsprite/        # TestSprite test execution reports
+│   │   └── prd_files/   # Generated documentation
+│   │   └── README.md    # TestSprite documentation
+├── 📁 workflow/           # Workflow reports
+├── 📁 logs/                # Log files
+└── 📁 tools/               # Control panel files - MOVED from root
+    ├── ANALYSIS.md          # Detailed analysis of the control panel structure
+    ├── CHECKLIST.md         # Comprehensive development workflow checklist
+    ├── RENAME.md            # File renaming plan and summary
+    ├── DASHBOARD.md         # Main development dashboard with project status and quick actions
+    ├── PLAN.md              # Plan for optimizing the assets folder structure
+    ├── START.md             # 5-minute setup guide and common tasks
+    ├── STATUS.md             # Current project status
+    ├── TASKS.md             # Current tasks and milestones
+    └── TRACKING.md          # Task tracking and progress
+
+```
+- The `assets/` folder is organized as a control panel for app development, providing centralized access to all tools, configurations, documentation, and resources needed for efficient development workflow. This was implemented on 2025-09-19.
+- The following files are part of the control panel structure within the `assets/` folder:
+    - `DASHBOARD.md`: Main development dashboard with project status and quick actions.
+    - `START.md`: 5-minute setup guide and common tasks.
+    - `CHECKLIST.md`: Comprehensive development workflow checklist.
+    - `ANALYSIS.md`: Detailed analysis of the control panel structure.
+    - `PLAN.md`: Plan for optimizing the assets folder structure.
+- The file names in the `assets/` folder's control panel have been shortened for better usability. This was implemented on 2025-09-19.
+- The temporary files `FILE_RENAMING_PLAN.md` and `RENAMING_SUMMARY.md` have been removed from the `assets/` folder. This was implemented on 2025-09-19.
+- The AI assistant should analyze the `assets/` folder structure and remove unwanted files to simplify and organize it. This was completed on 2025-09-19.
+- The following empty directories have been removed from the `assets/` folder: `assets/backup/`, `assets/temp/`, `assets/development/automation/`, `assets/development/tools/`, `assets/development/tests/unit/`, `assets/development/tests/integration/`, `assets/development/tests/`, `assets/templates/components/`, `assets/templates/documents/project/`. This change was implemented on 2025-09-19.
+- The following excessive archive files have been removed from the `assets/` folder: `assets/documentation/archive/specstory/ai_rules_backups/` (23 backup files), `assets/documentation/archive/specstory/history/` (38 history files), `assets/documentation/archive/specstory/ai_rules_backups/`, `assets/documentation/archive/specstory/history/`, `assets/documentation/archive/specstory/`. This change was implemented on 2025-09-19.
+- The following demo files have been removed from the `assets/` folder: `assets/reports/mcp/demo_report.md`, various demo JSON files. This change was implemented on 2025-09-19.
+- The following duplicate files have been removed from the `assets/` folder: `assets/reports/testsprite/prd_files/technical.md`, `assets/reports/testsprite/prd_files/tasks.md`, `assets/reports/testsprite/prd_files/requirements.md`, `assets/reports/testsprite/prd_files/architecture.md`, `assets/reports/testsprite/prd_files/development.md`, `assets/reports/testsprite/prd_files/project_plan.md`, `assets/reports/testsprite/prd_files/technical_spec.md`, `assets/reports/testsprite/prd_files/development_workflow.md`. The original files in `assets/specifications/` and `assets/documentation/` have been kept. This change was implemented on 2025-09-19.
+- The current clean assets structure is as follows:
+```
+assets/
+├── config/
+│   ├── mcp/
+│   ├── setup/
+│   └── workflow/
+├── data/
+│   ├── fixtures/
+│   └── samples/
+├── dev/
+│   └── scripts/
+├── docs/
+│   ├── archive/
+│   ├── developer/
+│   └── user/
+├── logs/
+├── reports/
+│   ├── project/
+│   ├── mcp/
+│   └── workflow/
+├── specs/
+│   ├── contracts/
+│   ├── requirements/
+│   └── technical/
+├── templates/
+│   └── documents/
+└── management/               # Control panel files - MOVED from root
+    ├── ANALYSIS.md          # Detailed analysis of the control panel structure
+    ├── CHECKLIST.md         # Comprehensive development workflow checklist
+    ├── DASHBOARD.md         # Main development dashboard with project status and quick actions
+    ├── PLAN.md              # Plan for optimizing the assets folder structure
+    ├── START.md             # 5-minute setup guide and common tasks
+    ├── STATUS.md             # Current project status
+    ├── TASKS.md             # Current tasks and milestones
+    └── TRACKING.md          # Task tracking and progress
+
+```
+- The file `code_summary.json` has been moved from `assets/reports/testsprite/` to the root directory. This change was implemented on 2025-09-19.
+- The file `config.json` has been moved from `assets/reports/testsprite/` to the root directory. This change was implemented on 2025-09-19.
+- The directory `prd_files` has been moved from `assets/reports/testsprite/` to the root directory. This change was implemented on 2025-09-19.
+- The `assets/` folder is organized as a control panel for app development, providing centralized access to all tools, configurations, documentation, and resources needed for efficient development workflow. This was implemented on 2025-09-19.
+- The logs folder should be moved inside the reports folder. This process was initiated on 2025-09-19.
+- When considering moving other folders to `@management/`, ensure that the `@assets/` folder is fully updated and that all changes are tracked in the documentation. This was requested on 2025-09-19.
+- The `dev` folder should be moved from `management/` to `assets/`. This move was attempted on 2025-09-19, but failed because the `dev` folder did not exist inside `management/`. The AI assistant should be aware of this failure and adjust its subsequent actions accordingly.
+- When updating references across the project (script files, configuration files, documentation links, MCP configuration), begin by examining the current project structure to identify all files needing updates. This was requested on 2025-09-19.
+- When updating references, focus on the project-specific Python files. This was requested on 2025-09-19.
+- The assets folder reorganization has been completed successfully on 2025-09-19. The following actions were performed:
+    - Configuration scattered across multiple locations → FIXED: Consolidated all configuration into `config/` directory. Moved MCP configurations, setup scripts, and workflow configs.
+    - Redundant documentation in multiple places → FIXED: Consolidated all documentation into `docs/` directory. Organized by user, developer, and generated documentation.
+    - Large archive folder with many backup files → FIXED: Cleaned up and organized archive files. Created dedicated `archive/` directory for historical files.
+    - No clear entry point for development workflow → FIXED: Moved all control panel files to assets root. Created clear navigation with `DASHBOARD.md`, `START.md`, `CHECKLIST.md`.
+    - Inconsistent naming conventions → FIXED:
+        - Renamed `development/` to `dev/`
+        - Renamed `documentation/` to `docs/`
+        - Renamed `configuration/` to `config/`
+        - Implemented consistent short naming conventions
+
+- The assets folder now has a clean, organized structure:
+```
+assets/
+├── 🎛️ Control Panel Files (in root)
+│   ├── ANALYSIS.md
+│   ├── CHECKLIST.md
+│   ├── DASHBOARD.md
+│   ├── PLAN.md
+│   ├── STATUS.md
+│   ├── TASKS.md
+│   ├── TRACKING.md
+│   ├── RENAME.md
+│   └── REORGANIZATION_SUMMARY.md
+├── 📁 config/          # Centralized configuration
+├── 📁 dev/            # Development tools & scripts
+├── 📁 docs/           # Consolidated documentation
+├── 📁 specs/          # Project specifications
+├── 📁 templates/      # Jinja2 templates
+├── 📁 data/           # Data files and samples
+├── 📁 reports/        # Generated reports and analytics
+├── 📁 logs/           # Application and system logs
+└── 📁 archive/        # Historical and backup files
+```
+- After the assets folder reorganization on 2025-09-19, all references across the DocGen CLI project were updated to reflect the new assets folder structure. This included updating script files, configuration files, documentation links, and MCP configuration to use the correct paths. The key path changes applied were:
+    - `assets/development/` to `assets/dev/`
+    - `assets/configuration/` to `assets/config/`
+    - `assets/documentation/` to `assets/docs/`
+    - `assets/specifications/` to `assets/specs/`
+    - `assets/scripts/` to `assets/dev/scripts/`
+
+- The following reorganization of the assets folder has been approved and implemented on 2025-09-19:
+    - Move `archive/` inside `data/`: `assets/data/archive/`
+    - Move `config/` inside `dev/`: `assets/dev/config/`
+    - Move `logs/` inside `reports/`: `assets/reports/logs/`
+-The current optimized assets structure is as follows:
+```
+assets/
+├── 📁 data/                    # All data content
+│   ├── samples/               # Sample data files
+│   ├── fixtures/              # Test fixtures
+│   └── archive/               # Historical data (moved from root)
+│       ├── PHASE2_WEEK2_SUMMARY.md
+│       ├── REORGANIZATION_SUMMARY.md
+│       ├── SPEC_DRIVEN_DEVELOPMENT_PLAN.md
+│       └── SPEC_VALIDATION_CHECKLIST.md
+│
+├── 📁 dev/                    # Complete development toolkit
+│   ├── scripts/               # Development scripts
+│   ├── config/                # Configuration files (moved from root)
+│   │   ├── mcp/              # MCP server configurations
+│   │   ├── setup/            # Setup scripts
+│   │   └── workflow/         # Workflow configuration
+│   └── tools/                 # Development utilities
+│
+├── 📁 docs/                   # All documentation
+│   ├── user/                  # User documentation
+│   ├── developer/             # Developer documentation
+│   ├── generated/             # Generated documentation
+│   └── archive/               # Historical documentation
+│
+├── 📁 management/              # Control panel files consolidated
+│   ├── ANALYSIS.md             # Project analysis
+│   ├── CHECKLIST.md            # Development checklist
+│   ├── DASHBOARD.md            # Main dashboard
+│   ├── PLAN.md                 # Organization plan
+│   ├── README.md               # Project overview
+│   ├── START.md                # Quick start guide
+│   ├── STATUS.md                # Project status
+│   ├── TASKS.md                # Current tasks
+│   └── TRACKING.md             # Progress tracking
+│   └── RENAME.md
+│   └── REORGANIZATION_SUMMARY.md
+│
+├── 📁 reports/                # All reports and analytics
+│   ├── project/               # Project reports
+│   ├── mcp/                   # MCP integration reports
+│   ├── workflow/              # Workflow reports
+│   └── logs/                  # Application logs (moved from root)
+│
+├── 📁 specs/                  # Project specifications
+│   ├── requirements/          # Requirements documents
+│   ├── technical/             # Technical specifications
+│   ├── contracts/             # API and data contracts
+│   └── tasks.md               # Task definitions
+│
+└── 📁 templates/              # Jinja2 templates
+    └── documents/             # Document templates
+```
+- The assets folder reorganization described above (moving `archive/` to `data/`, `config/` to `dev/`, and `logs/` to `reports/`) has been approved and implemented. The AI has also updated all references in scripts, configs, and documentation, updated the control panel files to reflect the new structure, and generated a reorganization report documenting the changes. This was requested on 2025-09-19.
+- After moving control panel files to `assets/management/`, the current optimized assets structure is as follows:
+```
+assets/
+├── 📁 data/                    # All data content
+│   ├── samples/               # Sample data files
+│   ├── fixtures/              # Test fixtures
+│   └── archive/               # Historical data (moved from root)
+│       ├── PHASE2_WEEK2_SUMMARY.md
+│       ├── REORGANIZATION_SUMMARY.md
+│       ├── SPEC_DRIVEN_DEVELOPMENT_PLAN.md
+│       └── SPEC_VALIDATION_CHECKLIST.md
+│
+├── 📁 dev/                    # Complete development toolkit
+│   ├── scripts/               # Development scripts
+│   ├── config/                # Configuration files (moved from root)
+│   │   ├── mcp/              # MCP server configurations
+│   │   ├── setup/            # Setup scripts
+│   │   └── workflow/         # Workflow configuration
+│   └── tools/                 # Development utilities
+│
+├── 📁 docs/                   # All documentation
+│   ├── user/                  # User documentation
+│   ├── developer/             # Developer documentation
+│   ├── generated/             # Generated documentation
+│   └── archive/               # Historical documentation
+│
+├── 📁 management/              # Control panel files consolidated
+│   ├── ANALYSIS.md             # Project analysis
+│   ├── CHECKLIST.md            # Development checklist
+│   ├── DASHBOARD.md            # Main dashboard
+│   ├── PLAN.md                 # Organization plan
+│   ├── README.md               # Project overview
+│   ├── START.md                # Quick start guide
+│   ├── STATUS.md                # Project status
+│   ├── TASKS.md                # Current tasks
+│   └── TRACKING.md             # Progress tracking
+│   └── RENAME.md
+│   └── REORGANIZATION_SUMMARY.md
+│
+├── 📁 reports/                # All reports and analytics
+│   ├── project/               # Project reports
+│   ├── mcp/                   # MCP integration reports
+│   ├── workflow/              # Workflow reports
+│   └── logs/                  # Application logs (moved from root)
+│
+├── 📁 specs/                  # Project specifications
+│   ├── requirements/          # Requirements documents
+│   ├── technical/             # Technical specifications
+│   ├── contracts/             # API and data contracts
+│   └── tasks.md               # Task definitions
+│
+└── 📁 templates/              # Jinja2 templates
+    └── documents/             # Document templates
+```
+- The AI assistant must not rename any filename from `kiro` to `driven`.
+- When implementing any task in a plan, YOU ARE REQUIRED to use the `byterover-mcp - byterover-retrieve-knowledge` tool FREQUENTLY to get critical knowledge and insights to correctly carry out the task.
+- You are also highly recommended to use the `byterover-mcp - byterover-retrieve-knowledge` tool outside the two main workflows for retrieval purposes.
+- When memory conflicts are detected, you MUST ALWAYS display the conflict resolution URL to the user. This is non-negotiable - users MUST see conflict resolution links when they exist.
+- Phase 2 focuses on finishing MCP integration, enhancing the testing framework, implementing quality assurance gates, and preparing for Phase 3: Driven Workflow Integration. This was determined on 2025-09-19.
+- When completing MCP integration, the following steps are required: Finish all MCP server integrations with proper authentication, Implement automated knowledge storage and retrieval, and Set up comprehensive testing automation. This was determined on 2025-09-19.
+- Enhancing the testing framework requires completing integration testing for MCP servers, Setting up CI/CD pipeline for automated testing, Implementing test result reporting and coverage monitoring, and adding performance benchmark testing. This was determined on 2025-09-19.
+- Implementing Quality Assurance requires setting up a performance validation framework, implementing security testing infrastructure, configuring accessibility validation, and designing a cross-platform testing strategy. This was determined on 2025-09-19.
+- Phase 2 success criteria includes: 80%+ test coverage achieved, All MCP servers integrated and functional, Performance benchmarks met (< 5s generation, < 5s switching), Security validation passed, User documentation complete, and a functional release pipeline. This was determined on 2025-09-19.
+- The `testsprite-mcp-test-report.md` file should be updated and located in `assets/reports/mcp/`.
+- The project should implement an MCP Optimization Engine for intelligent tool selection and knowledge management.
+- **Import Path Resolution**: When using absolute imports with `src.` prefix, always add the project root to Python path in the script, not the `src` directory itself. Example:
+```python
+ # Add project root to path
+ project_root = os.path.join(os.path.dirname(__file__), '..')
+ sys.path.insert(0, project_root)
+```
+- **Developer Experience Enhancement**:
+    - The CLI interface should be professional and user-friendly, leveraging Click for structure.
+    - Rich terminal formatting and progress indicators should be implemented to enhance usability.
+    - Comprehensive error handling and recovery mechanisms should be in place.
+    - Interactive prompts and guided workflows should be used to assist users.
+    - Extensive documentation and examples should be provided.
+    - Implement new CLI commands to guide users in app or website creation.
+- **File Organization and Naming Conventions**:
+    - All filenames must be in lowercase.
+    - Use "-" (hyphen) instead of spaces in filenames.
+    - The root directory should contain only essential project files.
+    - Non-essential files should be moved to appropriate directories.
+    - Use the `organize-project-files.py` script to automatically organize files.
+    - Use the `validate-project-structure.py` script to validate the project structure.
+    - Use the `rename-files-to-convention.py` script to rename files to the lowercase-hyphen convention.
+
+### WORKFLOW & RELEASE RULES
+- Development should proceed in phases (MVP, Post-MVP).
+- Phase 1 (MVP) should prioritize P0 and P1 requirements.
+- Tasks should be organized by week.
+- Before starting any implementation plan, the plan MUST be saved using the `byterover-mcp - byterover-save-implementation-plan` tool.
+- Plan names and task names should be concise (five words at maximum).
+- Use .cursor commands to support Spec-Driven Development Plan.
+- Unwanted scripts in the `scripts/` directory should be deleted, keeping only the usable and important ones. This was requested on 2025-09-19. Before deleting, use `byterover-retrieve-knowledge` to determine which scripts are essential.
+- After installing Playwright, re-run the complete integration workflow. This was requested on 2025-09-19.
+- **Plan Persistence**: Implementation plans must be saved immediately after user approval using `byterover-save-implementation-plan`. This ensures plan persistence across development sessions and prevents context loss.
+- When preparing for a stable v1.0 release, focus on polishing existing features, creating comprehensive user documentation and setting up a production deployment pipeline.
+
+### PROJECT DOCUMENTATION & CONTEXT SYSTEM
+- Use a "Product Requirements Document" Canvas.
+- Infrastructure requirements should be defined in `infrastructure.md`.
+- Documentation must sync requirements.
+
+### DEBUGGING
+- Implement robust input validation to handle user errors.
+
+### CODING STYLE
+- Follow PEP 8 for Python code.
+- Use type hints for all functions.
+- Write comprehensive docstrings.
+- Maintain 80% test coverage.
+- Use Click for CLI interface
+- Use Pydantic for data validation
+- Add comments with description and details in the code. Include Arabic description if available.
+
+### NAMING CONVENTIONS
+- All filenames should be in lowercase.
+- Use "-" (hyphen) instead of spaces in filenames.
+
+### ERROR HANDLING
+- Implement robust input validation to handle user errors (P0).
+- Implement a custom exception hierarchy with categorized error types.
+- Implement automatic recovery mechanisms for common issues.
+- Generate user-friendly error messages with actionable suggestions.
+
+### SECURITY
+- All data must be encrypted in transit.
+- User passwords must be hashed.
+- API endpoints must be authenticated.
+- Validate all inputs to prevent security vulnerabilities.
+- Sanitize inputs to prevent malicious characters.
+- Security validation for all inputs.
+
+### TESTING
+- Test-driven development with unit, integration, and end-to-end tests.
+- Comprehensive testing should cover all template management functionality, including unit tests, integration tests, and error handling tests as demonstrated in Phase 2, Week 1.
+- 80% test coverage requirement (Utils Module: 100% achieved).
+- Cross-platform compatibility testing.
+- Tests should be placed in `assets/scripts/tests/` directory
+- When writing tests, add `src` to the Python path to ensure correct import resolution. Example:
+```python
+import sys
+import os
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..', '..', '..', 'src'))
+```
+- **Markdown Linting**: Minor markdown linting errors (e.g., missing blank lines around headings (MD022), lists (MD032), fenced code blocks (MD031), missing language specification for code blocks (MD040), multiple consecutive blank lines (MD012), trailing spaces (MD009)) are considered cosmetic and can be addressed during cleanup sessions.
+- **Playwright Installation and Usage**:
+    - Activate the virtual environment before installing and using Playwright: `source venv/bin/activate`
+    - Install Playwright using pip: `pip install playwright`
+    - Install Playwright browsers: `python -m playwright install`
+    - To install system dependencies for Playwright, which may require sudo access: `python -m playwright install-deps` (This step can be skipped if permission is an issue; browsers should work for basic automation without system deps).
+- **MCP Integration Testing**:
+    - Use `python3` instead of `python` when running scripts.
+    - When fixing JSON serialization errors use `json.dump(report_data, f, indent=2, default=str)`
+    - When experiencing CLI integration issues, ensure the CLI entry point and associated imports are correct.
+    - In case of circular import problems, consolidate duplicate error handler files and update the imports.
+- **Playwright Integration and Workflow Setup**:
+    - **Installation Steps:**
+        1. Activate virtual environment: `source venv/bin/activate`
+        2. Install Playwright: `pip install playwright` (version 1.55.0)
+        3. Install Playwright browsers: `python -m playwright install`
+    - **Installation Details:**
+        - Playwright version: 1.55.0
+        - Dependencies installed: `pyee`, `greenlet`, `playwright`
+        - Browsers installed: `chromium`, `firefox`, `webkit`
+        - Virtual environment: `venv/bin/activate`
+    - **System Dependencies:**
+        - System dependencies installation requires sudo access: `python -m playwright install-deps`
+        - This step can be skipped if permission is an issue; browsers should work for basic automation without system deps
+    - **Integration Ready:**
+        - Playwright is now available for browser automation
+        - Can be used for end-to-end testing
+        - Ready for integration with TestSprite and other MCP servers
+- **Comprehensive Browser Automation Test Suite Structure:**
+    - A comprehensive browser automation test suite should cover the following aspects:
+        - Browser navigation and interaction testing
+        - Screenshot capture functionality
+        - Console log monitoring
+        - Network request monitoring
+        - Multi-tab browser testing
+        - Responsive design testing
+        - Error handling and recovery
+        - Performance metrics collection
+        - Memory usage monitoring
+        - Concurrent operations testing
+
+    - **Test Suite Location:**
+        - All browser automation tests should be located in `assets/dev/tests/integration/`
+
+- **Integration Workflow Scripts:**
+    - **Complete Integration Workflow**: `assets/dev/scripts/run_integration_workflow.py` - Full-featured testing including CLI, browser automation, performance, and quality checks
+    - **Simple Integration Workflow**: `assets/dev/scripts/run_simple_integration.py` - Focused on core functionality testing
+    - **Comprehensive Browser Tests**: `assets/dev/scripts/run_comprehensive_browser_tests.py` - Advanced browser automation tests.
+    - **Simple Browser Tests**: `assets/dev/scripts/run_simple_browser_tests.py` - Core browser automation tests.
+- **TestSprite API Key Configuration**:
+    - **Setup Scripts:**
+        - `assets/dev/scripts/setup_testsprite_api.py` - Interactive API key setup script.
+        - `assets/dev/scripts/test_testsprite_config.py` - Configuration verification script.
+        - `assets/dev/scripts/run_testsprite_tests.py` - TestSprite test execution script.
+    - **Setup Process:**
+        1. **Get API Key**: Visit https://www.testsprite.com/dashboard/settings/apikey
+        2. **Run Setup**: `python assets/dev/scripts/setup_testsprite_api.py`
+        3. **Verify Config**: `python assets/dev/scripts/test_testsprite_config.py`
+        4. **Run Tests**: `python assets/dev/scripts/run_testsprite_tests.py`
+    - **Troubleshooting**:
+        - If `TESTSPRITE_API_KEY` environment variable is not found, restart your terminal/IDE after creating the `.env` file.
+        - If TestSprite MCP tools are not available, ensure you're running the script in the correct environment.
+        - If the TestSprite API key appears to be invalid, double-check the key on the TestSprite dashboard.
+        - Use `python3` instead of `python` when running scripts.
+        - If the Python script is not reading the environment variables from the `.env` file, modify the script to manually read the `.env` file. A function like this can be used:
+        ```python
+        import os
+        from pathlib import Path
+
+        def load_env_file():
+            """Load environment variables from .env file."""
+            project_root = Path(__file__).parent.parent
+            env_file = project_root / ".env"
+
+            if env_file.exists():
+                with open(env_file, 'r') as f:
+</

@@ -1,0 +1,52 @@
+[
+  {
+    "id": "TC001",
+    "title": "create_project_api_should_create_new_project_successfully",
+    "description": "Test the /project/create POST endpoint to ensure it creates a new project with valid name and path parameters, and returns the correct project details including id, name, path, and created_at timestamp."
+  },
+  {
+    "id": "TC002",
+    "title": "get_project_status_api_should_return_correct_status",
+    "description": "Test the /project/status GET endpoint to verify it returns the current status of a project including name, id, path, existence flag, and documentation availability."
+  },
+  {
+    "id": "TC003",
+    "title": "generate_technical_specification_should_produce_valid_document",
+    "description": "Test the /generate/spec POST endpoint to generate a technical specification document in various formats (markdown, html, pdf) and verify the output path, format, and file size are returned correctly."
+  },
+  {
+    "id": "TC004",
+    "title": "generate_project_plan_should_return_success_response",
+    "description": "Test the /generate/plan POST endpoint to generate a project plan document in supported formats and verify the response indicates successful generation."
+  },
+  {
+    "id": "TC005",
+    "title": "generate_marketing_materials_should_return_success_response",
+    "description": "Test the /generate/marketing POST endpoint to generate marketing materials in supported formats and verify the response indicates successful generation."
+  },
+  {
+    "id": "TC006",
+    "title": "validate_project_data_should_return_validation_results",
+    "description": "Test the /validate/project POST endpoint to validate project data with optional project_id and fix_issues parameters, and verify the response includes validation status, errors, and warnings."
+  },
+  {
+    "id": "TC007",
+    "title": "list_templates_should_return_filtered_template_list",
+    "description": "Test the /templates/list GET endpoint to list available templates filtered by type (spec, plan, marketing, custom) and verify the response contains template metadata including id, name, type, version, and author."
+  },
+  {
+    "id": "TC008",
+    "title": "install_template_should_install_template_successfully",
+    "description": "Test the /templates/install POST endpoint to install a template from a given source with optional name parameter and verify the response confirms successful installation."
+  },
+  {
+    "id": "TC009",
+    "title": "git_init_should_initialize_repository_correctly",
+    "description": "Test the /git/init POST endpoint to initialize a Git repository with optional initial_commit and branch parameters and verify the response confirms successful initialization."
+  },
+  {
+    "id": "TC010",
+    "title": "git_commit_should_commit_changes_successfully",
+    "description": "Test the /git/commit POST endpoint to commit changes with optional message and auto parameters and verify the response confirms successful commit."
+  }
+]

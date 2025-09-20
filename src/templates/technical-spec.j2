@@ -1,0 +1,273 @@
+# {{ project.name }} - Technical Specification
+
+**Version:** {{ project.version }}  
+**Generated:** {{ _template.generated_at | format_date }}  
+**Project Path:** {{ _metadata.project_path }}
+
+---
+
+## 1. Project Overview
+
+### 1.1 Project Description
+{{ project.description }}
+
+### 1.2 Project Goals
+{% if project.goals %}
+{% for goal in project.goals %}
+- {{ goal }}
+{% endfor %}
+{% else %}
+*No specific goals defined yet.*
+{% endif %}
+
+### 1.3 Success Criteria
+{% if project.success_criteria %}
+{% for criterion in project.success_criteria %}
+- {{ criterion }}
+{% endfor %}
+{% else %}
+*No success criteria defined yet.*
+{% endif %}
+
+---
+
+## 2. Technical Architecture
+
+### 2.1 System Overview
+{% if technical.architecture.overview %}
+{{ technical.architecture.overview }}
+{% else %}
+*System architecture overview not yet defined.*
+{% endif %}
+
+### 2.2 Technology Stack
+{% if technical.technology_stack %}
+{% for category, technologies in technical.technology_stack.items() %}
+#### {{ category | title }}
+{% for tech in technologies %}
+- {{ tech }}
+{% endfor %}
+{% endfor %}
+{% else %}
+*Technology stack not yet defined.*
+{% endif %}
+
+### 2.3 System Components
+{% if technical.components %}
+{% for component in technical.components %}
+#### {{ component.name }}
+**Description:** {{ component.description }}  
+**Responsibilities:** {{ component.responsibilities }}  
+{% if component.interfaces %}
+**Interfaces:**
+{% for interface in component.interfaces %}
+- {{ interface }}
+{% endfor %}
+{% endif %}
+{% endfor %}
+{% else %}
+*System components not yet defined.*
+{% endif %}
+
+---
+
+## 3. Functional Requirements
+
+### 3.1 Core Features
+{% if requirements.functional %}
+{% for req in requirements.functional %}
+#### {{ req.id }}: {{ req.title }}
+**Description:** {{ req.description }}  
+**Priority:** {{ req.priority }}  
+**Acceptance Criteria:**
+{% for criterion in req.acceptance_criteria %}
+- {{ criterion }}
+{% endfor %}
+{% if req.dependencies %}
+**Dependencies:** {{ req.dependencies | join(', ') }}
+{% endif %}
+{% endfor %}
+{% else %}
+*No functional requirements defined yet.*
+{% endif %}
+
+### 3.2 User Stories
+{% if requirements.user_stories %}
+{% for story in requirements.user_stories %}
+#### {{ story.title }}
+**As a** {{ story.as_a }}  
+**I want** {{ story.i_want }}  
+**So that** {{ story.so_that }}  
+
+**Acceptance Criteria:**
+{% for criterion in story.acceptance_criteria %}
+- {{ criterion }}
+{% endfor %}
+{% endfor %}
+{% else %}
+*No user stories defined yet.*
+{% endif %}
+
+---
+
+## 4. Non-Functional Requirements
+
+### 4.1 Performance Requirements
+{% if requirements.non_functional.performance %}
+{% for req in requirements.non_functional.performance %}
+- **{{ req.metric }}:** {{ req.value }} {{ req.unit }}
+{% endfor %}
+{% else %}
+*No performance requirements defined yet.*
+{% endif %}
+
+### 4.2 Security Requirements
+{% if requirements.non_functional.security %}
+{% for req in requirements.non_functional.security %}
+- {{ req }}
+{% endfor %}
+{% else %}
+*No security requirements defined yet.*
+{% endif %}
+
+### 4.3 Scalability Requirements
+{% if requirements.non_functional.scalability %}
+{% for req in requirements.non_functional.scalability %}
+- {{ req }}
+{% endfor %}
+{% else %}
+*No scalability requirements defined yet.*
+{% endif %}
+
+### 4.4 Reliability Requirements
+{% if requirements.non_functional.reliability %}
+{% for req in requirements.non_functional.reliability %}
+- {{ req }}
+{% endfor %}
+{% else %}
+*No reliability requirements defined yet.*
+{% endif %}
+
+---
+
+## 5. Data Model
+
+### 5.1 Entity Relationships
+{% if data_model.entities %}
+{% for entity in data_model.entities %}
+#### {{ entity.name }}
+**Description:** {{ entity.description }}  
+**Attributes:**
+{% for attr in entity.attributes %}
+- **{{ attr.name }}** ({{ attr.type }}): {{ attr.description }}
+{% endfor %}
+{% if entity.relationships %}
+**Relationships:**
+{% for rel in entity.relationships %}
+- {{ rel }}
+{% endfor %}
+{% endif %}
+{% endfor %}
+{% else %}
+*Data model not yet defined.*
+{% endif %}
+
+### 5.2 API Specifications
+{% if technical.api_specifications %}
+{% for api in technical.api_specifications %}
+#### {{ api.name }}
+**Endpoint:** {{ api.endpoint }}  
+**Method:** {{ api.method }}  
+**Description:** {{ api.description }}  
+**Parameters:**
+{% for param in api.parameters %}
+- **{{ param.name }}** ({{ param.type }}): {{ param.description }}
+{% endfor %}
+**Response:** {{ api.response }}
+{% endfor %}
+{% else %}
+*API specifications not yet defined.*
+{% endif %}
+
+---
+
+## 6. Development Guidelines
+
+### 6.1 Coding Standards
+{% if development.coding_standards %}
+{% for standard in development.coding_standards %}
+- {{ standard }}
+{% endfor %}
+{% else %}
+*Coding standards not yet defined.*
+{% endif %}
+
+### 6.2 Testing Strategy
+{% if development.testing_strategy %}
+{{ development.testing_strategy }}
+{% else %}
+*Testing strategy not yet defined.*
+{% endif %}
+
+### 6.3 Deployment Process
+{% if development.deployment_process %}
+{{ development.deployment_process }}
+{% else %}
+*Deployment process not yet defined.*
+{% endif %}
+
+---
+
+## 7. Risk Assessment
+
+### 7.1 Technical Risks
+{% if risks.technical %}
+{% for risk in risks.technical %}
+#### {{ risk.title }}
+**Description:** {{ risk.description }}  
+**Impact:** {{ risk.impact }}  
+**Probability:** {{ risk.probability }}  
+**Mitigation:** {{ risk.mitigation }}
+{% endfor %}
+{% else %}
+*No technical risks identified yet.*
+{% endif %}
+
+### 7.2 Business Risks
+{% if risks.business %}
+{% for risk in risks.business %}
+#### {{ risk.title }}
+**Description:** {{ risk.description }}  
+**Impact:** {{ risk.impact }}  
+**Probability:** {{ risk.probability }}  
+**Mitigation:** {{ risk.mitigation }}
+{% endfor %}
+{% else %}
+*No business risks identified yet.*
+{% endif %}
+
+---
+
+## 8. Appendices
+
+### 8.1 Glossary
+{% if glossary %}
+{% for term, definition in glossary.items() %}
+- **{{ term }}:** {{ definition }}
+{% endfor %}
+{% else %}
+*No glossary terms defined yet.*
+{% endif %}
+
+### 8.2 References
+{% if references %}
+{% for ref in references %}
+- {{ ref }}
+{% endfor %}
+{% else %}
+*No references provided yet.*
+{% endif %}
+
+---
+
+*This document was generated automatically by DocGen CLI on {{ _template.generated_at | format_date }}.*

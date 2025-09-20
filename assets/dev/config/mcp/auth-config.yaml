@@ -1,0 +1,65 @@
+authentication_status:
+  browser_tools:
+    details: Browser Tools accessible
+    instructions:
+    - Browser Tools uses local browser - no authentication required
+    - Ensure browser is installed and accessible
+    method: local_browser
+    server: browser_tools
+    setup_required: false
+    status: authenticated
+  byterover:
+    details: Byterover extension not authenticated
+    instructions:
+    - 1. Install Byterover extension in your IDE
+    - 2. Login through the extension interface
+    - 3. Ensure extension is connected to your workspace
+    - 4. Verify authentication in extension settings
+    method: extension
+    server: byterover
+    setup_required: true
+    status: requires_setup
+  context7:
+    details: Context7 API accessible
+    instructions:
+    - Context7 uses public API - no authentication required
+    - Ensure internet connection for API access
+    method: public_api
+    server: context7
+    setup_required: false
+    status: authenticated
+  dart:
+    details: Dart workspace accessible
+    instructions:
+    - Dart uses workspace-based authentication
+    - Ensure workspace is properly configured
+    method: workspace
+    server: dart
+    setup_required: false
+    status: authenticated
+  playwright:
+    details: Playwright not installed
+    instructions:
+    - '1. Install Playwright: pip install playwright'
+    - '2. Install browsers: playwright install chromium'
+    - '3. Verify installation: playwright --version'
+    - '4. Test browser launch: playwright codegen'
+    method: local_installation
+    server: playwright
+    setup_required: true
+    status: requires_installation
+  testsprite:
+    details: No API key found
+    instructions:
+    - 1. Visit https://www.testsprite.com/dashboard/settings/apikey
+    - 2. Create a new API key
+    - '3. Set environment variable: export TESTSPRITE_API_KEY="your_key"'
+    - '4. Add to .env file: TESTSPRITE_API_KEY=your_key'
+    - 5. Restart your terminal/IDE
+    method: api_key
+    server: testsprite
+    setup_required: true
+    status: requires_setup
+project_path: /mnt/d/Work/AI/Projects/DocGen
+setup_completed: true
+timestamp: '2025-09-20T01:19:41.860900'

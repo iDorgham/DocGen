@@ -1,0 +1,111 @@
+driven_workflow:
+  components:
+    agent_hooks:
+      automated_workflows: true
+      enabled: true
+      error_recovery: true
+      event_driven: true
+      hook_timeout: 300
+      max_concurrent_hooks: 5
+    ai_traceability:
+      audit_frequency: daily
+      audit_trails: true
+      enabled: true
+      output_tracking: true
+      spec_mapping: true
+      trace_retention_days: 180
+    mcp_optimization:
+      cache_duration: 1800
+      enabled: true
+      intelligent_selection: true
+      knowledge_management: true
+      max_parallel_requests: 10
+      performance_monitoring: true
+    project_steering:
+      context_maintenance: true
+      context_refresh_interval: 3600
+      decision_retention_days: 90
+      decision_tracking: true
+      enabled: true
+      standards_enforcement: true
+    spec_validation:
+      automated_gates: true
+      compliance_threshold: 100
+      enabled: true
+      evolution_tracking: true
+      traceability_enforcement: true
+      validation_frequency: on_change
+  enabled: true
+servers:
+  browser_tools:
+    audit_types:
+    - accessibility
+    - performance
+    - seo
+    - best_practices
+    authentication:
+      details: Browser Tools accessible
+      method: local_browser
+      required: false
+      status: authenticated
+    enabled: true
+  byterover:
+    authentication:
+      details: Byterover extension not authenticated
+      method: extension
+      required: true
+      status: requires_setup
+    config_path: assets/config/mcp/byterover.json
+    enabled: true
+  context7:
+    authentication:
+      details: Context7 API accessible
+      method: public_api
+      required: false
+      status: authenticated
+    enabled: true
+    libraries:
+    - click
+    - jinja2
+    - pydantic
+    - rich
+  dart:
+    authentication:
+      details: Dart workspace accessible
+      method: workspace
+      required: false
+      status: authenticated
+    enabled: true
+    workspace: docgen_cli_workspace
+  playwright:
+    authentication:
+      details: Playwright not installed
+      method: local_installation
+      required: true
+      status: requires_installation
+    browser_type: chromium
+    enabled: true
+    headless: true
+    timeout: 30000
+  testsprite:
+    authentication:
+      details: No API key found
+      method: api_key
+      required: true
+      status: requires_setup
+    enabled: true
+    test_port: 3000
+    test_scope: codebase
+    test_type: backend
+workflow:
+  driven_integration: true
+  knowledge_first: true
+  parallel_execution: true
+  quality_gates:
+    accessibility_score: 90
+    automation_coverage: 90
+    driven_component_health: 95
+    performance_threshold: 5
+    spec_compliance: 100
+    test_coverage: 80
+    traceability_completeness: 100

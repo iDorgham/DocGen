@@ -1,0 +1,115 @@
+{
+  "timestamp": "2025-09-20T01:19:46.430729",
+  "checks": {
+    "flake8": {
+      "command": "flake8 src/ --max-line-length=88 --extend-ignore=E203,W503",
+      "returncode": 127,
+      "stdout": "",
+      "stderr": "/bin/sh: 1: flake8: not found\n",
+      "description": "Python code style and error checking",
+      "status": "failed"
+    },
+    "mypy": {
+      "command": "mypy src/ --ignore-missing-imports",
+      "returncode": 127,
+      "stdout": "",
+      "stderr": "/bin/sh: 1: mypy: not found\n",
+      "description": "Static type checking",
+      "status": "failed"
+    },
+    "pylint": {
+      "command": "pylint src/ --disable=C0114,C0116",
+      "returncode": 127,
+      "stdout": "",
+      "stderr": "/bin/sh: 1: pylint: not found\n",
+      "description": "Code quality analysis",
+      "status": "failed"
+    },
+    "black_check": {
+      "command": "black --check src/",
+      "returncode": 127,
+      "stdout": "",
+      "stderr": "/bin/sh: 1: black: not found\n",
+      "description": "Code formatting consistency",
+      "status": "failed"
+    },
+    "isort_check": {
+      "command": "isort --check-only src/",
+      "returncode": 127,
+      "stdout": "",
+      "stderr": "/bin/sh: 1: isort: not found\n",
+      "description": "Import statement organization",
+      "status": "failed"
+    },
+    "bandit": {
+      "command": "bandit -r src/ -f json",
+      "returncode": 127,
+      "stdout": "",
+      "stderr": "/bin/sh: 1: bandit: not found\n",
+      "description": "Security vulnerability scanning",
+      "status": "failed"
+    },
+    "safety": {
+      "command": "safety check --json",
+      "returncode": 127,
+      "stdout": "",
+      "stderr": "/bin/sh: 1: safety: not found\n",
+      "description": "Dependency vulnerability scanning",
+      "status": "failed"
+    },
+    "test_discovery": {
+      "command": "python -m pytest --collect-only",
+      "returncode": 127,
+      "stdout": "",
+      "stderr": "/bin/sh: 1: python: not found\n",
+      "description": "Test discovery and validation",
+      "status": "failed"
+    },
+    "test_execution": {
+      "command": "python -m pytest -v --tb=short",
+      "returncode": 127,
+      "stdout": "",
+      "stderr": "/bin/sh: 1: python: not found\n",
+      "description": "Test execution and results",
+      "status": "failed"
+    },
+    "docstring_coverage": {
+      "command": "docstr-coverage src/ --fail-under=80",
+      "returncode": 127,
+      "stdout": "",
+      "stderr": "/bin/sh: 1: docstr-coverage: not found\n",
+      "description": "Docstring coverage analysis",
+      "status": "failed"
+    },
+    "docs_build": {
+      "command": "python assets/dev/scripts/generate_docs.py",
+      "returncode": 127,
+      "stdout": "",
+      "stderr": "/bin/sh: 1: python: not found\n",
+      "description": "Documentation generation",
+      "status": "failed"
+    },
+    "import_time": {
+      "command": "python -c \"import time; start=time.time(); import src; print(f'Import time: {time.time()-start:.3f}s')\"",
+      "returncode": 127,
+      "stdout": "",
+      "stderr": "/bin/sh: 1: python: not found\n",
+      "description": "Module import performance",
+      "status": "failed"
+    },
+    "memory_usage": {
+      "command": "python -c \"import psutil, os; print(f'Memory usage: {psutil.Process(os.getpid()).memory_info().rss / 1024 / 1024:.1f} MB')\"",
+      "returncode": 127,
+      "stdout": "",
+      "stderr": "/bin/sh: 1: python: not found\n",
+      "description": "Memory usage analysis",
+      "status": "failed"
+    }
+  },
+  "summary": {
+    "total_checks": 13,
+    "passed": 0,
+    "failed": 13,
+    "warnings": 0
+  }
+}

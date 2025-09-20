@@ -1,0 +1,45 @@
+{
+  "timestamp": "2025-09-20T01:10:55.273502",
+  "project_path": "/mnt/d/Work/AI/Projects/DocGen",
+  "config_path": "/mnt/d/Work/AI/Projects/DocGen/assets/dev/config/mcp/mcp_config.yaml",
+  "auth_config_path": "/mnt/d/Work/AI/Projects/DocGen/assets/dev/config/mcp/auth_config.yaml",
+  "authentication_status": {
+    "browser_tools": {
+      "details": "Browser Tools accessible",
+      "method": "local_browser",
+      "status": "authenticated"
+    },
+    "byterover": {
+      "details": "Byterover extension not authenticated",
+      "method": "extension",
+      "status": "requires_setup"
+    },
+    "context7": {
+      "details": "Context7 API accessible",
+      "method": "public_api",
+      "status": "authenticated"
+    },
+    "dart": {
+      "details": "Dart workspace accessible",
+      "method": "workspace",
+      "status": "authenticated"
+    },
+    "playwright": {
+      "details": "Playwright not installed",
+      "method": "local_installation",
+      "status": "requires_installation"
+    },
+    "testsprite": {
+      "details": "No API key found",
+      "method": "api_key",
+      "status": "requires_setup"
+    }
+  },
+  "workflow_results": {},
+  "performance_metrics": {},
+  "integration_summary": {
+    "total_servers": 6,
+    "enabled_servers": 6,
+    "authenticated_servers": 3
+  }
+}

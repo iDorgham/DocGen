@@ -1,0 +1,96 @@
+
+# Spec-Driven Development Workflow Rules for DocGen CLI
+
+rules:
+  - id: spec-first
+    description: Always start from specifications before generating or editing code.
+    match: "*"
+    actions:
+      - message: |
+          Before writing or modifying code, review the requirements (functional/non-functional),
+          tasks/milestones, and technical architecture. If a spec section is missing, update the
+          relevant file first.
+          
+          Required spec files:
+          - assets/specs/requirements.md
+          - assets/specs/tasks.md
+          - assets/specs/tech.md
+
+  - id: keep-spec-source-of-truth
+    description: Specs are the source of truth. Code must map to requirements and tasks.
+    match: "*"
+    actions:
+      - message: |
+          For every function, command, or feature:
+          - Link it to a requirement in assets/specs/requirements.md
+          - Reference its milestone/task from assets/specs/tasks.md
+          - Ensure consistency with technical details in assets/specs/tech.md
+
+  - id: test-driven
+    description: Generate tests based on specs before or alongside code.
+    match: "*.py"
+    actions:
+      - message: |
+          For each spec requirement, write unit or integration tests.
+          - Tests must validate CLI commands, data models, and document generation.
+          - No new business logic without matching tests.
+          - Place tests in assets/scripts/tests/ directory
+
+  - id: doc-sync
+    description: Keep documentation in sync with specs and implementation.
+    match: "*"
+    actions:
+      - message: |
+          After implementing or changing a feature:
+          - Update docs (README, CLI help text, developer notes).
+          - Ensure generated docs reflect requirements and tasks.
+          - Update assets/docs/ directory as needed
+
+  - id: review-cycle
+    description: Enforce spec vs code review after each milestone.
+    match: "*"
+    actions:
+      - message: |
+          Run a spec-to-code checklist:
+          - Does every spec item have code/tests?
+          - Does every piece of code map back to the spec?
+          - Update assets/specs/requirements.md or assets/specs/tasks.md if adjustments were made.
+
+  - id: project-structure
+    description: Follow the established project structure with consolidated assets folder.
+    match: "*"
+    actions:
+      - message: |
+          Follow the established project structure:
+          - All project folders consolidated in assets/
+          - Source code in src/ directory
+          - Specifications in assets/specs/
+          - Templates in src/templates/
+          - Tests in assets/scripts/tests/
+
+  - id: python-standards
+    description: Follow Python coding standards and best practices.
+    match: "*.py"
+    actions:
+      - message: |
+          Follow Python best practices:
+          - Use type hints for all functions
+          - Write comprehensive docstrings
+          - Follow PEP 8 coding standards
+          - Maintain 80% test coverage
+          - Use Click for CLI interface
+          - Use Pydantic for data validation
+
+  - id: arabic-comments
+    description: Add Arabic descriptions in code comments for better documentation.
+    match: "*.py"
+    actions:
+      - message: |
+          In all coded files, add comments with description and details in the code with Arabic description if available:
+          - Add comprehensive comments explaining the purpose and functionality
+          - Include Arabic translations for key concepts and descriptions
+          - Use both English and Arabic for better accessibility
+          - Format: # English description / الوصف بالعربية
+          - For functions: Add Arabic explanation of parameters and return values
+          - For classes: Include Arabic description of the class purpose
+          - For complex logic: Add Arabic explanations of the algorithm or process

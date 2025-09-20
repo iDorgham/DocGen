@@ -1,0 +1,310 @@
+---
+description: MCP Server Integration Rules - Automatic Development Workflow
+alwaysApply: true
+---
+
+# MCP Server Integration Rules
+## DocGen CLI - Automatic Development Workflow
+
+This rule file ensures automatic integration of all MCP servers during development to maximize productivity and code quality.
+
+## Core Integration Principles
+
+### 1. Knowledge-First Development (MANDATORY)
+**RULE**: Every development task MUST start with knowledge retrieval and end with knowledge storage.
+
+```yaml
+Automatic Pattern:
+  1. byterover-retrieve-knowledge (task-specific context)
+  2. Execute development work
+  3. byterover-store-knowledge (implementation details)
+  4. byterover-update-module (if module changes)
+```
+
+### 2. Plan Persistence (MANDATORY)
+**RULE**: All implementation plans MUST be saved immediately after user approval.
+
+```yaml
+Automatic Pattern:
+  1. Create implementation plan
+  2. User approves plan
+  3. byterover-save-implementation-plan (IMMEDIATELY)
+  4. Execute plan with progress tracking
+  5. byterover-update-plan-progress (mark tasks complete)
+```
+
+### 3. Testing Integration (MANDATORY)
+**RULE**: All code changes MUST be validated through automated testing.
+
+```yaml
+Automatic Pattern:
+  1. testsprite-bootstrap-tests (if not already done)
+  2. testsprite-generate-test-plan (frontend/backend)
+  3. testsprite-generate-code-and-execute
+  4. browser-tools-runAuditMode (comprehensive validation)
+```
+
+## Automatic Development Workflows
+
+### Frontend Development Workflow
+**AUTOMATIC TRIGGER**: When working on React/Next.js components
+
+```yaml
+Automatic Sequence:
+  1. byterover-retrieve-knowledge ("React component patterns")
+  2. context7-resolve-library-id ("react")
+  3. context7-get-library-docs ("react", "hooks", 5000)
+  4. Implement component following user preferences:
+     - Dark mode: rgb(37 99 235) background with white text
+     - Animated lines animation and glass style buttons
+     - Poppins typeface (Cairo for Arabic)
+     - 1px outlines and consistent title sizes
+  5. testsprite-generate-frontend-test-plan
+  6. browser-tools-runAccessibilityAudit
+  7. browser-tools-runPerformanceAudit
+  8. byterover-store-knowledge (component implementation)
+```
+
+### Backend Development Workflow
+**AUTOMATIC TRIGGER**: When working on API endpoints or services
+
+```yaml
+Automatic Sequence:
+  1. byterover-retrieve-knowledge ("NestJS API patterns")
+  2. context7-resolve-library-id ("nestjs")
+  3. context7-get-library-docs ("nestjs", "controllers", 5000)
+  4. Implement API endpoint
+  5. testsprite-generate-backend-test-plan
+  6. testsprite-generate-code-and-execute
+  7. browser-tools-runBestPracticesAudit
+  8. byterover-store-knowledge (API implementation)
+```
+
+### Bug Fix Workflow
+**AUTOMATIC TRIGGER**: When investigating issues or errors
+
+```yaml
+Automatic Sequence:
+  1. browser-tools-getConsoleErrors
+  2. browser-tools-getNetworkErrors
+  3. browser-tools-takeScreenshot
+  4. byterover-retrieve-knowledge ("similar bug patterns")
+  5. browser-tools-runDebuggerMode
+  6. playwright-browser-navigate (to problematic page)
+  7. Implement fix
+  8. browser-tools-runAuditMode
+  9. byterover-store-knowledge (bug fix details)
+```
+
+### Performance Optimization Workflow
+**AUTOMATIC TRIGGER**: When performance issues are detected
+
+```yaml
+Automatic Sequence:
+  1. browser-tools-runPerformanceAudit (baseline)
+  2. byterover-retrieve-knowledge ("optimization techniques")
+  3. context7-get-library-docs (performance best practices)
+  4. Implement optimizations
+  5. browser-tools-runPerformanceAudit (validate improvements)
+  6. byterover-store-knowledge (optimization results)
+```
+
+## Automatic Quality Assurance
+
+### Code Quality Checks (AUTOMATIC)
+**TRIGGER**: Before any code commit or deployment
+
+```yaml
+Automatic Quality Gates:
+  1. browser-tools-runBestPracticesAudit
+  2. browser-tools-runPerformanceAudit
+  3. browser-tools-runAccessibilityAudit
+  4. browser-tools-runSEOAudit (for web content)
+  5. testsprite-generate-code-and-execute
+  6. Store results in byterover knowledge
+```
+
+### Accessibility Compliance (AUTOMATIC)
+**TRIGGER**: When modifying UI components
+
+```yaml
+Automatic Accessibility Checks:
+  1. browser-tools-runAccessibilityAudit
+  2. playwright-browser-snapshot (accessibility tree)
+  3. Fix accessibility issues if found
+  4. Document compliance in byterover
+```
+
+## Automatic Documentation Management
+
+### Knowledge Storage (AUTOMATIC)
+**TRIGGER**: After completing any significant work
+
+```yaml
+Automatic Knowledge Storage:
+  1. byterover-store-knowledge (implementation details)
+  2. byterover-update-module (if module changes)
+  3. dart-create-doc (for new features)
+  4. dart-update-doc (for existing documentation)
+```
+
+### Module Documentation (AUTOMATIC)
+**TRIGGER**: When making changes to codebase modules
+
+```yaml
+Automatic Module Updates:
+  1. byterover-update-module (technical details)
+  2. byterover-update-module (insights and patterns)
+  3. Store critical implementation knowledge
+```
+
+## Automatic Testing Integration
+
+### Test Generation (AUTOMATIC)
+**TRIGGER**: When creating new features or components
+
+```yaml
+Automatic Test Generation:
+  1. testsprite-bootstrap-tests (if not initialized)
+  2. testsprite-generate-test-plan (frontend/backend)
+  3. testsprite-generate-code-and-execute
+  4. Store test results in byterover
+```
+
+### End-to-End Testing (AUTOMATIC)
+**TRIGGER**: For user-facing features
+
+```yaml
+Automatic E2E Testing:
+  1. playwright-browser-navigate (user journeys)
+  2. playwright-browser-click (user interactions)
+  3. playwright-browser-fill-form (form submissions)
+  4. browser-tools-getConsoleErrors (error monitoring)
+  5. Store E2E test results in byterover
+```
+
+## Automatic Error Handling
+
+### MCP Server Failures (AUTOMATIC)
+**TRIGGER**: When any MCP server fails
+
+```yaml
+Automatic Error Handling:
+  1. Log the MCP server failure
+  2. Use alternative tools if available
+  3. Store error details in byterover knowledge
+  4. Continue development with available resources
+```
+
+### Knowledge Retrieval Failures (AUTOMATIC)
+**TRIGGER**: When knowledge retrieval fails
+
+```yaml
+Automatic Fallback:
+  1. byterover-retrieve-knowledge (fails)
+  2. codebase_search (fallback search)
+  3. context7-get-library-docs (library reference)
+  4. Store successful search results in byterover
+```
+
+## Automatic Performance Optimization
+
+### Parallel Execution (AUTOMATIC)
+**RULE**: Use multiple MCP servers simultaneously when possible
+
+```yaml
+Automatic Parallel Execution:
+  - byterover-retrieve-knowledge (context)
+  - context7-resolve-library-id (libraries)
+  - dart-list-tasks (project status)
+  - browser-tools-getConsoleLogs (current state)
+  # Execute in parallel, not sequentially
+```
+
+### Knowledge Caching (AUTOMATIC)
+**RULE**: Store frequently accessed information in Byterover
+
+```yaml
+Automatic Caching:
+  1. Identify frequently used queries
+  2. Store comprehensive results in byterover
+  3. Reference stored knowledge instead of re-querying
+```
+
+## Automatic Security and Privacy
+
+### Sensitive Information Protection (AUTOMATIC)
+**RULE**: Never store API keys, passwords, or sensitive data in MCP knowledge bases
+
+```yaml
+Automatic Security:
+  - Store implementation patterns (not credentials)
+  - Store error messages (not sensitive data)
+  - Store configuration examples (not actual values)
+```
+
+### Test Environment Safety (AUTOMATIC)
+**RULE**: Use appropriate test environments for all automated testing
+
+```yaml
+Automatic Test Safety:
+  - Use development/staging environments
+  - Use test user accounts
+  - Use mock data for sensitive operations
+```
+
+## Automatic Monitoring and Maintenance
+
+### Regular Audits (AUTOMATIC)
+**TRIGGER**: Weekly MCP server health checks
+
+```yaml
+Automatic Audits:
+  1. Test all MCP server connections
+  2. Review stored knowledge quality
+  3. Update outdated information
+  4. Optimize frequently used patterns
+```
+
+### Knowledge Maintenance (AUTOMATIC)
+**TRIGGER**: Monthly knowledge base cleanup
+
+```yaml
+Automatic Maintenance:
+  1. Review stored knowledge relevance
+  2. Remove outdated information
+  3. Reorganize knowledge categories
+  4. Update module documentation
+```
+
+## Compliance and Standards
+
+### Documentation Standards (AUTOMATIC)
+- All MCP server usage must be documented
+- Knowledge storage must include context and purpose
+- Error handling must be logged and analyzed
+
+### Testing Standards (AUTOMATIC)
+- All features must have corresponding tests
+- Test coverage must be maintained above 80%
+- Performance benchmarks must be established
+
+### Security Standards (AUTOMATIC)
+- No sensitive data in knowledge bases
+- All external API calls must be validated
+- Test environments must be isolated
+
+## Enforcement Rules
+
+### Rule Violations (AUTOMATIC)
+1. **First Violation**: Warning and education
+2. **Second Violation**: Mandatory review of MCP integration
+3. **Third Violation**: Temporary suspension of development privileges
+4. **Repeated Violations**: Complete MCP integration review
+
+### Quality Gates (AUTOMATIC)
+- No code can be committed without passing all required audits
+- No deployment can proceed without comprehensive testing
+- No feature can be marked complete without proper documentation
+
+**CRITICAL**: These rules are mandatory and must be followed for all development work in the DocGen CLI project. The system will automatically enforce these patterns to ensure consistent, high-quality development practices.

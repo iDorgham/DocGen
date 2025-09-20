@@ -1,0 +1,313 @@
+---
+description: DocGen CLI Project Rules - Streamlined development guidelines for Python CLI tool
+alwaysApply: true
+---
+
+# DocGen CLI Project Rules
+
+## Project Overview
+DocGen CLI is a Python command-line tool for generating project documentation from specifications using Jinja2 templates.
+
+## Core Development Principles
+
+### 1. Spec-Driven Development (MANDATORY)
+**RULE**: All development must start from specifications before generating or editing code.
+
+```yaml
+Spec-First Workflow:
+  1. Review requirements.md (functional/non-functional requirements)
+  2. Check tasks.md (milestones and deliverables)
+  3. Consult tech.md (technical architecture)
+  4. Update specs if missing information
+  5. Implement code based on specifications
+```
+
+### 2. Python CLI Best Practices (MANDATORY)
+**RULE**: Follow Python CLI development standards and project structure.
+
+```yaml
+Python CLI Standards:
+  - Use Click for CLI interface
+  - Follow PEP 8 coding standards
+  - Use type hints for all functions
+  - Write comprehensive docstrings
+  - Maintain 80% test coverage
+  - Use Pydantic for data validation
+```
+
+## Project Structure Rules
+
+### 1. Directory Organization (MANDATORY)
+**RULE**: Maintain clean, organized project structure.
+
+```
+docgen-cli/
+├── src/                    # Source code
+│   ├── cli/               # CLI commands
+│   ├── core/              # Core functionality
+│   ├── models/            # Data models
+│   ├── templates/         # Jinja2 templates
+│   └── utils/             # Utility functions
+├── tests/                 # Test files
+├── docs/                  # Documentation
+├── specs/                 # Specifications
+│   ├── requirements.md    # WHAT
+│   ├── tasks.md          # WHEN/WHO
+│   └── tech.md           # HOW
+├── data/                  # Sample data
+├── tools/                 # Development tools
+├── pyproject.toml         # Project configuration
+├── requirements.txt       # Dependencies
+└── README.md             # Project overview
+```
+
+### 2. File Naming Conventions (MANDATORY)
+**RULE**: Use consistent naming conventions.
+
+```yaml
+Naming Conventions:
+  - Python files: snake_case.py
+  - CLI commands: snake_case.py
+  - Templates: snake_case.j2
+  - Test files: test_snake_case.py
+  - Documentation: UPPERCASE.md
+  - Configuration: lowercase.json/yaml
+```
+
+## Development Workflow Rules
+
+### 1. Code Quality Standards (MANDATORY)
+**RULE**: Maintain high code quality standards.
+
+```yaml
+Quality Standards:
+  - Type hints required for all functions
+  - Comprehensive docstrings
+  - Error handling with custom exceptions
+  - Input validation using Pydantic
+  - Unit tests for all functions
+  - Integration tests for CLI commands
+  - 80% minimum test coverage
+```
+
+### 2. Template Development (MANDATORY)
+**RULE**: Follow Jinja2 template best practices.
+
+```yaml
+Template Standards:
+  - Use semantic template names
+  - Include template documentation
+  - Validate template syntax
+  - Test template rendering
+  - Use consistent formatting
+  - Include error handling
+```
+
+### 3. CLI Command Development (MANDATORY)
+**RULE**: Follow Click CLI best practices.
+
+```yaml
+CLI Standards:
+  - Use Click decorators properly
+  - Provide helpful help text
+  - Implement proper error handling
+  - Use consistent command structure
+  - Support multiple output formats
+  - Include progress indicators
+```
+
+## Testing Rules
+
+### 1. Test Coverage (MANDATORY)
+**RULE**: Maintain comprehensive test coverage.
+
+```yaml
+Testing Requirements:
+  - Unit tests for all functions
+  - Integration tests for CLI commands
+  - Template rendering tests
+  - Error handling tests
+  - Input validation tests
+  - 80% minimum coverage
+```
+
+### 2. Test Organization (MANDATORY)
+**RULE**: Organize tests by functionality.
+
+```yaml
+Test Structure:
+  - tests/unit/ - Unit tests
+  - tests/integration/ - Integration tests
+  - tests/cli/ - CLI command tests
+  - tests/templates/ - Template tests
+  - tests/fixtures/ - Test data
+```
+
+## Documentation Rules
+
+### 1. Code Documentation (MANDATORY)
+**RULE**: Document all code thoroughly.
+
+```yaml
+Documentation Standards:
+  - Docstrings for all functions/classes
+  - Type hints for all parameters
+  - README with usage examples
+  - API documentation
+  - Template documentation
+  - Development setup guide
+```
+
+### 2. User Documentation (MANDATORY)
+**RULE**: Provide comprehensive user documentation.
+
+```yaml
+User Docs:
+  - Installation instructions
+  - Quick start guide
+  - Command reference
+  - Template customization
+  - Troubleshooting guide
+  - Examples and tutorials
+```
+
+## Error Handling Rules
+
+### 1. Exception Hierarchy (MANDATORY)
+**RULE**: Implement proper exception handling.
+
+```yaml
+Exception Standards:
+  - Custom exception classes
+  - Categorized error types
+  - User-friendly error messages
+  - Actionable error suggestions
+  - Proper error logging
+  - Graceful error recovery
+```
+
+### 2. Input Validation (MANDATORY)
+**RULE**: Validate all inputs thoroughly.
+
+```yaml
+Validation Standards:
+  - Pydantic models for data validation
+  - CLI argument validation
+  - File path validation
+  - Template syntax validation
+  - Configuration validation
+  - User input sanitization
+```
+
+## Security Rules
+
+### 1. Input Sanitization (MANDATORY)
+**RULE**: Sanitize all user inputs.
+
+```yaml
+Security Standards:
+  - Validate file paths
+  - Sanitize template inputs
+  - Prevent path traversal
+  - Validate configuration files
+  - Secure file operations
+  - No code injection in templates
+```
+
+## Performance Rules
+
+### 1. CLI Performance (MANDATORY)
+**RULE**: Optimize CLI performance.
+
+```yaml
+Performance Standards:
+  - Fast startup time
+  - Efficient template rendering
+  - Minimal memory usage
+  - Progress indicators for long operations
+  - Caching for repeated operations
+  - Optimized file I/O
+```
+
+## Deployment Rules
+
+### 1. Package Distribution (MANDATORY)
+**RULE**: Follow Python packaging best practices.
+
+```yaml
+Packaging Standards:
+  - Use pyproject.toml
+  - Proper dependency management
+  - Version management
+  - Entry points configuration
+  - Wheel distribution
+  - PyPI publishing
+```
+
+## Quality Gates
+
+### 1. Pre-Commit Checks (MANDATORY)
+**RULE**: No commit without quality validation.
+
+```yaml
+Pre-Commit Gates:
+  - Code formatting (black, isort)
+  - Linting (flake8, mypy)
+  - Test execution
+  - Coverage validation
+  - Type checking
+  - Template validation
+```
+
+### 2. Pre-Release Checks (MANDATORY)
+**RULE**: No release without comprehensive validation.
+
+```yaml
+Pre-Release Gates:
+  - Full test suite
+  - Documentation completeness
+  - CLI functionality testing
+  - Template rendering validation
+  - Performance testing
+  - Security validation
+```
+
+## Maintenance Rules
+
+### 1. Regular Updates (MANDATORY)
+**RULE**: Keep dependencies and tools updated.
+
+```yaml
+Maintenance Schedule:
+  - Weekly: Dependency updates
+  - Monthly: Tool updates
+  - Quarterly: Python version updates
+  - Annually: Architecture review
+```
+
+### 2. Documentation Sync (MANDATORY)
+**RULE**: Keep documentation synchronized with code.
+
+```yaml
+Documentation Sync:
+  - Update docs with code changes
+  - Sync README with features
+  - Update API documentation
+  - Maintain example accuracy
+  - Keep troubleshooting current
+```
+
+## Enforcement Rules
+
+### 1. Rule Violations (AUTOMATIC)
+**RULE**: Enforce rules automatically.
+
+```yaml
+Violation Handling:
+  - First violation: Warning
+  - Second violation: Block commit
+  - Third violation: Require review
+  - Repeated violations: Escalate
+```
+
+**CRITICAL**: These rules are mandatory for the DocGen CLI project. All development must follow these guidelines to ensure consistent, high-quality Python CLI tool development.

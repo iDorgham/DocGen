@@ -1,0 +1,98 @@
+mcp_integration_status:
+  driven_workflow_enabled: true
+  enabled_servers:
+  - browser_tools
+  - byterover
+  - context7
+  - dart
+  - playwright
+  - testsprite
+  performance_metrics:
+    average_duration: 0.0010007254901960784
+    enabled_servers: 6
+    failed_calls: 0
+    parallel_calls_duration: 0.00419
+    parallel_calls_successful: 4
+    parallel_calls_total: 4
+    parallel_efficiency_gain: 0.6
+    successful_calls: 51
+    total_calls: 51
+  servers_configured: 6
+  servers_enabled: 6
+  success_rate: 1.0
+  total_calls: 51
+  workflow_config:
+    driven_integration: true
+    knowledge_first: true
+    parallel_execution: true
+    quality_gates:
+      accessibility_score: 90
+      automation_coverage: 90
+      driven_component_health: 95
+      performance_threshold: 5
+      spec_compliance: 100
+      test_coverage: 80
+      traceability_completeness: 100
+performance_metrics:
+  average_duration: 0.0010007254901960784
+  enabled_servers: 6
+  failed_calls: 0
+  parallel_calls_duration: 0.00419
+  parallel_calls_successful: 4
+  parallel_calls_total: 4
+  parallel_efficiency_gain: 0.6
+  successful_calls: 51
+  total_calls: 51
+phase_durations:
+  phase_1: 0.018277883529663086
+  phase_2: 0.0625925064086914
+  phase_3: 0.02079176902770996
+project_path: /mnt/d/Work/AI/Projects/DocGen
+timestamp: '2025-09-20T01:19:45.581870'
+total_duration: 0.10166215896606445
+workflow_results:
+  phase_1:
+    handbook_check:
+      details: Handbook existence checked
+      success: true
+    handbook_creation:
+      details: Handbook created/updated
+      success: true
+    initial_tasks:
+      details: Initial tasks created
+      success: true
+    module_discovery:
+      details: Modules discovered and documented
+      success: true
+    project_config:
+      details: Project configuration retrieved
+      success: true
+    test_bootstrap:
+      details: Test environment bootstrapped
+      success: true
+  phase_2:
+    development_tasks:
+      details: Executed 4 development tasks
+      success: true
+    knowledge_retrieval:
+      details: Retrieved 5 context queries
+      success: true
+    knowledge_storage:
+      details: Stored 4 implementation details
+      success: true
+    library_documentation:
+      details: Processed 8 libraries
+      success: true
+  phase_3:
+    browser_automation:
+      details: Browser automation testing completed
+      success: true
+    quality_audits:
+      details: Completed 4/4 quality audits
+      success: true
+    test_execution:
+      details: Automated test execution completed
+      success: true
+    test_plan_generation:
+      details: Backend test plan generated
+      success: true

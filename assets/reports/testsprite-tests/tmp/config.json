@@ -1,0 +1,16 @@
+{
+  "status": "commited",
+  "type": "backend",
+  "scope": "codebase",
+  "localEndpoint": "http://localhost:3000",
+  "backendAuthType": "public",
+  "executionArgs": {
+    "projectName": "DocGen",
+    "projectPath": "D:\\Work\\AI\\Projects\\DocGen",
+    "testIds": [],
+    "additionalInstruction": "Run comprehensive testing for the DocGen CLI project including all API endpoints, validation, template management, and MCP integration features. Focus on testing the core functionality, error handling, and integration points.",
+    "envs": {
+      "API_KEY": "sk-user-YZXAd6uI8Hun5PlLHok1_tUnpgiJg4236-tKR7QaSHhSg17nj_zkafUXMz-ceOS0zySDLgnj6NiLmwZgyL_P-maFf-g-DD1-gjQXWOdQCCzhRgq5S8YOMoFfUBopVuig1tI"
+    }
+  }
+}

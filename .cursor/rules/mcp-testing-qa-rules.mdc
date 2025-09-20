@@ -1,0 +1,360 @@
+---
+description: MCP Testing and Quality Assurance Rules - Automatic Testing Workflow
+alwaysApply: true
+---
+
+# MCP Testing and Quality Assurance Rules
+## PressKit Pro AI Assistant - Automatic Testing and QA Workflow
+
+This rule file ensures automatic testing and quality assurance using all available MCP servers for comprehensive code validation.
+
+## Automatic Testing Integration
+
+### TestSprite Integration (MANDATORY)
+**RULE**: All code changes MUST be validated through TestSprite automated testing.
+
+```yaml
+Automatic TestSprite Workflow:
+  1. testsprite-bootstrap-tests (initialize if not done)
+  2. testsprite-generate-code-summary (project analysis)
+  3. testsprite-generate-test-plan (frontend/backend)
+  4. testsprite-generate-code-and-execute (run all tests)
+  5. Store test results in byterover knowledge
+```
+
+### Frontend Testing (AUTOMATIC)
+**TRIGGER**: When working on React/Next.js components or changes
+
+```yaml
+Automatic Frontend Testing:
+  1. testsprite-bootstrap-tests (3000, "frontend", projectPath, "codebase")
+  2. testsprite-generate-frontend-test-plan (projectPath, needLogin=true)
+  3. testsprite-generate-code-and-execute (projectName, projectPath, [], "")
+  4. playwright-browser-navigate (to component)
+  5. playwright-browser-snapshot (accessibility tree)
+  6. browser-tools-runAccessibilityAudit
+  7. browser-tools-runPerformanceAudit
+  8. Store frontend test results in byterover
+```
+
+### Backend Testing (AUTOMATIC)
+**TRIGGER**: When working on API endpoints or services
+
+```yaml
+Automatic Backend Testing:
+  1. testsprite-bootstrap-tests (3001, "backend", projectPath, "codebase")
+  2. testsprite-generate-backend-test-plan (projectPath)
+  3. testsprite-generate-code-and-execute (projectName, projectPath, ["api-tests"], "")
+  4. playwright-browser-navigate (to API endpoints)
+  5. browser-tools-getNetworkLogs (monitor API calls)
+  6. browser-tools-getNetworkErrors (check for failures)
+  7. Store backend test results in byterover
+```
+
+## Automatic Quality Assurance
+
+### Code Quality Audits (AUTOMATIC)
+**TRIGGER**: Before any code commit or deployment
+
+```yaml
+Automatic Quality Gates:
+  1. browser-tools-runBestPracticesAudit
+  2. browser-tools-runPerformanceAudit
+  3. browser-tools-runAccessibilityAudit
+  4. browser-tools-runSEOAudit (for web content)
+  5. browser-tools-runNextJSAudit (for Next.js apps)
+  6. Store audit results in byterover knowledge
+```
+
+### Performance Testing (AUTOMATIC)
+**TRIGGER**: When performance issues are detected or for major changes
+
+```yaml
+Automatic Performance Testing:
+  1. browser-tools-runPerformanceAudit (baseline)
+  2. playwright-browser-navigate (to application)
+  3. playwright-browser-take-screenshot (performance state)
+  4. browser-tools-getNetworkLogs (monitor requests)
+  5. Implement optimizations if needed
+  6. browser-tools-runPerformanceAudit (validate improvements)
+  7. Store performance results in byterover
+```
+
+### Accessibility Testing (AUTOMATIC)
+**TRIGGER**: When modifying components or pages
+
+```yaml
+Automatic Accessibility Testing:
+  1. browser-tools-runAccessibilityAudit
+  2. playwright-browser-snapshot (accessibility tree)
+  3. playwright-browser-navigate (to component)
+  4. playwright-browser-click (test interactions)
+  5. Fix accessibility issues if found
+  6. Re-run accessibility audit
+  7. Document compliance in byterover
+```
+
+## Automatic Browser Automation Testing
+
+### End-to-End Testing (AUTOMATIC)
+**TRIGGER**: For user-facing features and critical user journeys
+
+```yaml
+Automatic E2E Testing:
+  1. playwright-browser-navigate (to application)
+  2. playwright-browser-snapshot (initial state)
+  3. playwright-browser-click (user interactions)
+  4. playwright-browser-type (form inputs)
+  5. playwright-browser-fill-form (complex forms)
+  6. playwright-browser-take-screenshot (final state)
+  7. browser-tools-getConsoleErrors (error monitoring)
+  8. Store E2E test results in byterover
+```
+
+### User Journey Testing (AUTOMATIC)
+**TRIGGER**: For complete user workflows
+
+```yaml
+Automatic User Journey Testing:
+  1. playwright-browser-navigate (start page)
+  2. playwright-browser-click (navigation)
+  3. playwright-browser-fill-form (user input)
+  4. playwright-browser-click (submit/continue)
+  5. playwright-browser-wait-for (page load)
+  6. playwright-browser-snapshot (final state)
+  7. browser-tools-runAccessibilityAudit
+  8. Store journey test results in byterover
+```
+
+### Cross-Browser Testing (AUTOMATIC)
+**TRIGGER**: For critical features
+
+```yaml
+Automatic Cross-Browser Testing:
+  1. playwright-browser-resize (different screen sizes)
+  2. playwright-browser-navigate (to feature)
+  3. playwright-browser-take-screenshot (visual comparison)
+  4. playwright-browser-snapshot (accessibility comparison)
+  5. browser-tools-runPerformanceAudit (performance comparison)
+  6. Store cross-browser results in byterover
+```
+
+## Automatic Error Detection and Debugging
+
+### Console Error Monitoring (AUTOMATIC)
+**TRIGGER**: During all testing phases
+
+```yaml
+Automatic Error Monitoring:
+  1. browser-tools-getConsoleErrors
+  2. browser-tools-getConsoleLogs
+  3. playwright-browser-console-messages
+  4. Store error patterns in byterover knowledge
+  5. Implement fixes for common errors
+```
+
+### Network Error Detection (AUTOMATIC)
+**TRIGGER**: During API and network testing
+
+```yaml
+Automatic Network Monitoring:
+  1. browser-tools-getNetworkErrors
+  2. browser-tools-getNetworkLogs
+  3. playwright-browser-network-requests
+  4. Store network patterns in byterover knowledge
+  5. Implement fixes for network issues
+```
+
+### Regression Testing (AUTOMATIC)
+**TRIGGER**: For component changes
+
+```yaml
+Automatic Regression Testing:
+  1. playwright-browser-take-screenshot (before changes)
+  2. Implement component changes
+  3. playwright-browser-take-screenshot (after changes)
+  4. Compare screenshots for differences
+  5. Store test results in byterover
+```
+
+## Automatic Test Data Management
+
+### Test Environment Setup (AUTOMATIC)
+**TRIGGER**: Before running any tests
+
+```yaml
+Automatic Test Environment:
+  1. Use development/staging environments
+  2. Use test user accounts
+  3. Use mock data for sensitive operations
+  4. playwright-browser-wipeLogs (clean state)
+  5. Store test environment config in byterover
+```
+
+### Test Data Cleanup (AUTOMATIC)
+**TRIGGER**: After test completion
+
+```yaml
+Automatic Cleanup:
+  1. playwright-browser-close (cleanup browser)
+  2. browser-tools-wipeLogs (clear logs)
+  3. Clean up test data
+  4. Store cleanup procedures in byterover
+```
+
+## Automatic Test Reporting
+
+### Test Results Storage (AUTOMATIC)
+**TRIGGER**: After all test executions
+
+```yaml
+Automatic Test Reporting:
+  1. byterover-store-knowledge (test results)
+  2. byterover-store-knowledge (performance metrics)
+  3. byterover-store-knowledge (accessibility scores)
+  4. byterover-store-knowledge (error patterns)
+  5. dart-create-doc (test documentation)
+```
+
+### Quality Metrics Tracking (AUTOMATIC)
+**TRIGGER**: Weekly quality assessments
+
+```yaml
+Automatic Metrics Tracking:
+  1. browser-tools-runAuditMode (comprehensive audit)
+  2. testsprite-generate-code-summary (code analysis)
+  3. Store quality metrics in byterover
+  4. Track improvements over time
+  5. Generate quality reports
+```
+
+## Automatic Test Optimization
+
+### Test Performance Optimization (AUTOMATIC)
+**TRIGGER**: When tests are slow or failing
+
+```yaml
+Automatic Test Optimization:
+  1. Analyze test execution times
+  2. Identify slow tests
+  3. Optimize test data and setup
+  4. Use parallel test execution
+  5. Store optimization techniques in byterover
+```
+
+### Test Coverage Analysis (AUTOMATIC)
+**TRIGGER**: After test execution
+
+```yaml
+Automatic Coverage Analysis:
+  1. testsprite-generate-code-summary (coverage analysis)
+  2. Identify uncovered code areas
+  3. Generate additional tests for coverage
+  4. Store coverage improvements in byterover
+```
+
+## Automatic Security Testing
+
+### Security Audit (AUTOMATIC)
+**TRIGGER**: For authentication and sensitive features
+
+```yaml
+Automatic Security Testing:
+  1. browser-tools-runBestPracticesAudit (security checks)
+  2. Test authentication flows
+  3. Test authorization boundaries
+  4. Test input validation
+  5. Store security test results in byterover
+```
+
+### Data Protection Testing (AUTOMATIC)
+**TRIGGER**: For data handling features
+
+```yaml
+Automatic Data Protection Testing:
+  1. Test data encryption
+  2. Test data sanitization
+  3. Test privacy controls
+  4. Test data retention policies
+  5. Store data protection results in byterover
+```
+
+## Automatic Test Maintenance
+
+### Test Health Monitoring (AUTOMATIC)
+**TRIGGER**: Daily test health checks
+
+```yaml
+Automatic Test Health:
+  1. Monitor test execution success rates
+  2. Identify flaky tests
+  3. Update test data and expectations
+  4. Store test health metrics in byterover
+```
+
+### Test Documentation Updates (AUTOMATIC)
+**TRIGGER**: When tests are modified
+
+```yaml
+Automatic Test Documentation:
+  1. dart-update-doc (test documentation)
+  2. byterover-store-knowledge (test patterns)
+  3. byterover-update-module (test module info)
+  4. Keep test docs synchronized
+```
+
+## Quality Gates and Enforcement
+
+### Pre-Commit Quality Gates (AUTOMATIC)
+**RULE**: No code can be committed without passing all required tests
+
+```yaml
+Automatic Pre-Commit Gates:
+  1. testsprite-generate-code-and-execute (all tests pass)
+  2. browser-tools-runBestPracticesAudit (quality standards)
+  3. browser-tools-runAccessibilityAudit (accessibility compliance)
+  4. browser-tools-runPerformanceAudit (performance standards)
+  5. Block commit if any gate fails
+```
+
+### Pre-Deployment Quality Gates (AUTOMATIC)
+**RULE**: No deployment can proceed without comprehensive testing
+
+```yaml
+Automatic Pre-Deployment Gates:
+  1. Full test suite execution
+  2. End-to-end user journey testing
+  3. Cross-browser compatibility testing
+  4. Performance benchmarking
+  5. Security audit completion
+  6. Block deployment if any gate fails
+```
+
+## Error Handling and Recovery
+
+### Test Failure Recovery (AUTOMATIC)
+**TRIGGER**: When tests fail
+
+```yaml
+Automatic Test Recovery:
+  1. browser-tools-getConsoleErrors (identify issues)
+  2. browser-tools-getNetworkErrors (network problems)
+  3. playwright-browser-take-screenshot (visual debugging)
+  4. byterover-retrieve-knowledge (similar failures)
+  5. Implement fixes
+  6. Re-run tests
+  7. Store resolution in byterover
+```
+
+### Flaky Test Management (AUTOMATIC)
+**TRIGGER**: When tests are inconsistent
+
+```yaml
+Automatic Flaky Test Management:
+  1. Identify flaky test patterns
+  2. Add proper waits and synchronization
+  3. Improve test data stability
+  4. Store flaky test fixes in byterover
+```
+
+**CRITICAL**: These testing and quality assurance rules are mandatory and will be automatically enforced. All code changes must pass through these comprehensive testing workflows to ensure the highest quality standards for the PressKit Pro AI Assistant project.

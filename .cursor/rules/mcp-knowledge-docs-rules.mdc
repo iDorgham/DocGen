@@ -1,0 +1,384 @@
+---
+description: MCP Knowledge Management and Documentation Rules - Automatic Documentation Workflow
+alwaysApply: true
+---
+
+# MCP Knowledge Management and Documentation Rules
+## PressKit Pro AI Assistant - Automatic Knowledge and Documentation Workflow
+
+This rule file ensures automatic knowledge management and documentation using Byterover and Dart MCP servers for comprehensive project documentation.
+
+## Automatic Knowledge Management
+
+### Knowledge Retrieval (MANDATORY)
+**RULE**: Every development task MUST start with knowledge retrieval
+
+```yaml
+Automatic Knowledge Retrieval:
+  1. byterover-retrieve-knowledge (task-specific context)
+  2. byterover-retrieve-knowledge (related patterns)
+  3. byterover-retrieve-knowledge (best practices)
+  4. Use retrieved knowledge to inform development decisions
+```
+
+### Knowledge Storage (MANDATORY)
+**RULE**: All significant work MUST end with knowledge storage
+
+```yaml
+Automatic Knowledge Storage:
+  1. byterover-store-knowledge (implementation details)
+  2. byterover-store-knowledge (patterns and techniques)
+  3. byterover-store-knowledge (troubleshooting solutions)
+  4. byterover-store-knowledge (performance optimizations)
+```
+
+## Automatic Documentation Management
+
+### Project Documentation (AUTOMATIC)
+**TRIGGER**: When creating or updating project documentation
+
+```yaml
+Automatic Project Documentation:
+  1. dart-create-doc (new features)
+  2. dart-update-doc (existing documentation)
+  3. dart-list-docs (documentation overview)
+  4. byterover-store-knowledge (documentation patterns)
+```
+
+### Feature Documentation (AUTOMATIC)
+**TRIGGER**: When implementing new features
+
+```yaml
+Automatic Feature Documentation:
+  1. dart-create-doc (feature specification)
+  2. dart-create-doc (implementation guide)
+  3. dart-create-doc (usage examples)
+  4. byterover-store-knowledge (feature implementation)
+  5. byterover-update-module (feature details)
+```
+
+### API Documentation (AUTOMATIC)
+**TRIGGER**: When creating or updating API endpoints
+
+```yaml
+Automatic API Documentation:
+  1. dart-create-doc (API specification)
+  2. dart-create-doc (endpoint documentation)
+  3. dart-create-doc (request/response examples)
+  4. byterover-store-knowledge (API patterns)
+  5. byterover-update-module (API module info)
+```
+
+## Automatic Module Management
+
+### Module Discovery (AUTOMATIC)
+**TRIGGER**: During project initialization or major changes
+
+```yaml
+Automatic Module Discovery:
+  1. byterover-list-modules (discover existing modules)
+  2. byterover-store-module (new modules)
+  3. byterover-update-module (changed modules)
+  4. byterover-search-module (find specific modules)
+```
+
+### Module Documentation (AUTOMATIC)
+**TRIGGER**: When making changes to codebase modules
+
+```yaml
+Automatic Module Documentation:
+  1. byterover-update-module (technical details)
+  2. byterover-update-module (insights and patterns)
+  3. byterover-update-module (critical experiences)
+  4. dart-create-doc (module documentation)
+```
+
+## Automatic Handbook Management
+
+### Handbook Creation (AUTOMATIC)
+**TRIGGER**: During project initialization
+
+```yaml
+Automatic Handbook Creation:
+  1. byterover-check-handbook-existence
+  2. byterover-create-handbook (if not exists)
+  3. byterover-check-handbook-sync (if exists)
+  4. byterover-update-handbook (sync changes)
+```
+
+### Handbook Maintenance (AUTOMATIC)
+**TRIGGER**: When codebase changes significantly
+
+```yaml
+Automatic Handbook Maintenance:
+  1. byterover-check-handbook-sync (analyze gaps)
+  2. byterover-update-handbook (update content)
+  3. byterover-store-knowledge (handbook patterns)
+  4. dart-update-doc (handbook documentation)
+```
+
+## Automatic Context Management
+
+### Context Assessment (AUTOMATIC)
+**TRIGGER**: Before starting complex tasks
+
+```yaml
+Automatic Context Assessment:
+  1. byterover-assess-context (task context)
+  2. byterover-reflect-context (gathered information)
+  3. byterover-retrieve-knowledge (missing context)
+  4. Store context assessment in byterover
+```
+
+### Context Reflection (AUTOMATIC)
+**TRIGGER**: After completing significant work
+
+```yaml
+Automatic Context Reflection:
+  1. byterover-reflect-context (completed work)
+  2. byterover-assess-context (quality assessment)
+  3. byterover-store-knowledge (reflection insights)
+  4. Update documentation based on reflection
+```
+
+## Automatic Plan Management
+
+### Plan Creation (AUTOMATIC)
+**TRIGGER**: When user approves implementation plans
+
+```yaml
+Automatic Plan Creation:
+  1. byterover-save-implementation-plan (IMMEDIATELY after approval)
+  2. byterover-retrieve-active-plans (check existing plans)
+  3. dart-create-task (plan tasks)
+  4. byterover-store-knowledge (planning patterns)
+```
+
+### Plan Progress Tracking (AUTOMATIC)
+**TRIGGER**: During plan execution
+
+```yaml
+Automatic Plan Tracking:
+  1. byterover-update-plan-progress (mark tasks complete)
+  2. dart-update-task (update task status)
+  3. byterover-store-knowledge (progress insights)
+  4. Update documentation with progress
+```
+
+## Automatic Knowledge Organization
+
+### Knowledge Categorization (AUTOMATIC)
+**TRIGGER**: When storing new knowledge
+
+```yaml
+Automatic Knowledge Categorization:
+  1. Categorize by development phase (planning, implementation, testing)
+  2. Categorize by technology (React, NestJS, TypeScript)
+  3. Categorize by domain (frontend, backend, database)
+  4. Store categorization patterns in byterover
+```
+
+### Knowledge Retrieval Optimization (AUTOMATIC)
+**TRIGGER**: When knowledge retrieval is slow or ineffective
+
+```yaml
+Automatic Retrieval Optimization:
+  1. Analyze retrieval patterns
+  2. Optimize query structures
+  3. Store frequently accessed knowledge
+  4. Update retrieval strategies
+```
+
+## Automatic Documentation Synchronization
+
+### Code-Documentation Sync (AUTOMATIC)
+**TRIGGER**: When code changes
+
+```yaml
+Automatic Sync:
+  1. byterover-check-handbook-sync (analyze gaps)
+  2. byterover-update-handbook (sync changes)
+  3. dart-update-doc (update documentation)
+  4. byterover-store-knowledge (sync patterns)
+```
+
+### Cross-Reference Management (AUTOMATIC)
+**TRIGGER**: When creating related documentation
+
+```yaml
+Automatic Cross-References:
+  1. Link related documentation
+  2. Update cross-references
+  3. Maintain documentation consistency
+  4. Store cross-reference patterns
+```
+
+## Automatic Knowledge Quality Assurance
+
+### Knowledge Validation (AUTOMATIC)
+**TRIGGER**: When storing new knowledge
+
+```yaml
+Automatic Knowledge Validation:
+  1. Validate knowledge accuracy
+  2. Check for outdated information
+  3. Ensure knowledge completeness
+  4. Store validation patterns
+```
+
+### Knowledge Cleanup (AUTOMATIC)
+**TRIGGER**: Monthly knowledge maintenance
+
+```yaml
+Automatic Knowledge Cleanup:
+  1. Review stored knowledge relevance
+  2. Remove outdated information
+  3. Reorganize knowledge categories
+  4. Update knowledge structure
+```
+
+## Automatic Documentation Generation
+
+### API Documentation Generation (AUTOMATIC)
+**TRIGGER**: When creating API endpoints
+
+```yaml
+Automatic API Docs:
+  1. Generate endpoint documentation
+  2. Create request/response examples
+  3. Document authentication requirements
+  4. Store API documentation patterns
+```
+
+### Component Documentation Generation (AUTOMATIC)
+**TRIGGER**: When creating React components
+
+```yaml
+Automatic Component Docs:
+  1. Generate component documentation
+  2. Create usage examples
+  3. Document props and methods
+  4. Store component documentation patterns
+```
+
+## Automatic Knowledge Sharing
+
+### Team Knowledge Sharing (AUTOMATIC)
+**TRIGGER**: When knowledge is relevant to team
+
+```yaml
+Automatic Team Sharing:
+  1. Share implementation patterns
+  2. Share troubleshooting solutions
+  3. Share best practices
+  4. Store sharing patterns
+```
+
+### Cross-Project Knowledge Transfer (AUTOMATIC)
+**TRIGGER**: When patterns are reusable
+
+```yaml
+Automatic Knowledge Transfer:
+  1. Identify reusable patterns
+  2. Document transferable knowledge
+  3. Create knowledge templates
+  4. Store transfer patterns
+```
+
+## Automatic Documentation Maintenance
+
+### Documentation Health Monitoring (AUTOMATIC)
+**TRIGGER**: Weekly documentation health checks
+
+```yaml
+Automatic Health Monitoring:
+  1. Check documentation completeness
+  2. Verify documentation accuracy
+  3. Identify outdated documentation
+  4. Store health monitoring patterns
+```
+
+### Documentation Update Automation (AUTOMATIC)
+**TRIGGER**: When code changes
+
+```yaml
+Automatic Updates:
+  1. Detect code changes
+  2. Update related documentation
+  3. Maintain documentation consistency
+  4. Store update patterns
+```
+
+## Automatic Knowledge Analytics
+
+### Knowledge Usage Analytics (AUTOMATIC)
+**TRIGGER**: Weekly analytics review
+
+```yaml
+Automatic Analytics:
+  1. Track knowledge retrieval patterns
+  2. Identify most useful knowledge
+  3. Optimize knowledge organization
+  4. Store analytics insights
+```
+
+### Documentation Effectiveness Analysis (AUTOMATIC)
+**TRIGGER**: Monthly effectiveness review
+
+```yaml
+Automatic Effectiveness Analysis:
+  1. Analyze documentation usage
+  2. Identify improvement areas
+  3. Optimize documentation structure
+  4. Store effectiveness insights
+```
+
+## Error Handling and Recovery
+
+### Knowledge Retrieval Failures (AUTOMATIC)
+**TRIGGER**: When knowledge retrieval fails
+
+```yaml
+Automatic Recovery:
+  1. Use alternative search strategies
+  2. Fall back to codebase search
+  3. Store successful alternatives
+  4. Update retrieval strategies
+```
+
+### Documentation Sync Failures (AUTOMATIC)
+**TRIGGER**: When documentation sync fails
+
+```yaml
+Automatic Sync Recovery:
+  1. Identify sync issues
+  2. Implement manual sync
+  3. Store sync solutions
+  4. Update sync strategies
+```
+
+## Quality Gates and Standards
+
+### Knowledge Quality Gates (AUTOMATIC)
+**RULE**: All stored knowledge must meet quality standards
+
+```yaml
+Automatic Quality Gates:
+  1. Validate knowledge accuracy
+  2. Ensure knowledge completeness
+  3. Check knowledge relevance
+  4. Block low-quality knowledge storage
+```
+
+### Documentation Quality Gates (AUTOMATIC)
+**RULE**: All documentation must meet quality standards
+
+```yaml
+Automatic Doc Quality Gates:
+  1. Validate documentation accuracy
+  2. Ensure documentation completeness
+  3. Check documentation clarity
+  4. Block low-quality documentation
+```
+
+**CRITICAL**: These knowledge management and documentation rules are mandatory and will be automatically enforced. All development work must follow these comprehensive knowledge and documentation workflows to ensure consistent, high-quality project documentation and knowledge management for the PressKit Pro AI Assistant project.

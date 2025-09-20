@@ -1,0 +1,137 @@
+{
+  "timestamp": "2025-09-20T01:19:44.975912",
+  "integration_status": {
+    "servers_configured": 6,
+    "servers_enabled": 6,
+    "enabled_servers": [
+      "browser_tools",
+      "byterover",
+      "context7",
+      "dart",
+      "playwright",
+      "testsprite"
+    ],
+    "total_calls": 5,
+    "success_rate": 1.0,
+    "performance_metrics": {
+      "total_calls": 5,
+      "successful_calls": 5,
+      "failed_calls": 0,
+      "average_duration": 0.0010008,
+      "enabled_servers": 6,
+      "parallel_calls_total": 3,
+      "parallel_calls_successful": 3,
+      "parallel_calls_duration": 0.003014,
+      "parallel_efficiency_gain": 0.6
+    },
+    "workflow_config": {
+      "driven_integration": true,
+      "knowledge_first": true,
+      "parallel_execution": true,
+      "quality_gates": {
+        "accessibility_score": 90,
+        "automation_coverage": 90,
+        "driven_component_health": 95,
+        "performance_threshold": 5,
+        "spec_compliance": 100,
+        "test_coverage": 80,
+        "traceability_completeness": 100
+      }
+    },
+    "driven_workflow_enabled": true
+  },
+  "results": [
+    {
+      "server": "byterover",
+      "success": true,
+      "data": {
+        "function": "retrieve_knowledge",
+        "args": [
+          "DocGen CLI MCP integration status"
+        ],
+        "kwargs": {},
+        "timestamp": "2025-09-20T01:19:44.956560",
+        "status": "success"
+      },
+      "error": null,
+      "duration": 0.001029,
+      "timestamp": "2025-09-20T01:19:44.957598"
+    },
+    {
+      "server": "context7",
+      "success": true,
+      "data": {
+        "function": "resolve_library_id",
+        "args": [
+          "click"
+        ],
+        "kwargs": {},
+        "timestamp": "2025-09-20T01:19:44.958606",
+        "status": "success"
+      },
+      "error": null,
+      "duration": 0.000961,
+      "timestamp": "2025-09-20T01:19:44.959574"
+    },
+    {
+      "server": "byterover",
+      "success": true,
+      "data": {
+        "function": "store_knowledge",
+        "args": [
+          "MCP integration test completed"
+        ],
+        "kwargs": {},
+        "timestamp": "2025-09-20T01:19:44.961530",
+        "status": "success"
+      },
+      "error": null,
+      "duration": 0.00099,
+      "timestamp": "2025-09-20T01:19:44.962525"
+    },
+    {
+      "server": "testsprite",
+      "success": true,
+      "data": {
+        "function": "bootstrap_tests",
+        "args": [
+          3000,
+          "backend",
+          "/path/to/project",
+          "codebase"
+        ],
+        "kwargs": {},
+        "timestamp": "2025-09-20T01:19:44.963520",
+        "status": "success"
+      },
+      "error": null,
+      "duration": 0.000977,
+      "timestamp": "2025-09-20T01:19:44.964502"
+    },
+    {
+      "server": "browser_tools",
+      "success": true,
+      "data": {
+        "function": "runAccessibilityAudit",
+        "args": [],
+        "kwargs": {},
+        "timestamp": "2025-09-20T01:19:44.965458",
+        "status": "success"
+      },
+      "error": null,
+      "duration": 0.001047,
+      "timestamp": "2025-09-20T01:19:44.966511"
+    }
+  ],
+  "performance_metrics": {
+    "total_calls": 5,
+    "successful_calls": 5,
+    "failed_calls": 0,
+    "average_duration": 0.0010008,
+    "enabled_servers": 6,
+    "parallel_calls_total": 3,
+    "parallel_calls_successful": 3,
+    "parallel_calls_duration": 0.003014,
+    "parallel_efficiency_gain": 0.6
+  }
+}

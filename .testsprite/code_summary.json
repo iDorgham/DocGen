@@ -1,0 +1,752 @@
+{
+  "tech_stack": [
+    "Python",
+    "Click",
+    "Jinja2",
+    "PyYAML",
+    "Rich",
+    "Pydantic",
+    "email-validator",
+    "requests",
+    "semantic-version"
+  ],
+  "features": [
+    {
+      "name": "Project Management API",
+      "description": "Create, manage, and switch between multiple projects with interactive prompts",
+      "files": [
+        "src/cli/main.py",
+        "src/core/project_manager.py",
+        "src/models/project.py"
+      ],
+      "api_doc": {
+        "openapi": "3.0.0",
+        "info": {
+          "title": "DocGen CLI Project Management API",
+          "version": "1.0.0",
+          "description": "API for managing DocGen projects"
+        },
+        "paths": {
+          "/project/create": {
+            "post": {
+              "summary": "Create a new project",
+              "parameters": [
+                {
+                  "name": "name",
+                  "in": "query",
+                  "required": true,
+                  "schema": {"type": "string", "minLength": 3, "maxLength": 50}
+                },
+                {
+                  "name": "path",
+                  "in": "query",
+                  "required": true,
+                  "schema": {"type": "string"}
+                },
+                {
+                  "name": "description",
+                  "in": "query",
+                  "required": false,
+                  "schema": {"type": "string", "maxLength": 500}
+                }
+              ],
+              "responses": {
+                "200": {
+                  "description": "Project created successfully",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "object",
+                        "properties": {
+                          "project_id": {"type": "string"},
+                          "project_path": {"type": "string"},
+                          "created_at": {"type": "string", "format": "date-time"},
+                          "status": {"type": "string", "enum": ["created", "error"]}
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "/project/switch": {
+            "post": {
+              "summary": "Switch to a different project",
+              "parameters": [
+                {
+                  "name": "project_id",
+                  "in": "query",
+                  "required": true,
+                  "schema": {"type": "string"}
+                }
+              ],
+              "responses": {
+                "200": {
+                  "description": "Project switched successfully",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "object",
+                        "properties": {
+                          "current_project": {"type": "object"},
+                          "previous_project": {"type": "object"},
+                          "switch_timestamp": {"type": "string", "format": "date-time"}
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "/project/status": {
+            "get": {
+              "summary": "Get current project status",
+              "parameters": [
+                {
+                  "name": "project_id",
+                  "in": "query",
+                  "required": false,
+                  "schema": {"type": "string"}
+                }
+              ],
+              "responses": {
+                "200": {
+                  "description": "Project status retrieved",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "object",
+                        "properties": {
+                          "name": {"type": "string"},
+                          "project_id": {"type": "string"},
+                          "path": {"type": "string"},
+                          "created_at": {"type": "string", "format": "date-time"},
+                          "last_accessed": {"type": "string", "format": "date-time"},
+                          "exists": {"type": "boolean"},
+                          "is_current": {"type": "boolean"},
+                          "has_docs": {"type": "boolean"},
+                          "doc_files": {"type": "array", "items": {"type": "string"}}
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Document Generation API",
+      "description": "Generate technical specifications, project plans, and marketing materials using Jinja2 templates",
+      "files": [
+        "src/cli/main.py",
+        "src/core/generator.py",
+        "src/core/template_manager.py",
+        "src/templates/"
+      ],
+      "api_doc": {
+        "openapi": "3.0.0",
+        "info": {
+          "title": "DocGen CLI Document Generation API",
+          "version": "1.0.0",
+          "description": "API for generating project documentation"
+        },
+        "paths": {
+          "/generate/spec": {
+            "post": {
+              "summary": "Generate technical specification document",
+              "parameters": [
+                {
+                  "name": "output_format",
+                  "in": "query",
+                  "required": false,
+                  "schema": {"type": "string", "enum": ["markdown", "html", "pdf"]},
+                  "default": "markdown"
+                },
+                {
+                  "name": "output",
+                  "in": "query",
+                  "required": false,
+                  "schema": {"type": "string"}
+                },
+                {
+                  "name": "validate_data",
+                  "in": "query",
+                  "required": false,
+                  "schema": {"type": "boolean"},
+                  "default": false
+                }
+              ],
+              "responses": {
+                "200": {
+                  "description": "Document generated successfully",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "object",
+                        "properties": {
+                          "generated_files": {"type": "array", "items": {"type": "string"}},
+                          "generation_time": {"type": "number"},
+                          "file_sizes": {"type": "object"},
+                          "status": {"type": "string", "enum": ["success", "partial", "failed"]}
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "/generate/plan": {
+            "post": {
+              "summary": "Generate project plan document",
+              "parameters": [
+                {
+                  "name": "output_format",
+                  "in": "query",
+                  "required": false,
+                  "schema": {"type": "string", "enum": ["markdown", "html", "pdf"]},
+                  "default": "markdown"
+                },
+                {
+                  "name": "output",
+                  "in": "query",
+                  "required": false,
+                  "schema": {"type": "string"}
+                }
+              ],
+              "responses": {
+                "200": {
+                  "description": "Document generated successfully",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "object",
+                        "properties": {
+                          "generated_files": {"type": "array", "items": {"type": "string"}},
+                          "generation_time": {"type": "number"},
+                          "file_sizes": {"type": "object"},
+                          "status": {"type": "string", "enum": ["success", "partial", "failed"]}
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "/generate/marketing": {
+            "post": {
+              "summary": "Generate marketing materials document",
+              "parameters": [
+                {
+                  "name": "output_format",
+                  "in": "query",
+                  "required": false,
+                  "schema": {"type": "string", "enum": ["markdown", "html", "pdf"]},
+                  "default": "markdown"
+                },
+                {
+                  "name": "output",
+                  "in": "query",
+                  "required": false,
+                  "schema": {"type": "string"}
+                }
+              ],
+              "responses": {
+                "200": {
+                  "description": "Document generated successfully",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "object",
+                        "properties": {
+                          "generated_files": {"type": "array", "items": {"type": "string"}},
+                          "generation_time": {"type": "number"},
+                          "file_sizes": {"type": "object"},
+                          "status": {"type": "string", "enum": ["success", "partial", "failed"]}
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "/generate/all": {
+            "post": {
+              "summary": "Generate all available documents",
+              "parameters": [
+                {
+                  "name": "output_format",
+                  "in": "query",
+                  "required": false,
+                  "schema": {"type": "string", "enum": ["markdown", "html", "pdf"]},
+                  "default": "markdown"
+                },
+                {
+                  "name": "output_dir",
+                  "in": "query",
+                  "required": false,
+                  "schema": {"type": "string"}
+                }
+              ],
+              "responses": {
+                "200": {
+                  "description": "All documents generated successfully",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "object",
+                        "properties": {
+                          "generated_docs": {"type": "object"},
+                          "output_directory": {"type": "string"},
+                          "total_files": {"type": "number"},
+                          "status": {"type": "string", "enum": ["success", "partial", "failed"]}
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Validation API",
+      "description": "Comprehensive input validation and data integrity checks using Pydantic models",
+      "files": [
+        "src/cli/main.py",
+        "src/core/validation.py",
+        "src/models/",
+        "src/commands/validate.py"
+      ],
+      "api_doc": {
+        "openapi": "3.0.0",
+        "info": {
+          "title": "DocGen CLI Validation API",
+          "version": "1.0.0",
+          "description": "API for validating project data and configuration"
+        },
+        "paths": {
+          "/validate": {
+            "post": {
+              "summary": "Validate project data and configuration",
+              "parameters": [
+                {
+                  "name": "project_id",
+                  "in": "query",
+                  "required": false,
+                  "schema": {"type": "string"}
+                },
+                {
+                  "name": "fix_issues",
+                  "in": "query",
+                  "required": false,
+                  "schema": {"type": "boolean"},
+                  "default": false
+                }
+              ],
+              "responses": {
+                "200": {
+                  "description": "Validation completed",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "object",
+                        "properties": {
+                          "project_data": {
+                            "type": "object",
+                            "properties": {
+                              "valid": {"type": "boolean"},
+                              "errors": {"type": "array", "items": {"type": "string"}},
+                              "warnings": {"type": "array", "items": {"type": "string"}}
+                            }
+                          },
+                          "templates": {
+                            "type": "object",
+                            "properties": {
+                              "valid": {"type": "boolean"},
+                              "errors": {"type": "array", "items": {"type": "string"}},
+                              "warnings": {"type": "array", "items": {"type": "string"}}
+                            }
+                          },
+                          "structure": {
+                            "type": "object",
+                            "properties": {
+                              "valid": {"type": "boolean"},
+                              "errors": {"type": "array", "items": {"type": "string"}},
+                              "warnings": {"type": "array", "items": {"type": "string"}}
+                            }
+                          },
+                          "total_errors": {"type": "number"},
+                          "total_warnings": {"type": "number"},
+                          "all_valid": {"type": "boolean"}
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Template Management API",
+      "description": "Manage Jinja2 templates with discovery, installation, and validation",
+      "files": [
+        "src/cli/main.py",
+        "src/core/template_manager.py",
+        "src/models/template.py"
+      ],
+      "api_doc": {
+        "openapi": "3.0.0",
+        "info": {
+          "title": "DocGen CLI Template Management API",
+          "version": "1.0.0",
+          "description": "API for managing document templates"
+        },
+        "paths": {
+          "/template/list": {
+            "get": {
+              "summary": "List all available templates",
+              "parameters": [
+                {
+                  "name": "type",
+                  "in": "query",
+                  "required": false,
+                  "schema": {"type": "string", "enum": ["spec", "plan", "marketing", "custom"]}
+                },
+                {
+                  "name": "sort",
+                  "in": "query",
+                  "required": false,
+                  "schema": {"type": "string", "enum": ["name", "date", "version"]},
+                  "default": "name"
+                },
+                {
+                  "name": "outdated",
+                  "in": "query",
+                  "required": false,
+                  "schema": {"type": "boolean"},
+                  "default": false
+                }
+              ],
+              "responses": {
+                "200": {
+                  "description": "Templates listed successfully",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "object",
+                        "properties": {
+                          "templates": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "id": {"type": "string"},
+                                "name": {"type": "string"},
+                                "type": {"type": "string"},
+                                "version": {"type": "string"},
+                                "author": {"type": "string"},
+                                "source": {"type": "string"}
+                              }
+                            }
+                          },
+                          "total_count": {"type": "number"}
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "/template/install": {
+            "post": {
+              "summary": "Install a template from various sources",
+              "parameters": [
+                {
+                  "name": "source",
+                  "in": "query",
+                  "required": true,
+                  "schema": {"type": "string"}
+                },
+                {
+                  "name": "name",
+                  "in": "query",
+                  "required": false,
+                  "schema": {"type": "string"}
+                },
+                {
+                  "name": "force",
+                  "in": "query",
+                  "required": false,
+                  "schema": {"type": "boolean"},
+                  "default": false
+                }
+              ],
+              "responses": {
+                "200": {
+                  "description": "Template installed successfully",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "object",
+                        "properties": {
+                          "template_id": {"type": "string"},
+                          "name": {"type": "string"},
+                          "description": {"type": "string"},
+                          "version": {"type": "string"},
+                          "type": {"type": "string"},
+                          "author": {"type": "string"}
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "/template/validate": {
+            "post": {
+              "summary": "Validate a template for syntax and structure",
+              "parameters": [
+                {
+                  "name": "template_path",
+                  "in": "query",
+                  "required": true,
+                  "schema": {"type": "string"}
+                }
+              ],
+              "responses": {
+                "200": {
+                  "description": "Template validation completed",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "object",
+                        "properties": {
+                          "valid": {"type": "boolean"},
+                          "errors": {"type": "array", "items": {"type": "string"}},
+                          "template_info": {"type": "object"}
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Git Integration API",
+      "description": "Git repository operations and version control integration",
+      "files": [
+        "src/cli/main.py",
+        "src/core/git_manager.py"
+      ],
+      "api_doc": {
+        "openapi": "3.0.0",
+        "info": {
+          "title": "DocGen CLI Git Integration API",
+          "version": "1.0.0",
+          "description": "API for Git repository operations"
+        },
+        "paths": {
+          "/git/init": {
+            "post": {
+              "summary": "Initialize a Git repository",
+              "parameters": [
+                {
+                  "name": "initial_commit",
+                  "in": "query",
+                  "required": false,
+                  "schema": {"type": "boolean"},
+                  "default": true
+                },
+                {
+                  "name": "branch",
+                  "in": "query",
+                  "required": false,
+                  "schema": {"type": "string"},
+                  "default": "main"
+                },
+                {
+                  "name": "user_name",
+                  "in": "query",
+                  "required": false,
+                  "schema": {"type": "string"}
+                },
+                {
+                  "name": "user_email",
+                  "in": "query",
+                  "required": false,
+                  "schema": {"type": "string"}
+                }
+              ],
+              "responses": {
+                "200": {
+                  "description": "Git repository initialized successfully",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "object",
+                        "properties": {
+                          "success": {"type": "boolean"},
+                          "default_branch": {"type": "string"},
+                          "initial_commit_created": {"type": "boolean"}
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "/git/commit": {
+            "post": {
+              "summary": "Commit changes to the Git repository",
+              "parameters": [
+                {
+                  "name": "message",
+                  "in": "query",
+                  "required": false,
+                  "schema": {"type": "string"}
+                },
+                {
+                  "name": "files",
+                  "in": "query",
+                  "required": false,
+                  "schema": {"type": "string"}
+                },
+                {
+                  "name": "auto",
+                  "in": "query",
+                  "required": false,
+                  "schema": {"type": "boolean"},
+                  "default": false
+                }
+              ],
+              "responses": {
+                "200": {
+                  "description": "Changes committed successfully",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "object",
+                        "properties": {
+                          "success": {"type": "boolean"},
+                          "commit_message": {"type": "string"},
+                          "files_committed": {"type": "array", "items": {"type": "string"}}
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "/git/status": {
+            "get": {
+              "summary": "Show Git repository status",
+              "responses": {
+                "200": {
+                  "description": "Git status retrieved",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "object",
+                        "properties": {
+                          "repository": {"type": "string"},
+                          "current_branch": {"type": "string"},
+                          "remote_url": {"type": "string"},
+                          "last_commit": {"type": "string"},
+                          "has_uncommitted_changes": {"type": "boolean"},
+                          "untracked_files": {"type": "array", "items": {"type": "string"}},
+                          "modified_files": {"type": "array", "items": {"type": "string"}},
+                          "staged_files": {"type": "array", "items": {"type": "string"}}
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Error Handling API",
+      "description": "Advanced error recovery and user guidance with comprehensive error reporting",
+      "files": [
+        "src/cli/main.py",
+        "src/core/error_handler.py",
+        "src/models/error_handler.py"
+      ],
+      "api_doc": {
+        "openapi": "3.0.0",
+        "info": {
+          "title": "DocGen CLI Error Handling API",
+          "version": "1.0.0",
+          "description": "API for error handling and reporting"
+        },
+        "paths": {
+          "/error/report": {
+            "get": {
+              "summary": "Generate an error report for troubleshooting",
+              "parameters": [
+                {
+                  "name": "output",
+                  "in": "query",
+                  "required": false,
+                  "schema": {"type": "string"}
+                }
+              ],
+              "responses": {
+                "200": {
+                  "description": "Error report generated",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "object",
+                        "properties": {
+                          "total_errors": {"type": "number"},
+                          "categories": {"type": "object"},
+                          "severities": {"type": "object"},
+                          "recent_errors": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "message": {"type": "string"},
+                                "severity": {"type": "string"},
+                                "suggestions": {"type": "array", "items": {"type": "string"}}
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

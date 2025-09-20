@@ -1,0 +1,300 @@
+---
+description: MCP Master Rules - Complete MCP Server Integration for DocGen CLI
+alwaysApply: true
+---
+
+# MCP Master Rules
+## DocGen CLI - Complete MCP Server Integration
+
+This master rules file provides comprehensive integration of all MCP servers for automatic development workflow optimization in the DocGen CLI project.
+
+## Available MCP Servers Integration
+
+### 1. Byterover MCP Server (Knowledge & Project Management)
+**Purpose**: Project management, knowledge storage, and development workflow automation
+
+**Automatic Integration**:
+- Knowledge retrieval before every task
+- Knowledge storage after every significant work
+- Implementation plan persistence
+- Module management and documentation
+- Context assessment and reflection
+
+### 2. Context7 MCP Server (Library Documentation)
+**Purpose**: Library documentation and API reference lookup
+
+**Automatic Integration**:
+- Library ID resolution before documentation lookup
+- Comprehensive library documentation retrieval
+- API and component reference integration
+- Best practices documentation
+
+### 3. TestSprite MCP Server (Automated Testing)
+**Purpose**: Automated testing and quality assurance
+
+**Automatic Integration**:
+- Test environment bootstrap
+- Test plan generation (frontend/backend)
+- Automated test execution
+- Code analysis and summary generation
+
+### 4. Browser Tools MCP Server (Browser Automation)
+**Purpose**: Browser automation and web application testing
+
+**Automatic Integration**:
+- Screenshot capture and monitoring
+- Console and network error detection
+- Quality audits (accessibility, performance, SEO)
+- Advanced debugging capabilities
+
+### 5. Playwright MCP Server (Advanced Browser Automation)
+**Purpose**: Advanced browser automation and end-to-end testing
+
+**Automatic Integration**:
+- Complex user interaction testing
+- End-to-end user journey validation
+- Advanced browser automation
+- Cross-browser compatibility testing
+
+### 6. Dart MCP Server (Task & Project Management)
+**Purpose**: Task and project management integration
+
+**Automatic Integration**:
+- Task creation and management
+- Documentation management
+- Project configuration
+- Team collaboration features
+
+## Automatic Development Workflows
+
+### Phase 1: Project Initialization (AUTOMATIC)
+```yaml
+Automatic Onboarding:
+  1. byterover-check-handbook-existence
+  2. byterover-create-handbook (if needed)
+  3. byterover-list-modules (discover modules)
+  4. testsprite-bootstrap-tests (testing setup)
+  5. dart-get-config (project configuration)
+  6. dart-create-task (initial tasks)
+```
+
+### Phase 2: Active Development (AUTOMATIC)
+```yaml
+Automatic Development:
+  1. byterover-retrieve-knowledge (context)
+  2. context7-resolve-library-id (libraries)
+  3. context7-get-library-docs (documentation)
+  4. Execute development work
+  5. byterover-store-knowledge (results)
+  6. byterover-update-module (if changes)
+```
+
+### Phase 3: Testing & Validation (AUTOMATIC)
+```yaml
+Automatic Testing:
+  1. testsprite-generate-test-plan
+  2. testsprite-generate-code-and-execute
+  3. playwright-browser-navigate (E2E testing)
+  4. browser-tools-runAuditMode (comprehensive validation)
+  5. Store test results in byterover
+```
+
+### Phase 4: Documentation & Knowledge (AUTOMATIC)
+```yaml
+Automatic Documentation:
+  1. dart-create-doc (new features)
+  2. dart-update-doc (existing docs)
+  3. byterover-update-handbook (sync)
+  4. byterover-store-knowledge (patterns)
+```
+
+## Automatic Quality Assurance
+
+### Code Quality (AUTOMATIC)
+```yaml
+Automatic Quality Gates:
+  1. browser-tools-runBestPracticesAudit
+  2. browser-tools-runPerformanceAudit
+  3. browser-tools-runAccessibilityAudit
+  4. browser-tools-runSEOAudit
+  5. testsprite-generate-code-and-execute
+```
+
+### User Experience (AUTOMATIC)
+```yaml
+Automatic UX Validation:
+  1. playwright-browser-navigate (user journeys)
+  2. playwright-browser-click (interactions)
+  3. playwright-browser-snapshot (accessibility)
+  4. browser-tools-runAccessibilityAudit
+  5. browser-tools-runPerformanceAudit
+```
+
+## Automatic Error Handling
+
+### MCP Server Failures (AUTOMATIC)
+```yaml
+Automatic Error Recovery:
+  1. Log MCP server failure
+  2. Use alternative tools if available
+  3. Store error details in byterover
+  4. Continue with available resources
+```
+
+### Knowledge Retrieval Failures (AUTOMATIC)
+```yaml
+Automatic Fallback:
+  1. byterover-retrieve-knowledge (fails)
+  2. codebase_search (fallback)
+  3. context7-get-library-docs (reference)
+  4. Store successful results in byterover
+```
+
+## Automatic Performance Optimization
+
+### Parallel Execution (AUTOMATIC)
+```yaml
+Automatic Parallel Processing:
+  - byterover-retrieve-knowledge (context)
+  - context7-resolve-library-id (libraries)
+  - dart-list-tasks (project status)
+  - browser-tools-getConsoleLogs (current state)
+  # Execute simultaneously for efficiency
+```
+
+### Knowledge Caching (AUTOMATIC)
+```yaml
+Automatic Caching:
+  1. Identify frequently used queries
+  2. Store comprehensive results in byterover
+  3. Reference stored knowledge instead of re-querying
+  4. Optimize retrieval patterns
+```
+
+## Automatic Security and Privacy
+
+### Sensitive Information Protection (AUTOMATIC)
+```yaml
+Automatic Security:
+  - Store implementation patterns (not credentials)
+  - Store error messages (not sensitive data)
+  - Store configuration examples (not actual values)
+  - Use test environments for all testing
+```
+
+### Test Environment Safety (AUTOMATIC)
+```yaml
+Automatic Test Safety:
+  - Use development/staging environments
+  - Use test user accounts
+  - Use mock data for sensitive operations
+  - Isolate test environments
+```
+
+## Automatic Monitoring and Maintenance
+
+### Regular Health Checks (AUTOMATIC)
+```yaml
+Automatic Health Monitoring:
+  1. Test all MCP server connections
+  2. Review stored knowledge quality
+  3. Update outdated information
+  4. Optimize frequently used patterns
+```
+
+### Knowledge Maintenance (AUTOMATIC)
+```yaml
+Automatic Knowledge Cleanup:
+  1. Review stored knowledge relevance
+  2. Remove outdated information
+  3. Reorganize knowledge categories
+  4. Update module documentation
+```
+
+## User Preference Integration
+
+### Styling Preferences (AUTOMATIC)
+**User Preferences Applied**:
+- Dark mode: rgb(37 99 235) background with white text
+- Animated lines animation and glass style buttons
+- Poppins typeface (Cairo for Arabic)
+- 1px outlines and consistent title sizes
+
+### Development Patterns (AUTOMATIC)
+**Applied Patterns**:
+- Knowledge-first development approach
+- Comprehensive testing integration
+- Automatic quality assurance
+- Continuous documentation updates
+
+## Compliance and Standards
+
+### Documentation Standards (AUTOMATIC)
+- All MCP server usage documented
+- Knowledge storage includes context and purpose
+- Error handling logged and analyzed
+- Documentation synchronized with codebase
+
+### Testing Standards (AUTOMATIC)
+- All features have corresponding tests
+- Test coverage maintained above 80%
+- Performance benchmarks established
+- Accessibility compliance validated
+
+### Security Standards (AUTOMATIC)
+- No sensitive data in knowledge bases
+- All external API calls validated
+- Test environments isolated
+- Security audits performed regularly
+
+## Enforcement and Quality Gates
+
+### Rule Violations (AUTOMATIC)
+1. **First Violation**: Warning and education
+2. **Second Violation**: Mandatory review of MCP integration
+3. **Third Violation**: Temporary suspension of development privileges
+4. **Repeated Violations**: Complete MCP integration review
+
+### Quality Gates (AUTOMATIC)
+- No code committed without passing all required audits
+- No deployment proceeds without comprehensive testing
+- No feature marked complete without proper documentation
+- All MCP server integrations validated
+
+## Integration Benefits
+
+### Development Efficiency
+- Automatic knowledge retrieval and storage
+- Parallel MCP server execution
+- Comprehensive testing integration
+- Automatic quality assurance
+
+### Code Quality
+- Consistent testing across all changes
+- Automatic accessibility compliance
+- Performance monitoring and optimization
+- Security validation
+
+### Project Management
+- Automatic task tracking and management
+- Comprehensive documentation management
+- Progress monitoring and reporting
+- Team collaboration optimization
+
+### Knowledge Management
+- Persistent knowledge storage
+- Context-aware development
+- Pattern recognition and reuse
+- Continuous learning and improvement
+
+**CRITICAL**: These master rules integrate all MCP servers for comprehensive, automatic development workflow optimization. All development work in the DocGen CLI project must follow these integrated patterns to ensure maximum productivity, code quality, and project success.
+
+## Related Rules Files
+
+- `mcp-integration-rules.mdc` - Core integration principles
+- `mcp-testing-qa-rules.mdc` - Testing and quality assurance
+- `mcp-knowledge-docs-rules.mdc` - Knowledge and documentation management
+- `mcp-browser-automation-rules.mdc` - Browser automation and debugging
+- `mcp-project-management-rules.mdc` - Project management and task tracking
+- `mcp-automated-development-rules.mdc` - Complete MCP server and script automation
+- `byterover-rules.mdc` - Byterover-specific workflows

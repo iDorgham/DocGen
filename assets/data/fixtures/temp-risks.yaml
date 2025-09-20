@@ -1,0 +1,33 @@
+risks:
+  technical:
+    - title: "Template Compatibility"
+      description: "Custom templates may not be compatible with different DocGen versions"
+      impact: "Medium"
+      impact_score: 6
+      probability: "Medium"
+      probability_score: 6
+      mitigation: "Implement template versioning and compatibility checking"
+      owner: "Lead Developer"
+      status: "Active"
+      category: "Technical"
+    - title: "Git Integration Complexity"
+      description: "Git operations may fail in complex repository states"
+      impact: "High"
+      impact_score: 8
+      probability: "Low"
+      probability_score: 3
+      mitigation: "Implement robust error handling and fallback mechanisms"
+      owner: "Lead Developer"
+      status: "Active"
+      category: "Technical"
+  business:
+    - title: "User Adoption"
+      description: "Users may prefer existing documentation tools"
+      impact: "High"
+      impact_score: 8
+      probability: "Medium"
+      probability_score: 6
+      mitigation: "Focus on unique value proposition and ease of use"
+      owner: "Product Manager"
+      status: "Active"
+      category: "Business"

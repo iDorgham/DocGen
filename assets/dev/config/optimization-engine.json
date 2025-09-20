@@ -1,0 +1,63 @@
+{
+  "optimization_strategy": "balanced",
+  "tool_selection_method": "hybrid",
+  "cache_size": 10000,
+  "performance_history_size": 1000,
+  "enable_ml_optimization": true,
+  "performance_thresholds": {
+    "response_time": 5.0,
+    "error_rate": 0.1,
+    "resource_usage": 0.8
+  },
+  "tool_weights": {
+    "byterover": {
+      "knowledge_management": 0.9,
+      "project_planning": 0.8,
+      "context_assessment": 0.85
+    },
+    "testsprite": {
+      "automated_testing": 0.9,
+      "quality_assurance": 0.85,
+      "performance_validation": 0.8
+    },
+    "context7": {
+      "documentation_access": 0.9,
+      "api_reference": 0.85,
+      "library_docs": 0.8
+    },
+    "browser_tools": {
+      "web_testing": 0.9,
+      "quality_audits": 0.85,
+      "accessibility_testing": 0.8
+    },
+    "playwright": {
+      "browser_automation": 0.9,
+      "e2e_testing": 0.85,
+      "cross_browser_testing": 0.8
+    },
+    "dart": {
+      "task_management": 0.8,
+      "project_management": 0.75,
+      "team_collaboration": 0.7
+    }
+  },
+  "optimization_rules": {
+    "max_tools_per_task": 3,
+    "min_confidence_threshold": 0.6,
+    "fallback_strategy": "performance_based",
+    "enable_parallel_execution": true,
+    "parallel_execution_limit": 4
+  },
+  "learning_config": {
+    "enable_adaptive_learning": true,
+    "learning_rate": 0.1,
+    "history_window": 100,
+    "feedback_weight": 0.3
+  },
+  "monitoring_config": {
+    "metrics_collection_interval": 60,
+    "alert_cooldown": 300,
+    "performance_trend_window": 3600,
+    "enable_real_time_monitoring": true
+  }
+}

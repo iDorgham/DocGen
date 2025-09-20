@@ -1,0 +1,67 @@
+# Multi-stage production Dockerfile for DocGen CLI
+FROM python:3.11-slim as builder
+
+# Set environment variables
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PIP_NO_CACHE_DIR=1 \
+    PIP_DISABLE_PIP_VERSION_CHECK=1
+
+# Install build dependencies
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    curl \
+    git \
+    && rm -rf /var/lib/apt/lists/*
+
+# Set work directory
+WORKDIR /app
+
+# Copy requirements and build package
+COPY requirements.txt pyproject.toml ./
+RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir build
+
+# Copy source code
+COPY src/ ./src/
+COPY assets/ ./assets/
+COPY README.md ./
+
+# Build the package
+RUN python -m build
+
+# Production stage
+FROM python:3.11-slim as production
+
+# Set environment variables
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PIP_NO_CACHE_DIR=1 \
+    PIP_DISABLE_PIP_VERSION_CHECK=1
+
+# Install runtime dependencies only
+RUN apt-get update && apt-get install -y \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Set work directory
+WORKDIR /app
+
+# Copy built package from builder stage
+COPY --from=builder /app/dist/*.whl ./
+
+# Install the package
+RUN pip install --no-cache-dir *.whl
+
+# Create non-root user
+RUN useradd --create-home --shell /bin/bash docgen && \
+    chown -R docgen:docgen /app
+USER docgen
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+    CMD docgen --version || exit 1
+
+# Default command
+ENTRYPOINT ["docgen"]
+CMD ["--help"]

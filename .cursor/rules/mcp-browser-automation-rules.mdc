@@ -1,0 +1,457 @@
+---
+description: MCP Browser Automation and Debugging Rules - Automatic Browser Testing and Debugging
+alwaysApply: true
+---
+
+# MCP Browser Automation and Debugging Rules
+## PressKit Pro AI Assistant - Automatic Browser Testing and Debugging Workflow
+
+This rule file ensures automatic browser automation and debugging using Browser Tools and Playwright MCP servers for comprehensive web application testing and debugging.
+
+## Automatic Browser Automation
+
+### Browser Navigation (AUTOMATIC)
+**TRIGGER**: When testing web applications or user journeys
+
+```yaml
+Automatic Browser Navigation:
+  1. playwright-browser-navigate (to target URL)
+  2. playwright-browser-wait-for (page load)
+  3. playwright-browser-snapshot (initial state)
+  4. browser-tools-takeScreenshot (visual state)
+  5. Store navigation patterns in byterover
+```
+
+### User Interaction Testing (AUTOMATIC)
+**TRIGGER**: When testing user interactions
+
+```yaml
+Automatic User Interaction:
+  1. playwright-browser-click (buttons, links)
+  2. playwright-browser-type (form inputs)
+  3. playwright-browser-hover (hover effects)
+  4. playwright-browser-select-option (dropdowns)
+  5. playwright-browser-fill-form (complex forms)
+  6. Store interaction patterns in byterover
+```
+
+### Advanced Interactions (AUTOMATIC)
+**TRIGGER**: When testing complex user interactions
+
+```yaml
+Automatic Advanced Interactions:
+  1. playwright-browser-drag (drag and drop)
+  2. playwright-browser-file-upload (file uploads)
+  3. playwright-browser-press-key (keyboard shortcuts)
+  4. playwright-browser-evaluate (custom JavaScript)
+  5. Store advanced interaction patterns in byterover
+```
+
+## Automatic Error Detection and Debugging
+
+### Console Error Monitoring (AUTOMATIC)
+**TRIGGER**: During all browser testing phases
+
+```yaml
+Automatic Console Monitoring:
+  1. browser-tools-getConsoleErrors
+  2. browser-tools-getConsoleLogs
+  3. playwright-browser-console-messages
+  4. Store error patterns in byterover knowledge
+  5. Implement fixes for common errors
+```
+
+### Network Error Detection (AUTOMATIC)
+**TRIGGER**: During API and network testing
+
+```yaml
+Automatic Network Monitoring:
+  1. browser-tools-getNetworkErrors
+  2. browser-tools-getNetworkLogs
+  3. playwright-browser-network-requests
+  4. Store network patterns in byterover knowledge
+  5. Implement fixes for network issues
+```
+
+### Error Detection (AUTOMATIC)
+**TRIGGER**: When issues are suspected
+
+```yaml
+Automatic Error Debugging:
+  1. browser-tools-takeScreenshot
+  2. playwright-browser-take-screenshot (full page)
+  3. playwright-browser-snapshot (accessibility tree)
+  4. Compare with expected states
+  5. Store debugging patterns in byterover
+```
+
+## Automatic Debugging Workflows
+
+### Debug Mode Activation (AUTOMATIC)
+**TRIGGER**: When complex issues are detected
+
+```yaml
+Automatic Debug Mode:
+  1. browser-tools-runDebuggerMode
+  2. playwright-browser-navigate (to problematic page)
+  3. playwright-browser-evaluate (debug scripts)
+  4. browser-tools-getConsoleErrors (error analysis)
+  5. Store debugging solutions in byterover
+```
+
+### Element Inspection (AUTOMATIC)
+**TRIGGER**: When investigating specific elements
+
+```yaml
+Automatic Element Inspection:
+  1. browser-tools-getSelectedElement
+  2. playwright-browser-snapshot (element context)
+  3. playwright-browser-evaluate (element properties)
+  4. Store element inspection patterns in byterover
+```
+
+### Performance Debugging (AUTOMATIC)
+**TRIGGER**: When performance issues are detected
+
+```yaml
+Automatic Performance Debugging:
+  1. browser-tools-runPerformanceAudit
+  2. playwright-browser-network-requests (monitor requests)
+  3. playwright-browser-evaluate (performance metrics)
+  4. Store performance debugging solutions in byterover
+```
+
+## Automatic Quality Audits
+
+### Accessibility Auditing (AUTOMATIC)
+**TRIGGER**: When testing components or pages
+
+```yaml
+Automatic Accessibility Auditing:
+  1. browser-tools-runAccessibilityAudit
+  2. playwright-browser-snapshot (accessibility tree)
+  3. playwright-browser-navigate (to component)
+  4. playwright-browser-click (test interactions)
+  5. Fix accessibility issues if found
+  6. Store accessibility solutions in byterover
+```
+
+### Performance Auditing (AUTOMATIC)
+**TRIGGER**: When performance issues are suspected
+
+```yaml
+Automatic Performance Auditing:
+  1. browser-tools-runPerformanceAudit
+  2. playwright-browser-network-requests (monitor requests)
+  3. playwright-browser-take-screenshot (performance state)
+  4. Store performance optimization solutions in byterover
+```
+
+### SEO Auditing (AUTOMATIC)
+**TRIGGER**: When testing web content
+
+```yaml
+Automatic SEO Auditing:
+  1. browser-tools-runSEOAudit
+  2. playwright-browser-evaluate (SEO metrics)
+  3. playwright-browser-snapshot (content structure)
+  4. Store SEO optimization solutions in byterover
+```
+
+### Best Practices Auditing (AUTOMATIC)
+**TRIGGER**: When testing code quality
+
+```yaml
+Automatic Best Practices Auditing:
+  1. browser-tools-runBestPracticesAudit
+  2. browser-tools-runNextJSAudit (for Next.js apps)
+  3. playwright-browser-evaluate (code quality checks)
+  4. Store best practices solutions in byterover
+```
+
+## Automatic Comprehensive Auditing
+
+### Audit Mode (AUTOMATIC)
+**TRIGGER**: For comprehensive application validation
+
+```yaml
+Automatic Audit Mode:
+  1. browser-tools-runAuditMode (comprehensive audit)
+  2. playwright-browser-navigate (to application)
+  3. playwright-browser-snapshot (full state)
+  4. Store comprehensive audit results in byterover
+```
+
+### Multi-Audit Execution (AUTOMATIC)
+**TRIGGER**: Before deployment or major releases
+
+```yaml
+Automatic Multi-Audit:
+  1. browser-tools-runAccessibilityAudit
+  2. browser-tools-runPerformanceAudit
+  3. browser-tools-runSEOAudit
+  4. browser-tools-runBestPracticesAudit
+  5. browser-tools-runNextJSAudit
+  6. Store multi-audit results in byterover
+```
+
+## Automatic Browser Management
+
+### Tab Management (AUTOMATIC)
+**TRIGGER**: When testing multi-tab scenarios
+
+```yaml
+Automatic Tab Management:
+  1. playwright-browser-tabs (list tabs)
+  2. playwright-browser-tabs (create new tab)
+  3. playwright-browser-tabs (switch between tabs)
+  4. playwright-browser-tabs (close tabs)
+  5. Store tab management patterns in byterover
+```
+
+### Window Management (AUTOMATIC)
+**TRIGGER**: When testing responsive layouts
+
+```yaml
+Automatic Window Management:
+  1. playwright-browser-resize (different screen sizes)
+  2. playwright-browser-take-screenshot (responsive states)
+  3. playwright-browser-snapshot (responsive accessibility)
+  4. Store responsive testing patterns in byterover
+```
+
+### Browser Installation (AUTOMATIC)
+**TRIGGER**: When browser is not available
+
+```yaml
+Automatic Browser Installation:
+  1. playwright-browser-install (install required browser)
+  2. playwright-browser-navigate (test installation)
+  3. Store browser installation patterns in byterover
+```
+
+## Automatic Dialog and Alert Handling
+
+### Dialog Management (AUTOMATIC)
+**TRIGGER**: When dialogs or alerts appear
+
+```yaml
+Automatic Dialog Handling:
+  1. playwright-browser-handle-dialog (accept/reject)
+  2. playwright-browser-handle-dialog (prompt text)
+  3. Store dialog handling patterns in byterover
+```
+
+### Alert Testing (AUTOMATIC)
+**TRIGGER**: When testing alert functionality
+
+```yaml
+Automatic Alert Testing:
+  1. playwright-browser-evaluate (trigger alerts)
+  2. playwright-browser-handle-dialog (handle alerts)
+  3. Store alert testing patterns in byterover
+```
+
+## Automatic Form Testing
+
+### Form Validation Testing (AUTOMATIC)
+**TRIGGER**: When testing form functionality
+
+```yaml
+Automatic Form Testing:
+  1. playwright-browser-fill-form (valid data)
+  2. playwright-browser-fill-form (invalid data)
+  3. playwright-browser-click (submit)
+  4. playwright-browser-wait-for (validation messages)
+  5. Store form testing patterns in byterover
+```
+
+### Form Error Handling (AUTOMATIC)
+**TRIGGER**: When testing form error scenarios
+
+```yaml
+Automatic Form Error Testing:
+  1. playwright-browser-fill-form (error data)
+  2. playwright-browser-click (submit)
+  3. playwright-browser-snapshot (error state)
+  4. browser-tools-getConsoleErrors (form errors)
+  5. Store form error patterns in byterover
+```
+
+## Automatic User Journey Testing
+
+### Complete User Flows (AUTOMATIC)
+**TRIGGER**: When testing complete user journeys
+
+```yaml
+Automatic User Journey Testing:
+  1. playwright-browser-navigate (start page)
+  2. playwright-browser-click (navigation)
+  3. playwright-browser-fill-form (user input)
+  4. playwright-browser-click (submit/continue)
+  5. playwright-browser-wait-for (page load)
+  6. playwright-browser-snapshot (final state)
+  7. Store user journey patterns in byterover
+```
+
+### Multi-Step Workflows (AUTOMATIC)
+**TRIGGER**: When testing complex workflows
+
+```yaml
+Automatic Workflow Testing:
+  1. playwright-browser-navigate (workflow start)
+  2. Execute each workflow step
+  3. playwright-browser-wait-for (step completion)
+  4. playwright-browser-snapshot (step state)
+  5. Store workflow patterns in byterover
+```
+
+## Automatic Cross-Browser Testing
+
+### Browser Compatibility (AUTOMATIC)
+**TRIGGER**: For critical features
+
+```yaml
+Automatic Cross-Browser Testing:
+  1. playwright-browser-navigate (feature page)
+  2. playwright-browser-take-screenshot (visual comparison)
+  3. playwright-browser-snapshot (accessibility comparison)
+  4. browser-tools-runPerformanceAudit (performance comparison)
+  5. Store cross-browser patterns in byterover
+```
+
+### Responsive Layout Testing (AUTOMATIC)
+**TRIGGER**: When testing responsive layouts
+
+```yaml
+Automatic Responsive Testing:
+  1. playwright-browser-resize (mobile size)
+  2. playwright-browser-take-screenshot (mobile view)
+  3. playwright-browser-resize (tablet size)
+  4. playwright-browser-take-screenshot (tablet view)
+  5. playwright-browser-resize (desktop size)
+  6. playwright-browser-take-screenshot (desktop view)
+  7. Store responsive patterns in byterover
+```
+
+## Automatic Error Recovery
+
+### Browser Crash Recovery (AUTOMATIC)
+**TRIGGER**: When browser crashes or becomes unresponsive
+
+```yaml
+Automatic Crash Recovery:
+  1. playwright-browser-close (close crashed browser)
+  2. playwright-browser-navigate (restart session)
+  3. playwright-browser-snapshot (verify recovery)
+  4. Store crash recovery patterns in byterover
+```
+
+### Network Failure Recovery (AUTOMATIC)
+**TRIGGER**: When network requests fail
+
+```yaml
+Automatic Network Recovery:
+  1. browser-tools-getNetworkErrors (identify failures)
+  2. playwright-browser-wait-for (retry timing)
+  3. playwright-browser-navigate (retry navigation)
+  4. Store network recovery patterns in byterover
+```
+
+## Automatic Log Management
+
+### Log Collection (AUTOMATIC)
+**TRIGGER**: During all browser operations
+
+```yaml
+Automatic Log Collection:
+  1. browser-tools-getConsoleLogs (collect logs)
+  2. browser-tools-getNetworkLogs (collect network logs)
+  3. playwright-browser-console-messages (collect console messages)
+  4. Store log patterns in byterover
+```
+
+### Log Cleanup (AUTOMATIC)
+**TRIGGER**: After test completion
+
+```yaml
+Automatic Log Cleanup:
+  1. browser-tools-wipeLogs (clear browser logs)
+  2. playwright-browser-close (cleanup browser)
+  3. Store cleanup patterns in byterover
+```
+
+## Automatic Screenshot Management
+
+### Screenshot Capture (AUTOMATIC)
+**TRIGGER**: At key testing points
+
+```yaml
+Automatic Screenshot Capture:
+  1. browser-tools-takeScreenshot (quick capture)
+  2. playwright-browser-take-screenshot (full page)
+  3. playwright-browser-take-screenshot (element specific)
+  4. Store screenshot patterns in byterover
+```
+
+### Regression Testing (AUTOMATIC)
+**TRIGGER**: When changes are made
+
+```yaml
+Automatic Regression:
+  1. playwright-browser-take-screenshot (before changes)
+  2. Implement changes
+  3. playwright-browser-take-screenshot (after changes)
+  4. Compare screenshots for differences
+  5. Store regression patterns in byterover
+```
+
+## Automatic JavaScript Execution
+
+### Custom Script Execution (AUTOMATIC)
+**TRIGGER**: When custom testing is needed
+
+```yaml
+Automatic Script Execution:
+  1. playwright-browser-evaluate (custom scripts)
+  2. playwright-browser-evaluate (element-specific scripts)
+  3. Store script execution patterns in byterover
+```
+
+### Performance Measurement (AUTOMATIC)
+**TRIGGER**: When measuring performance
+
+```yaml
+Automatic Performance Measurement:
+  1. playwright-browser-evaluate (performance metrics)
+  2. playwright-browser-network-requests (request timing)
+  3. Store performance measurement patterns in byterover
+```
+
+## Quality Gates and Enforcement
+
+### Browser Testing Quality Gates (AUTOMATIC)
+**RULE**: All browser testing must meet quality standards
+
+```yaml
+Automatic Browser Quality Gates:
+  1. All interactions must be tested
+  2. All error scenarios must be covered
+  3. All accessibility requirements must be met
+  4. All performance benchmarks must be achieved
+  5. Block deployment if any gate fails
+```
+
+### Debugging Quality Gates (AUTOMATIC)
+**RULE**: All debugging must be comprehensive
+
+```yaml
+Automatic Debugging Quality Gates:
+  1. All errors must be identified and resolved
+  2. All performance issues must be addressed
+  3. All accessibility issues must be fixed
+  4. All functional issues must be resolved
+  5. Block deployment if any gate fails
+```
+
+**CRITICAL**: These browser automation and debugging rules are mandatory and will be automatically enforced. All web application testing and debugging must follow these comprehensive browser automation workflows to ensure consistent, high-quality web application testing and debugging for the PressKit Pro AI Assistant project.

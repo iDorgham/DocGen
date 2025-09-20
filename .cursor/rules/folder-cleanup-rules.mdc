@@ -1,0 +1,516 @@
+---
+description: PressKit Pro AI Assistant - Folder Cleanup Rules
+alwaysApply: true
+---
+
+# PressKit Pro AI Assistant - Folder Cleanup Rules
+
+## Overview
+This rule file ensures all folders in the PressKit Pro AI Assistant project remain clean and free from unwanted files, temporary artifacts, and unnecessary clutter.
+
+## Core Cleanup Principles
+
+### 1. Automatic Cleanup Enforcement (MANDATORY)
+**RULE**: All folders MUST be automatically cleaned of unwanted files on a regular basis.
+
+```yaml
+Automatic Cleanup Schedule:
+  - Daily: Remove temporary files and build artifacts
+  - Weekly: Deep cleanup and validation
+  - Monthly: Comprehensive cleanup and optimization
+  - Pre-commit: Quick cleanup check
+  - Pre-release: Full cleanup validation
+```
+
+### 2. Unwanted File Categories (MANDATORY)
+**RULE**: The following file categories MUST be automatically removed:
+
+```yaml
+Unwanted File Categories:
+  Temporary Files:
+    - *.tmp, *.temp, *.cache
+    - *.swp, *.swo, *~
+    - *.bak, *.backup
+    - *.log (except essential logs)
+    - *.pid, *.lock (except essential locks)
+  
+  Build Artifacts:
+    - dist/, build/, .next/, out/
+    - coverage/, .nyc_output/
+    - *.min.js, *.min.css
+    - *.bundle.js, *.chunk.js
+  
+  IDE/Tool Files:
+    - .vscode/, .idea/, .sublime-*
+    - .vscode-test/, .vscode-settings/
+    - .kilocode/, .specstory/, .traycer/
+    - .cursor-test/, .cursor-settings/
+  
+  OS Files:
+    - .DS_Store, Thumbs.db, desktop.ini
+    - .Spotlight-V100, .Trashes
+    - .fseventsd/, .TemporaryItems/
+  
+  Test/Development Files:
+    - *.test.js, *.spec.js (in wrong locations)
+    - test-*.js, quicksort.js
+    - *.playground.js, *.sandbox.js
+    - debug-*.js, temp-*.js
+  
+  Documentation Artifacts:
+    - organization*.txt, maintenance*.txt
+    - *.report, *.summary
+    - ROOT_ORGANIZATION_PLAN.md
+    - temp-*.md, draft-*.md
+```
+
+## Directory-Specific Cleanup Rules
+
+### 1. Root Directory Cleanup (MANDATORY)
+**RULE**: Root directory MUST only contain essential project files:
+
+```yaml
+Root Directory Allowed Files:
+  - package.json (root configuration)
+  - pnpm-lock.yaml (dependency lock)
+  - .gitignore (git ignore rules)
+  - .env.example (environment template)
+  - README.md (project overview)
+  - .env, .env.local (local environment - gitignored)
+
+Root Directory Forbidden Files:
+  - Any .md files except README.md
+  - Any configuration files (.eslintrc, .prettierrc, etc.)
+  - Any Docker files (docker-compose.yml, Dockerfile)
+  - Any scripts (*.sh, *.bat, *.ps1)
+  - Any documentation files
+  - Any temporary or test files
+  - Any build artifacts
+  - Any IDE-specific files
+  - Any OS-specific files
+```
+
+### 2. Apps Directory Cleanup (MANDATORY)
+**RULE**: Apps directory MUST only contain application code:
+
+```yaml
+Apps Directory Allowed:
+  - Application source code
+  - Application-specific configuration
+  - Application package.json files
+  - Application documentation (README.md only)
+
+Apps Directory Forbidden:
+  - Build artifacts (dist/, build/, .next/)
+  - Test files (*.test.js, *.spec.js)
+  - Temporary files (*.tmp, *.temp)
+  - IDE files (.vscode/, .idea/)
+  - OS files (.DS_Store, Thumbs.db)
+  - Log files (*.log)
+  - Coverage reports (coverage/)
+  - Node modules (node_modules/)
+```
+
+### 3. Packages Directory Cleanup (MANDATORY)
+**RULE**: Packages directory MUST only contain shared package code:
+
+```yaml
+Packages Directory Allowed:
+  - Shared package source code
+  - Package-specific configuration
+  - Package package.json files
+  - Package documentation (README.md only)
+
+Packages Directory Forbidden:
+  - Build artifacts (dist/, build/)
+  - Test files (*.test.js, *.spec.js)
+  - Temporary files (*.tmp, *.temp)
+  - IDE files (.vscode/, .idea/)
+  - OS files (.DS_Store, Thumbs.db)
+  - Log files (*.log)
+  - Coverage reports (coverage/)
+  - Node modules (node_modules/)
+```
+
+### 4. Infrastructure Directory Cleanup (MANDATORY)
+**RULE**: Infrastructure directory MUST only contain infrastructure files:
+
+```yaml
+Infrastructure Directory Allowed:
+  - Docker configurations
+  - Kubernetes configurations
+  - Infrastructure scripts
+  - Infrastructure documentation
+
+Infrastructure Directory Forbidden:
+  - Application code
+  - Build artifacts
+  - Test files
+  - Temporary files
+  - IDE files
+  - OS files
+  - Log files
+```
+
+### 5. Docs Directory Cleanup (MANDATORY)
+**RULE**: Docs directory MUST only contain documentation:
+
+```yaml
+Docs Directory Allowed:
+  - Documentation files (.md, .rst, .txt)
+  - Documentation images
+  - Documentation assets
+
+Docs Directory Forbidden:
+  - Code files (.js, .ts, .py, etc.)
+  - Configuration files
+  - Scripts
+  - Binary files
+  - Temporary files
+  - IDE files
+  - OS files
+```
+
+### 6. Config Directory Cleanup (MANDATORY)
+**RULE**: Config directory MUST only contain configuration files:
+
+```yaml
+Config Directory Allowed:
+  - Configuration files (.js, .json, .yaml, .yml)
+  - Configuration templates
+  - Configuration documentation
+
+Config Directory Forbidden:
+  - Application code
+  - Build artifacts
+  - Test files
+  - Temporary files
+  - IDE files
+  - OS files
+  - Log files
+```
+
+### 7. Scripts Directory Cleanup (MANDATORY)
+**RULE**: Scripts directory MUST only contain executable scripts:
+
+```yaml
+Scripts Directory Allowed:
+  - Executable scripts (.sh, .bat, .ps1)
+  - Script documentation (README.md only)
+
+Scripts Directory Forbidden:
+  - Non-executable files
+  - Application code
+  - Configuration files
+  - Build artifacts
+  - Test files
+  - Temporary files
+  - IDE files
+  - OS files
+  - Log files
+```
+
+### 8. Tools Directory Cleanup (MANDATORY)
+**RULE**: Tools directory MUST only contain development tools:
+
+```yaml
+Tools Directory Allowed:
+  - MCP server configurations
+  - AI agent configurations
+  - Development tool configurations
+  - Tool documentation
+
+Tools Directory Forbidden:
+  - Application code
+  - Build artifacts
+  - Test files
+  - Temporary files
+  - IDE files
+  - OS files
+  - Log files
+```
+
+## Automatic Cleanup Patterns
+
+### 1. File Pattern Matching (AUTOMATIC)
+**RULE**: Unwanted files MUST be identified and removed using pattern matching:
+
+```yaml
+Automatic Pattern Matching:
+  Temporary Files:
+    - Pattern: "*.tmp", "*.temp", "*.cache"
+    - Action: Remove immediately
+    - Frequency: Daily
+  
+  Build Artifacts:
+    - Pattern: "dist/", "build/", ".next/", "out/"
+    - Action: Remove immediately
+    - Frequency: Daily
+  
+  IDE Files:
+    - Pattern: ".vscode/", ".idea/", ".sublime-*"
+    - Action: Remove immediately
+    - Frequency: Daily
+  
+  OS Files:
+    - Pattern: ".DS_Store", "Thumbs.db", "desktop.ini"
+    - Action: Remove immediately
+    - Frequency: Daily
+  
+  Test Files (Wrong Location):
+    - Pattern: "*.test.js", "*.spec.js" (in apps/, packages/)
+    - Action: Remove or move to correct location
+    - Frequency: Weekly
+```
+
+### 2. Directory-Specific Cleanup (AUTOMATIC)
+**RULE**: Each directory MUST have specific cleanup rules:
+
+```yaml
+Directory-Specific Cleanup:
+  Root Directory:
+    - Remove all .md files except README.md
+    - Remove all configuration files
+    - Remove all scripts
+    - Remove all temporary files
+  
+  Apps Directory:
+    - Remove build artifacts
+    - Remove test files
+    - Remove temporary files
+    - Remove IDE files
+  
+  Packages Directory:
+    - Remove build artifacts
+    - Remove test files
+    - Remove temporary files
+    - Remove IDE files
+  
+  Infrastructure Directory:
+    - Remove temporary files
+    - Remove IDE files
+    - Remove OS files
+  
+  Docs Directory:
+    - Remove code files
+    - Remove configuration files
+    - Remove temporary files
+  
+  Config Directory:
+    - Remove application code
+    - Remove build artifacts
+    - Remove temporary files
+  
+  Scripts Directory:
+    - Remove non-executable files
+    - Remove temporary files
+    - Remove IDE files
+  
+  Tools Directory:
+    - Remove application code
+    - Remove build artifacts
+    - Remove temporary files
+```
+
+## Cleanup Validation Rules
+
+### 1. Pre-Cleanup Validation (AUTOMATIC)
+**RULE**: Cleanup MUST be validated before execution:
+
+```yaml
+Pre-Cleanup Validation:
+  - Check for essential files that should not be removed
+  - Validate cleanup patterns
+  - Check for file dependencies
+  - Verify backup requirements
+  - Validate cleanup scope
+```
+
+### 2. Post-Cleanup Validation (AUTOMATIC)
+**RULE**: Cleanup results MUST be validated after execution:
+
+```yaml
+Post-Cleanup Validation:
+  - Verify unwanted files are removed
+  - Check that essential files remain
+  - Validate directory structure
+  - Check for cleanup errors
+  - Generate cleanup report
+```
+
+## Cleanup Scheduling Rules
+
+### 1. Daily Cleanup (AUTOMATIC)
+**RULE**: Daily cleanup MUST remove obvious unwanted files:
+
+```yaml
+Daily Cleanup Tasks:
+  - Remove temporary files (*.tmp, *.temp, *.cache)
+  - Remove build artifacts (dist/, build/, .next/)
+  - Remove IDE files (.vscode/, .idea/)
+  - Remove OS files (.DS_Store, Thumbs.db)
+  - Remove log files (*.log)
+  - Validate directory structure
+```
+
+### 2. Weekly Cleanup (AUTOMATIC)
+**RULE**: Weekly cleanup MUST perform deep cleaning:
+
+```yaml
+Weekly Cleanup Tasks:
+  - Run daily cleanup tasks
+  - Remove test files in wrong locations
+  - Remove documentation artifacts
+  - Clean up old reports
+  - Validate all directory rules
+  - Generate cleanup report
+```
+
+### 3. Monthly Cleanup (AUTOMATIC)
+**RULE**: Monthly cleanup MUST perform comprehensive cleaning:
+
+```yaml
+Monthly Cleanup Tasks:
+  - Run weekly cleanup tasks
+  - Review and update cleanup patterns
+  - Clean up old backups
+  - Optimize directory structure
+  - Update cleanup rules
+  - Generate comprehensive report
+```
+
+## Error Handling and Recovery
+
+### 1. Cleanup Error Handling (AUTOMATIC)
+**RULE**: Cleanup errors MUST be handled gracefully:
+
+```yaml
+Cleanup Error Handling:
+  - Log all cleanup errors
+  - Continue cleanup despite errors
+  - Report failed cleanup attempts
+  - Provide error recovery suggestions
+  - Maintain cleanup log
+```
+
+### 2. Recovery Procedures (AUTOMATIC)
+**RULE**: Cleanup recovery MUST be automated:
+
+```yaml
+Recovery Procedures:
+  - Backup before major cleanup
+  - Restore from backup if needed
+  - Retry failed cleanup operations
+  - Report recovery actions
+  - Update cleanup patterns
+```
+
+## Integration with Development Workflow
+
+### 1. Git Integration (AUTOMATIC)
+**RULE**: Cleanup MUST be integrated with git workflow:
+
+```yaml
+Git Integration:
+  - Pre-commit: Quick cleanup check
+  - Pre-push: Full cleanup validation
+  - Post-merge: Run cleanup
+  - Pre-rebase: Validate cleanup
+```
+
+### 2. CI/CD Integration (AUTOMATIC)
+**RULE**: Cleanup MUST be part of CI/CD pipeline:
+
+```yaml
+CI/CD Integration:
+  - Build pipeline: Cleanup before build
+  - Test pipeline: Cleanup before tests
+  - Deploy pipeline: Cleanup before deploy
+  - Release pipeline: Full cleanup validation
+```
+
+## Monitoring and Reporting
+
+### 1. Cleanup Metrics (AUTOMATIC)
+**RULE**: Cleanup metrics MUST be tracked:
+
+```yaml
+Cleanup Metrics:
+  - Files removed count
+  - Directories cleaned count
+  - Cleanup duration
+  - Error count
+  - Success rate
+  - Disk space freed
+```
+
+### 2. Cleanup Reporting (AUTOMATIC)
+**RULE**: Cleanup results MUST be reported:
+
+```yaml
+Cleanup Reporting:
+  - Daily cleanup summary
+  - Weekly cleanup report
+  - Monthly cleanup analysis
+  - Error reports
+  - Performance metrics
+```
+
+## Quality Gates
+
+### 1. Cleanup Quality Gates (MANDATORY)
+**RULE**: Cleanup MUST meet quality standards:
+
+```yaml
+Cleanup Quality Gates:
+  - No essential files removed
+  - All unwanted files removed
+  - Directory structure maintained
+  - No cleanup errors
+  - Cleanup completed successfully
+```
+
+### 2. Validation Quality Gates (MANDATORY)
+**RULE**: Cleanup validation MUST pass:
+
+```yaml
+Validation Quality Gates:
+  - Pre-cleanup validation passed
+  - Post-cleanup validation passed
+  - Directory rules compliance
+  - File pattern matching accuracy
+  - Cleanup report generated
+```
+
+## Enforcement Rules
+
+### 1. Rule Violations (AUTOMATIC)
+**RULE**: Cleanup rule violations MUST be enforced:
+
+```yaml
+Violation Enforcement:
+  - First violation: Warning and auto-correction
+  - Second violation: Block operation with correction
+  - Third violation: Require manual review
+  - Repeated violations: Escalate to team lead
+```
+
+### 2. Compliance Monitoring (AUTOMATIC)
+**RULE**: Cleanup compliance MUST be monitored:
+
+```yaml
+Compliance Monitoring:
+  - Track compliance percentage
+  - Monitor improvement trends
+  - Identify common violations
+  - Suggest rule improvements
+```
+
+**CRITICAL**: These folder cleanup rules are mandatory and will be automatically enforced. All development work must follow these comprehensive cleanup patterns to ensure consistent, clean, and maintainable project structure for PressKit Pro AI Assistant.
+
+## Related Rules Files
+
+- `root-organization-rules.mdc` - Root directory organization
+- `mcp-master-rules.mdc` - MCP server integration
+- `presskit-pro-cursor-rules.mdc` - Development patterns
+- `mcp-project-management-rules.mdc` - Project management

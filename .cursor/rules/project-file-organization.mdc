@@ -1,0 +1,446 @@
+# DocGen CLI - Project File Organization and Naming Rules
+
+## Overview
+This rule file ensures consistent file organization and naming conventions throughout the DocGen CLI project, maintaining a clean root directory and standardized file placement.
+
+## Core Organization Principles
+
+### 1. Root Directory Standards (MANDATORY)
+**RULE**: The root directory MUST only contain essential project files.
+
+```yaml
+Allowed Root Files:
+  - README.md (project overview)
+  - pyproject.toml (project configuration)
+  - requirements.txt (Python dependencies)
+  - pytest.ini (test configuration)
+  - .gitignore (git ignore rules)
+  - .env.example (environment template)
+  - .env (local environment - gitignored)
+  - LICENSE (project license)
+  - docker-compose.yml (Docker configuration)
+  - Dockerfile (Docker image definition)
+  - Dockerfile.prod (production Docker image)
+  - docgen_cli.py (main CLI entry point)
+  - BYTEROVER.md (Byterover configuration)
+  - venv/ (virtual environment - gitignored)
+
+Forbidden in Root:
+  - Any documentation files (*.md except README.md, BYTEROVER.md)
+  - Any report files (*_SUMMARY.md, *_REPORT.md)
+  - Any test files (*_test.py, test_*.py)
+  - Any script files (*.py except docgen_cli.py)
+  - Any configuration files except pyproject.toml, pytest.ini
+  - Any temporary files (*.tmp, *.temp, *.cache)
+  - Any build artifacts (dist/, build/, __pycache__/)
+  - Any IDE-specific files (.vscode/, .idea/)
+  - Any OS-specific files (.DS_Store, Thumbs.db)
+```
+
+### 2. File Naming Conventions (MANDATORY)
+**RULE**: All files MUST follow lowercase-hyphen naming convention.
+
+```yaml
+Naming Standards:
+  - Use lowercase letters only
+  - Use hyphens (-) instead of spaces or underscores
+  - Use hyphens (-) instead of camelCase or PascalCase
+  - Use descriptive names that indicate file purpose
+  - Avoid abbreviations unless commonly understood
+  - Use consistent suffixes for file types
+
+Examples:
+  ✅ Correct:
+    - api-reference.md
+    - user-guide.md
+    - test-coverage-report.md
+    - debug-tests.py
+    - run-integration-tests.py
+    - phase3-completion-summary.md
+  
+  ❌ Incorrect:
+    - API_REFERENCE.md
+    - UserGuide.md
+    - test_coverage_report.md
+    - debugTests.py
+    - runIntegrationTests.py
+    - PHASE3_COMPLETION_SUMMARY.md
+```
+
+### 3. Directory Structure Rules (MANDATORY)
+**RULE**: Files MUST be placed in appropriate directories based on their purpose.
+
+```yaml
+Directory Structure:
+  assets/
+  ├── data/                    # Data files and samples
+  │   ├── fixtures/            # Test fixtures
+  │   ├── samples/             # Sample data files
+  │   ├── archive/             # Historical data
+  │   ├── test-project/        # Test project data
+  │   ├── output.j2            # Template output files
+  │   ├── output.txt           # Text output files
+  │   └── release-artifacts/   # Release artifacts
+  │
+  ├── dev/                     # Development tools
+  │   ├── scripts/             # Development scripts
+  │   │   ├── debug-tests.py
+  │   │   ├── run-tests.py
+  │   │   ├── test-standalone.py
+  │   │   ├── deploy.py
+  │   │   ├── health-check.py
+  │   │   ├── monitor.py
+  │   │   ├── prepare-release.py
+  │   │   └── [other scripts]
+  │   ├── config/              # Development configuration
+  │   └── tools/               # Development utilities
+  │
+  ├── docs/                    # All documentation
+  │   ├── project-docs/        # Project documentation
+  │   │   ├── agents.md
+  │   │   ├── api-reference.md
+  │   │   ├── changelog.md
+  │   │   ├── claude.md
+  │   │   ├── code-of-conduct.md
+  │   │   ├── contributing.md
+  │   │   ├── deployment.md
+  │   │   ├── installation.md
+  │   │   ├── security.md
+  │   │   └── user-guide.md
+  │   ├── developer/           # Developer documentation
+  │   │   ├── testsprite-setup-guide.md
+  │   │   └── [other dev docs]
+  │   ├── user/                # User documentation
+  │   └── generated/           # Generated documentation
+  │
+  ├── management/              # Project management files
+  │   ├── analysis.md
+  │   ├── checklist.md
+  │   ├── dashboard.md
+  │   ├── plan.md
+  │   ├── start.md
+  │   ├── status.md
+  │   ├── tasks.md
+  │   └── tracking.md
+  │
+  ├── reports/                 # All reports and analytics
+  │   ├── comprehensive-browser-automation-summary.md
+  │   ├── phase3-completion-summary.md
+  │   ├── phase3-final-report.md
+  │   ├── playwright-integration-summary.md
+  │   ├── production-deployment-summary.md
+  │   ├── test-coverage-implementation-summary.md
+  │   ├── testsprite-api-configuration-summary.md
+  │   ├── testsprite-tests/    # TestSprite test results
+  │   ├── mcp/                 # MCP integration reports
+  │   ├── workflow/            # Workflow reports
+  │   └── logs/                # Application logs
+  │
+  ├── specs/                   # Project specifications
+  │   ├── requirements/        # Requirements documents
+  │   ├── technical/           # Technical specifications
+  │   ├── contracts/           # API and data contracts
+  │   └── tasks.md             # Task definitions
+  │
+  └── templates/               # Jinja2 templates
+      └── documents/           # Document templates
+
+  src/                         # Source code
+  ├── cli/                     # CLI interface
+  ├── commands/                # CLI commands
+  ├── core/                    # Core functionality
+  ├── models/                  # Data models
+  ├── templates/               # Jinja2 templates
+  └── utils/                   # Utility functions
+
+  tests/                       # Test files
+  ├── cli/                     # CLI tests
+  ├── integration/             # Integration tests
+  ├── unit/                    # Unit tests
+  └── conftest.py              # Test configuration
+```
+
+## File Placement Rules
+
+### 1. Documentation Files (MANDATORY)
+**RULE**: All documentation files MUST be placed in appropriate docs directories.
+
+```yaml
+Documentation Placement:
+  - Project documentation → assets/docs/project-docs/
+  - Developer documentation → assets/docs/developer/
+  - User documentation → assets/docs/user/
+  - Generated documentation → assets/docs/generated/
+  - API documentation → assets/docs/project-docs/api-reference.md
+  - Setup guides → assets/docs/developer/
+  - User guides → assets/docs/project-docs/user-guide.md
+```
+
+### 2. Report Files (MANDATORY)
+**RULE**: All report files MUST be placed in assets/reports/.
+
+```yaml
+Report Placement:
+  - Summary files → assets/reports/
+  - Test reports → assets/reports/testsprite-tests/
+  - MCP reports → assets/reports/mcp/
+  - Workflow reports → assets/reports/workflow/
+  - Log files → assets/reports/logs/
+```
+
+### 3. Script Files (MANDATORY)
+**RULE**: All script files MUST be placed in assets/dev/scripts/.
+
+```yaml
+Script Placement:
+  - Development scripts → assets/dev/scripts/
+  - Test scripts → assets/dev/scripts/
+  - Deployment scripts → assets/dev/scripts/
+  - Utility scripts → assets/dev/scripts/
+  - Debug scripts → assets/dev/scripts/
+```
+
+### 4. Data Files (MANDATORY)
+**RULE**: All data files MUST be placed in assets/data/.
+
+```yaml
+Data Placement:
+  - Test data → assets/data/test-project/
+  - Sample data → assets/data/samples/
+  - Fixtures → assets/data/fixtures/
+  - Output files → assets/data/
+  - Release artifacts → assets/data/release-artifacts/
+```
+
+## Automatic File Organization
+
+### 1. New File Placement (AUTOMATIC)
+**RULE**: When adding new files, they MUST be placed in the correct directory.
+
+```yaml
+Automatic File Placement:
+  - .md files (except README.md, BYTEROVER.md) → assets/docs/
+  - *_SUMMARY.md, *_REPORT.md → assets/reports/
+  - *_test.py, test_*.py → assets/dev/scripts/ or tests/
+  - *.py scripts → assets/dev/scripts/
+  - Configuration files → assets/dev/config/
+  - Data files → assets/data/
+  - Template files → assets/templates/ or src/templates/
+```
+
+### 2. File Movement Rules (AUTOMATIC)
+**RULE**: Files in wrong locations MUST be moved automatically.
+
+```yaml
+Automatic File Movement:
+  - Documentation in root → assets/docs/project-docs/
+  - Reports in root → assets/reports/
+  - Scripts in root → assets/dev/scripts/
+  - Test files in root → assets/dev/scripts/ or tests/
+  - Data files in root → assets/data/
+  - Config files in root → assets/dev/config/
+```
+
+### 3. Naming Convention Enforcement (AUTOMATIC)
+**RULE**: File names MUST be automatically converted to lowercase-hyphen format.
+
+```yaml
+Automatic Naming Conversion:
+  - UPPERCASE → lowercase
+  - camelCase → lowercase-hyphen
+  - PascalCase → lowercase-hyphen
+  - snake_case → lowercase-hyphen
+  - spaces → hyphens
+  - underscores → hyphens
+```
+
+## Validation Rules
+
+### 1. Structure Validation (AUTOMATIC)
+**RULE**: Project structure MUST be validated regularly.
+
+```yaml
+Structure Validation:
+  - Check for forbidden files in root
+  - Verify directory structure compliance
+  - Validate file placements
+  - Check naming conventions
+  - Verify script executability
+  - Validate configuration files
+```
+
+### 2. Content Validation (AUTOMATIC)
+**RULE**: File contents MUST be validated.
+
+```yaml
+Content Validation:
+  - Check pyproject.toml structure
+  - Validate configuration files
+  - Verify script functionality
+  - Check documentation completeness
+  - Validate .gitignore patterns
+  - Verify environment templates
+```
+
+## Maintenance Rules
+
+### 1. Regular Cleanup (AUTOMATIC)
+**RULE**: Project structure MUST be cleaned regularly.
+
+```yaml
+Regular Cleanup Schedule:
+  - Daily: Remove temporary files
+  - Weekly: Validate structure
+  - Monthly: Update documentation
+  - Quarterly: Review organization rules
+  - Before releases: Full organization check
+```
+
+### 2. Organization Script Execution (AUTOMATIC)
+**RULE**: Organization script MUST be run regularly.
+
+```yaml
+Organization Script Triggers:
+  - Before each commit
+  - Before each release
+  - When adding new files
+  - When changing structure
+  - On CI/CD pipeline
+  - On developer request
+```
+
+## Quality Gates
+
+### 1. Pre-Commit Organization Check (MANDATORY)
+**RULE**: No commit allowed without organization validation.
+
+```yaml
+Pre-Commit Checks:
+  - Root directory structure valid
+  - No forbidden files in root
+  - All files in correct locations
+  - Scripts are executable
+  - Configuration files valid
+  - Documentation up to date
+```
+
+### 2. Pre-Release Organization Check (MANDATORY)
+**RULE**: No release allowed without full organization validation.
+
+```yaml
+Pre-Release Checks:
+  - Complete structure validation
+  - All documentation updated
+  - All scripts tested
+  - All configurations validated
+  - Organization script executed
+  - No temporary files present
+```
+
+## Error Handling
+
+### 1. Organization Violations (AUTOMATIC)
+**RULE**: Organization violations MUST be handled automatically.
+
+```yaml
+Violation Handling:
+  - Log violation details
+  - Attempt automatic correction
+  - Notify developer if manual intervention needed
+  - Block commit if critical violation
+  - Provide correction suggestions
+```
+
+### 2. Recovery Procedures (AUTOMATIC)
+**RULE**: Organization recovery MUST be automated.
+
+```yaml
+Recovery Procedures:
+  - Backup current state
+  - Run organization script
+  - Validate corrections
+  - Restore if needed
+  - Report results
+```
+
+## Integration with Development Workflow
+
+### 1. Git Hooks Integration (AUTOMATIC)
+**RULE**: Organization checks MUST be integrated with git.
+
+```yaml
+Git Hooks Integration:
+  - Pre-commit: Run organization check
+  - Pre-push: Run full validation
+  - Post-merge: Run organization script
+  - Pre-rebase: Validate structure
+```
+
+### 2. CI/CD Integration (AUTOMATIC)
+**RULE**: Organization validation MUST be part of CI/CD.
+
+```yaml
+CI/CD Integration:
+  - Build pipeline: Validate structure
+  - Test pipeline: Run organization tests
+  - Deploy pipeline: Verify organization
+  - Release pipeline: Full validation
+```
+
+## Monitoring and Reporting
+
+### 1. Organization Metrics (AUTOMATIC)
+**RULE**: Organization metrics MUST be tracked.
+
+```yaml
+Organization Metrics:
+  - Structure compliance score
+  - File placement accuracy
+  - Cleanup frequency
+  - Violation count
+  - Correction success rate
+```
+
+### 2. Reporting (AUTOMATIC)
+**RULE**: Organization status MUST be reported.
+
+```yaml
+Reporting:
+  - Daily organization status
+  - Weekly compliance report
+  - Monthly improvement suggestions
+  - Quarterly rule updates
+```
+
+## Enforcement Rules
+
+### 1. Rule Violations (AUTOMATIC)
+**RULE**: Organization rule violations MUST be enforced.
+
+```yaml
+Violation Enforcement:
+  - First violation: Warning and auto-correction
+  - Second violation: Block commit with correction
+  - Third violation: Require manual review
+  - Repeated violations: Escalate to team lead
+```
+
+### 2. Compliance Monitoring (AUTOMATIC)
+**RULE**: Organization compliance MUST be monitored.
+
+```yaml
+Compliance Monitoring:
+  - Track compliance percentage
+  - Monitor improvement trends
+  - Identify common violations
+  - Suggest rule improvements
+```
+
+**CRITICAL**: These file organization and naming rules are mandatory and will be automatically enforced. All development work must follow these comprehensive organization patterns to ensure consistent, clean, and maintainable project structure for DocGen CLI.
+
+## Related Rules Files
+
+- `mcp-master-rules.mdc` - MCP server integration
+- `docgen-cli-cursor-rules.mdc` - Development patterns
+- `mcp-project-management-rules.mdc` - Project management
+- `mcp-integration-rules.mdc` - Integration patterns

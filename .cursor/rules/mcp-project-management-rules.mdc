@@ -1,0 +1,457 @@
+---
+description: MCP Project Management and Task Tracking Rules - Automatic Project Management Workflow
+alwaysApply: true
+---
+
+# MCP Project Management and Task Tracking Rules
+## PressKit Pro AI Assistant - Automatic Project Management and Task Tracking Workflow
+
+This rule file ensures automatic project management and task tracking using Dart and Byterover MCP servers for comprehensive project organization and progress tracking.
+
+## Automatic Task Management
+
+### Task Creation (AUTOMATIC)
+**TRIGGER**: When new features or work items are identified
+
+```yaml
+Automatic Task Creation:
+  1. dart-create-task (new feature tasks)
+  2. dart-create-task (bug fix tasks)
+  3. dart-create-task (documentation tasks)
+  4. dart-create-task (testing tasks)
+  5. byterover-store-knowledge (task creation patterns)
+```
+
+### Task Organization (AUTOMATIC)
+**TRIGGER**: When organizing project work
+
+```yaml
+Automatic Task Organization:
+  1. dart-list-tasks (view all tasks)
+  2. dart-get-dartboard (project board access)
+  3. dart-get-folder (folder organization)
+  4. dart-get-view (custom views)
+  5. Store organization patterns in byterover
+```
+
+### Task Progress Tracking (AUTOMATIC)
+**TRIGGER**: During task execution
+
+```yaml
+Automatic Progress Tracking:
+  1. dart-update-task (update task status)
+  2. dart-update-task (update task progress)
+  3. dart-update-task (update task assignees)
+  4. byterover-update-plan-progress (mark tasks complete)
+  5. Store progress tracking patterns in byterover
+```
+
+## Automatic Project Planning
+
+### Implementation Plan Management (AUTOMATIC)
+**TRIGGER**: When user approves implementation plans
+
+```yaml
+Automatic Plan Management:
+  1. byterover-save-implementation-plan (IMMEDIATELY after approval)
+  2. byterover-retrieve-active-plans (check existing plans)
+  3. dart-create-task (plan tasks)
+  4. byterover-update-plan-progress (track progress)
+  5. Store planning patterns in byterover
+```
+
+### Plan Execution Tracking (AUTOMATIC)
+**TRIGGER**: During plan execution
+
+```yaml
+Automatic Plan Execution:
+  1. byterover-update-plan-progress (mark tasks complete)
+  2. dart-update-task (update task status)
+  3. byterover-store-knowledge (execution insights)
+  4. Update documentation with progress
+```
+
+### Plan Completion Management (AUTOMATIC)
+**TRIGGER**: When plans are completed
+
+```yaml
+Automatic Plan Completion:
+  1. byterover-update-plan-progress (mark plan complete)
+  2. dart-update-task (mark all tasks complete)
+  3. byterover-store-knowledge (completion insights)
+  4. Generate completion reports
+```
+
+## Automatic Documentation Management
+
+### Project Documentation (AUTOMATIC)
+**TRIGGER**: When creating or updating project documentation
+
+```yaml
+Automatic Project Documentation:
+  1. dart-create-doc (new project docs)
+  2. dart-update-doc (existing documentation)
+  3. dart-list-docs (documentation overview)
+  4. dart-get-doc (retrieve specific docs)
+  5. Store documentation patterns in byterover
+```
+
+### Feature Documentation (AUTOMATIC)
+**TRIGGER**: When implementing new features
+
+```yaml
+Automatic Feature Documentation:
+  1. dart-create-doc (feature specification)
+  2. dart-create-doc (implementation guide)
+  3. dart-create-doc (usage examples)
+  4. dart-create-doc (API documentation)
+  5. Store feature documentation patterns in byterover
+```
+
+### Documentation Organization (AUTOMATIC)
+**TRIGGER**: When organizing documentation
+
+```yaml
+Automatic Documentation Organization:
+  1. dart-get-folder (folder structure)
+  2. dart-list-docs (documentation list)
+  3. Organize docs by category
+  4. Update folder structure
+  5. Store organization patterns in byterover
+```
+
+## Automatic Project Configuration Management
+
+### Workspace Configuration (AUTOMATIC)
+**TRIGGER**: During project initialization
+
+```yaml
+Automatic Configuration Management:
+  1. dart-get-config (workspace configuration)
+  2. dart-get-dartboard (project board setup)
+  3. dart-get-folder (folder structure)
+  4. dart-get-view (custom views)
+  5. Store configuration patterns in byterover
+```
+
+### Project Setup (AUTOMATIC)
+**TRIGGER**: When setting up new projects
+
+```yaml
+Automatic Project Setup:
+  1. dart-get-config (get workspace config)
+  2. dart-create-task (initial project tasks)
+  3. dart-create-doc (project documentation)
+  4. dart-get-dartboard (setup project board)
+  5. Store setup patterns in byterover
+```
+
+## Automatic Team Collaboration
+
+### Task Assignment (AUTOMATIC)
+**TRIGGER**: When assigning tasks to team members
+
+```yaml
+Automatic Task Assignment:
+  1. dart-update-task (assign tasks)
+  2. dart-update-task (set task priorities)
+  3. dart-update-task (set due dates)
+  4. Store assignment patterns in byterover
+```
+
+### Comment Management (AUTOMATIC)
+**TRIGGER**: When adding comments to tasks
+
+```yaml
+Automatic Comment Management:
+  1. dart-add-task-comment (add comments)
+  2. dart-list-comments (view comments)
+  3. dart-add-task-attachment-from-url (attach files)
+  4. Store collaboration patterns in byterover
+```
+
+### Progress Reporting (AUTOMATIC)
+**TRIGGER**: For regular progress updates
+
+```yaml
+Automatic Progress Reporting:
+  1. dart-list-tasks (task status overview)
+  2. dart-list-docs (documentation status)
+  3. byterover-retrieve-active-plans (plan progress)
+  4. Generate progress reports
+  5. Store reporting patterns in byterover
+```
+
+## Automatic Module Management
+
+### Module Discovery (AUTOMATIC)
+**TRIGGER**: During project analysis
+
+```yaml
+Automatic Module Discovery:
+  1. byterover-list-modules (discover modules)
+  2. byterover-store-module (new modules)
+  3. byterover-update-module (changed modules)
+  4. byterover-search-module (find specific modules)
+  5. Store module patterns in byterover
+```
+
+### Module Documentation (AUTOMATIC)
+**TRIGGER**: When documenting modules
+
+```yaml
+Automatic Module Documentation:
+  1. byterover-update-module (technical details)
+  2. byterover-update-module (insights and patterns)
+  3. dart-create-doc (module documentation)
+  4. Store module documentation patterns in byterover
+```
+
+## Automatic Knowledge Management
+
+### Knowledge Storage (AUTOMATIC)
+**TRIGGER**: After completing significant work
+
+```yaml
+Automatic Knowledge Storage:
+  1. byterover-store-knowledge (implementation details)
+  2. byterover-store-knowledge (patterns and techniques)
+  3. byterover-store-knowledge (troubleshooting solutions)
+  4. byterover-store-knowledge (best practices)
+```
+
+### Knowledge Retrieval (AUTOMATIC)
+**TRIGGER**: Before starting new tasks
+
+```yaml
+Automatic Knowledge Retrieval:
+  1. byterover-retrieve-knowledge (task context)
+  2. byterover-retrieve-knowledge (related patterns)
+  3. byterover-retrieve-knowledge (best practices)
+  4. Use retrieved knowledge for task execution
+```
+
+## Automatic Quality Assurance
+
+### Task Quality Gates (AUTOMATIC)
+**RULE**: All tasks must meet quality standards
+
+```yaml
+Automatic Task Quality Gates:
+  1. Validate task completeness
+  2. Ensure task documentation
+  3. Verify task testing
+  4. Check task integration
+  5. Block task completion if quality gates fail
+```
+
+### Project Quality Gates (AUTOMATIC)
+**RULE**: All projects must meet quality standards
+
+```yaml
+Automatic Project Quality Gates:
+  1. Validate project completeness
+  2. Ensure project documentation
+  3. Verify project testing
+  4. Check project integration
+  5. Block project completion if quality gates fail
+```
+
+## Automatic Reporting and Analytics
+
+### Task Analytics (AUTOMATIC)
+**TRIGGER**: Weekly task analysis
+
+```yaml
+Automatic Task Analytics:
+  1. dart-list-tasks (task status analysis)
+  2. Analyze task completion rates
+  3. Identify bottlenecks
+  4. Generate task reports
+  5. Store analytics in byterover
+```
+
+### Project Analytics (AUTOMATIC)
+**TRIGGER**: Monthly project analysis
+
+```yaml
+Automatic Project Analytics:
+  1. byterover-retrieve-active-plans (plan analysis)
+  2. dart-list-tasks (task analysis)
+  3. dart-list-docs (documentation analysis)
+  4. Generate project reports
+  5. Store analytics in byterover
+```
+
+## Automatic Resource Management
+
+### Resource Allocation (AUTOMATIC)
+**TRIGGER**: When allocating resources
+
+```yaml
+Automatic Resource Allocation:
+  1. dart-list-tasks (task workload)
+  2. dart-update-task (assign resources)
+  3. byterover-update-plan-progress (track allocation)
+  4. Store allocation patterns in byterover
+```
+
+### Resource Optimization (AUTOMATIC)
+**TRIGGER**: When optimizing resources
+
+```yaml
+Automatic Resource Optimization:
+  1. Analyze resource usage
+  2. Optimize task assignments
+  3. Balance workload
+  4. Store optimization patterns in byterover
+```
+
+## Automatic Risk Management
+
+### Risk Identification (AUTOMATIC)
+**TRIGGER**: During project planning
+
+```yaml
+Automatic Risk Identification:
+  1. byterover-retrieve-knowledge (risk patterns)
+  2. Identify potential risks
+  3. dart-create-task (risk mitigation tasks)
+  4. Store risk patterns in byterover
+```
+
+### Risk Mitigation (AUTOMATIC)
+**TRIGGER**: When risks are identified
+
+```yaml
+Automatic Risk Mitigation:
+  1. dart-create-task (mitigation tasks)
+  2. byterover-store-knowledge (mitigation strategies)
+  3. Track mitigation progress
+  4. Store mitigation patterns in byterover
+```
+
+## Automatic Communication Management
+
+### Stakeholder Communication (AUTOMATIC)
+**TRIGGER**: For regular stakeholder updates
+
+```yaml
+Automatic Stakeholder Communication:
+  1. dart-list-tasks (progress overview)
+  2. dart-list-docs (documentation status)
+  3. byterover-retrieve-active-plans (plan status)
+  4. Generate stakeholder reports
+  5. Store communication patterns in byterover
+```
+
+### Team Communication (AUTOMATIC)
+**TRIGGER**: For team coordination
+
+```yaml
+Automatic Team Communication:
+  1. dart-list-tasks (team task overview)
+  2. dart-add-task-comment (team comments)
+  3. dart-list-comments (team discussions)
+  4. Store communication patterns in byterover
+```
+
+## Automatic Performance Management
+
+### Performance Tracking (AUTOMATIC)
+**TRIGGER**: For performance monitoring
+
+```yaml
+Automatic Performance Tracking:
+  1. Track task completion rates
+  2. Monitor project milestones
+  3. Analyze team productivity
+  4. Store performance data in byterover
+```
+
+### Performance Optimization (AUTOMATIC)
+**TRIGGER**: When performance issues are identified
+
+```yaml
+Automatic Performance Optimization:
+  1. Identify performance bottlenecks
+  2. dart-create-task (optimization tasks)
+  3. byterover-store-knowledge (optimization strategies)
+  4. Track optimization progress
+```
+
+## Automatic Compliance Management
+
+### Compliance Tracking (AUTOMATIC)
+**TRIGGER**: For compliance monitoring
+
+```yaml
+Automatic Compliance Tracking:
+  1. Track compliance requirements
+  2. dart-create-task (compliance tasks)
+  3. byterover-store-knowledge (compliance patterns)
+  4. Monitor compliance status
+```
+
+### Compliance Reporting (AUTOMATIC)
+**TRIGGER**: For compliance reporting
+
+```yaml
+Automatic Compliance Reporting:
+  1. Generate compliance reports
+  2. dart-create-doc (compliance documentation)
+  3. byterover-store-knowledge (compliance insights)
+  4. Store reporting patterns in byterover
+```
+
+## Error Handling and Recovery
+
+### Task Management Failures (AUTOMATIC)
+**TRIGGER**: When task management fails
+
+```yaml
+Automatic Task Recovery:
+  1. Identify task management issues
+  2. Implement alternative approaches
+  3. byterover-store-knowledge (recovery strategies)
+  4. Continue with available resources
+```
+
+### Project Management Failures (AUTOMATIC)
+**TRIGGER**: When project management fails
+
+```yaml
+Automatic Project Recovery:
+  1. Identify project management issues
+  2. Implement alternative approaches
+  3. byterover-store-knowledge (recovery strategies)
+  4. Continue with available resources
+```
+
+## Quality Gates and Enforcement
+
+### Project Management Quality Gates (AUTOMATIC)
+**RULE**: All project management must meet quality standards
+
+```yaml
+Automatic PM Quality Gates:
+  1. Validate task completeness
+  2. Ensure proper documentation
+  3. Verify progress tracking
+  4. Check team collaboration
+  5. Block project advancement if quality gates fail
+```
+
+### Task Management Quality Gates (AUTOMATIC)
+**RULE**: All task management must meet quality standards
+
+```yaml
+Automatic Task Quality Gates:
+  1. Validate task definition
+  2. Ensure proper assignment
+  3. Verify progress tracking
+  4. Check task completion
+  5. Block task advancement if quality gates fail
+```
+
+**CRITICAL**: These project management and task tracking rules are mandatory and will be automatically enforced. All project work must follow these comprehensive project management workflows to ensure consistent, high-quality project organization and progress tracking for the PressKit Pro AI Assistant project.

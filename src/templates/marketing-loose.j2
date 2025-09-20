@@ -1,0 +1,380 @@
+# {{ project.name }} - Marketing Materials
+
+**Version:** {{ project.version }}  
+**Generated:** {{ _template.generated_at | format_date }}  
+**Project Path:** {{ _metadata.project_path }}
+
+---
+
+## 1. Product Overview
+
+### 1.1 Product Description
+{{ project.description }}
+
+### 1.2 Value Proposition
+{% if marketing.value_proposition %}
+{{ marketing.value_proposition }}
+{% else %}
+*Value proposition not yet defined.*
+{% endif %}
+
+### 1.3 Key Benefits
+{% if marketing.key_benefits %}
+{% for benefit in marketing.key_benefits %}
+- **{{ benefit.title }}:** {{ benefit.description }}
+{% endfor %}
+{% else %}
+*Key benefits not yet defined.*
+{% endif %}
+
+---
+
+## 2. Target Market
+
+### 2.1 Target Audience
+{% if marketing.target_audience %}
+**Primary Audience:** {{ marketing.target_audience.primary }}  
+**Secondary Audience:** {{ marketing.target_audience.secondary }}  
+
+**Demographics:**
+{% for demo in marketing.target_audience.demographics %}
+- **{{ demo.category }}:** {{ demo.description }}
+{% endfor %}
+
+**Psychographics:**
+{% for psycho in marketing.target_audience.psychographics %}
+- **{{ psycho.category }}:** {{ psycho.description }}
+{% endfor %}
+{% else %}
+*Target audience not yet defined.*
+{% endif %}
+
+### 2.2 Market Size
+{% if marketing.market_size %}
+**Total Addressable Market (TAM):** {{ marketing.market_size.tam }}  
+**Serviceable Addressable Market (SAM):** {{ marketing.market_size.sam }}  
+**Serviceable Obtainable Market (SOM):** {{ marketing.market_size.som }}  
+{% else %}
+*Market size information not yet available.*
+{% endif %}
+
+### 2.3 Competitive Landscape
+{% if marketing.competitors %}
+{% for competitor in marketing.competitors %}
+#### {{ competitor.name }}
+**Description:** {{ competitor.description }}  
+**Strengths:** {{ competitor.strengths | join(', ') }}  
+**Weaknesses:** {{ competitor.weaknesses | join(', ') }}  
+**Market Position:** {{ competitor.market_position }}  
+{% endfor %}
+{% else %}
+*Competitive analysis not yet completed.*
+{% endif %}
+
+---
+
+## 3. Product Features
+
+### 3.1 Core Features
+{% if marketing.key_features %}
+{% for feature in marketing.key_features %}
+#### {{ feature.name }}
+**Description:** {{ feature.description }}  
+**Benefit:** {{ feature.benefit }}  
+**Target User:** {{ feature.target_user }}  
+{% if feature.screenshots %}
+**Screenshots:** {{ feature.screenshots | join(', ') }}
+{% endif %}
+{% endfor %}
+{% else %}
+*Key features not yet defined.*
+{% endif %}
+
+### 3.2 Feature Comparison
+{% if marketing.feature_comparison %}
+| Feature | {{ project.name }} | {% for competitor in marketing.competitors %}{{ competitor.name }} | {% endfor %}
+|---------|-------------------|{% for competitor in marketing.competitors %}-------------------|{% endfor %}
+{% for feature in marketing.feature_comparison %}
+| {{ feature.name }} | {{ feature.our_product }} | {% for competitor_value in feature.competitor_values %}{{ competitor_value }} | {% endfor %}
+{% endfor %}
+{% else %}
+*Feature comparison not yet available.*
+{% endif %}
+
+---
+
+## 4. Marketing Strategy
+
+### 4.1 Go-to-Market Strategy
+{% if marketing.gtm_strategy %}
+**Strategy:** {{ marketing.gtm_strategy.strategy }}  
+**Channels:** {{ marketing.gtm_strategy.channels | join(', ') }}  
+**Timeline:** {{ marketing.gtm_strategy.timeline }}  
+**Budget:** {{ marketing.gtm_strategy.budget }}  
+{% else %}
+*Go-to-market strategy not yet defined.*
+{% endif %}
+
+### 4.2 Marketing Channels
+{% if marketing.channels %}
+{% for channel in marketing.channels %}
+#### {{ channel.name }}
+**Type:** {{ channel.type }}  
+**Target Audience:** {{ channel.target_audience }}  
+**Budget Allocation:** {{ channel.budget_allocation }}  
+**Expected ROI:** {{ channel.expected_roi }}  
+**Timeline:** {{ channel.timeline }}  
+{% endfor %}
+{% else %}
+*Marketing channels not yet planned.*
+{% endif %}
+
+### 4.3 Content Strategy
+{% if marketing.content_strategy %}
+**Content Themes:** {{ marketing.content_strategy.themes | join(', ') }}  
+**Content Types:** {{ marketing.content_strategy.types | join(', ') }}  
+**Publishing Schedule:** {{ marketing.content_strategy.schedule }}  
+**Content Goals:** {{ marketing.content_strategy.goals | join(', ') }}  
+{% else %}
+*Content strategy not yet defined.*
+{% endif %}
+
+---
+
+## 5. Pricing Strategy
+
+### 5.1 Pricing Model
+{% if marketing.pricing.model %}
+**Model:** {{ marketing.pricing.model }}  
+**Rationale:** {{ marketing.pricing.rationale }}  
+{% else %}
+*Pricing model not yet defined.*
+{% endif %}
+
+### 5.2 Pricing Tiers
+{% if marketing.pricing.tiers %}
+{% for tier in marketing.pricing.tiers %}
+#### {{ tier.name }}
+**Price:** {{ tier.price }}  
+**Features:** {{ tier.features | join(', ') }}  
+**Target Market:** {{ tier.target_market }}  
+{% endfor %}
+{% else %}
+*Pricing tiers not yet defined.*
+{% endif %}
+
+### 5.3 Competitive Pricing
+{% if marketing.pricing.competitive %}
+**Our Pricing:** {{ marketing.pricing.competitive.our_pricing }}  
+**Competitor Pricing:** {{ marketing.pricing.competitive.competitor_pricing }}  
+**Price Positioning:** {{ marketing.pricing.competitive.positioning }}  
+{% else %}
+*Competitive pricing analysis not yet completed.*
+{% endif %}
+
+---
+
+## 6. Brand & Messaging
+
+### 6.1 Brand Identity
+{% if marketing.brand %}
+**Brand Name:** {{ marketing.brand.name }}  
+**Tagline:** {{ marketing.brand.tagline }}  
+**Brand Values:** {{ marketing.brand['values'] | join(', ') }}  
+**Brand Personality:** {{ marketing.brand.personality | join(', ') }}  
+{% else %}
+*Brand identity not yet defined.*
+{% endif %}
+
+### 6.2 Key Messages
+{% if marketing.messages %}
+{% for message in marketing.messages %}
+#### {{ message.audience }}
+**Primary Message:** {{ message.primary }}  
+**Supporting Messages:** {{ message.supporting | join(', ') }}  
+**Proof Points:** {{ message.proof_points | join(', ') }}  
+{% endfor %}
+{% else %}
+*Key messages not yet defined.*
+{% endif %}
+
+### 6.3 Elevator Pitch
+{% if marketing.elevator_pitch %}
+**30-Second Pitch:** {{ marketing.elevator_pitch.short }}  
+**2-Minute Pitch:** {{ marketing.elevator_pitch.long }}  
+{% else %}
+*Elevator pitch not yet developed.*
+{% endif %}
+
+---
+
+## 7. Launch Plan
+
+### 7.1 Launch Timeline
+{% if marketing.launch.timeline %}
+{% for phase in marketing.launch.timeline %}
+#### {{ phase.name }}
+**Duration:** {{ phase.duration }}  
+**Start Date:** {{ phase.start_date | format_date }}  
+**End Date:** {{ phase.end_date | format_date }}  
+**Activities:** {{ phase.activities | join(', ') }}  
+**Deliverables:** {{ phase.deliverables | join(', ') }}  
+{% endfor %}
+{% else %}
+*Launch timeline not yet defined.*
+{% endif %}
+
+### 7.2 Launch Activities
+{% if marketing.launch.activities %}
+{% for activity in marketing.launch.activities %}
+- **{{ activity.name }}:** {{ activity.description }} ({{ activity.timeline }})
+{% endfor %}
+{% else %}
+*Launch activities not yet planned.*
+{% endif %}
+
+### 7.3 Success Metrics
+{% if marketing.launch.metrics %}
+{% for metric in marketing.launch.metrics %}
+- **{{ metric.name }}:** {{ metric.description }} (Target: {{ metric.target }})
+{% endfor %}
+{% else %}
+*Launch success metrics not yet defined.*
+{% endif %}
+
+---
+
+## 8. Sales Strategy
+
+### 8.1 Sales Process
+{% if marketing.sales.process %}
+**Process:** {{ marketing.sales.process }}  
+**Sales Cycle:** {{ marketing.sales.cycle }}  
+**Conversion Rate:** {{ marketing.sales.conversion_rate }}  
+{% else %}
+*Sales process not yet defined.*
+{% endif %}
+
+### 8.2 Sales Channels
+{% if marketing.sales.channels %}
+{% for channel in marketing.sales.channels %}
+#### {{ channel.name }}
+**Type:** {{ channel.type }}  
+**Target Market:** {{ channel.target_market }}  
+**Commission Structure:** {{ channel.commission }}  
+**Support Requirements:** {{ channel.support | join(', ') }}  
+{% endfor %}
+{% else %}
+*Sales channels not yet defined.*
+{% endif %}
+
+### 8.3 Sales Tools
+{% if marketing.sales.tools %}
+{% for tool in marketing.sales.tools %}
+- **{{ tool.name }}:** {{ tool.description }} - {{ tool.purpose }}
+{% endfor %}
+{% else %}
+*Sales tools not yet identified.*
+{% endif %}
+
+---
+
+## 9. Customer Success
+
+### 9.1 Onboarding Process
+{% if marketing.customer_success.onboarding %}
+**Process:** {{ marketing.customer_success.onboarding.process }}  
+**Timeline:** {{ marketing.customer_success.onboarding.timeline }}  
+**Success Criteria:** {{ marketing.customer_success.onboarding.success_criteria | join(', ') }}  
+{% else %}
+*Onboarding process not yet defined.*
+{% endif %}
+
+### 9.2 Support Strategy
+{% if marketing.customer_success.support %}
+**Support Channels:** {{ marketing.customer_success.support.channels | join(', ') }}  
+**Response Time:** {{ marketing.customer_success.support.response_time }}  
+**Support Levels:** {{ marketing.customer_success.support.levels | join(', ') }}  
+{% else %}
+*Support strategy not yet defined.*
+{% endif %}
+
+### 9.3 Retention Strategy
+{% if marketing.customer_success.retention %}
+**Retention Goals:** {{ marketing.customer_success.retention.goals | join(', ') }}  
+**Retention Activities:** {{ marketing.customer_success.retention.activities | join(', ') }}  
+**Churn Prevention:** {{ marketing.customer_success.retention.churn_prevention | join(', ') }}  
+{% else %}
+*Retention strategy not yet defined.*
+{% endif %}
+
+---
+
+## 10. Marketing Collateral
+
+### 10.1 Website Content
+{% if marketing.collateral.website %}
+**Homepage Copy:** {{ marketing.collateral.website.homepage }}  
+**Product Pages:** {{ marketing.collateral.website.product_pages | join(', ') }}  
+**About Page:** {{ marketing.collateral.website.about }}  
+{% else %}
+*Website content not yet developed.*
+{% endif %}
+
+### 10.2 Sales Materials
+{% if marketing.collateral.sales %}
+{% for material in marketing.collateral.sales %}
+- **{{ material.name }}:** {{ material.description }} - {{ material.purpose }}
+{% endfor %}
+{% else %}
+*Sales materials not yet created.*
+{% endif %}
+
+### 10.3 Marketing Campaigns
+{% if marketing.collateral.campaigns %}
+{% for campaign in marketing.collateral.campaigns %}
+#### {{ campaign.name }}
+**Objective:** {{ campaign.objective }}  
+**Target Audience:** {{ campaign.target_audience }}  
+**Channels:** {{ campaign.channels | join(', ') }}  
+**Timeline:** {{ campaign.timeline }}  
+**Budget:** {{ campaign.budget }}  
+{% endfor %}
+{% else %}
+*Marketing campaigns not yet planned.*
+{% endif %}
+
+---
+
+## 11. Appendices
+
+### 11.1 Market Research
+{% if appendices.market_research %}
+{{ appendices.market_research }}
+{% else %}
+*Market research data not yet available.*
+{% endif %}
+
+### 11.2 Customer Personas
+{% if appendices.personas %}
+{% for persona in appendices.personas %}
+#### {{ persona.name }}
+**Demographics:** {{ persona.demographics }}  
+**Goals:** {{ persona.goals | join(', ') }}  
+**Pain Points:** {{ persona.pain_points | join(', ') }}  
+**Behavior:** {{ persona.behavior }}  
+{% endfor %}
+{% else %}
+*Customer personas not yet developed.*
+{% endif %}
+
+### 11.3 Competitive Analysis
+{% if appendices.competitive_analysis %}
+{{ appendices.competitive_analysis }}
+{% else %}
+*Detailed competitive analysis not yet available.*
+{% endif %}
+
+---
+
+*This marketing document was generated automatically by DocGen CLI on {{ _template.generated_at | format_date }}.*

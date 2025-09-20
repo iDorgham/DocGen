@@ -1,0 +1,62 @@
+{
+  "timestamp": "2025-09-19T16:38:49.746953",
+  "steps": {
+    "Python Version Check": {
+      "status": "success",
+      "details": "Python 3.13.7",
+      "timestamp": "2025-09-19T16:38:49.747160"
+    },
+    "Virtual Environment Check": {
+      "status": "warning",
+      "details": "No virtual environment detected",
+      "timestamp": "2025-09-19T16:38:49.747268"
+    },
+    "Virtual Environment Creation": {
+      "status": "success",
+      "details": "Already exists",
+      "timestamp": "2025-09-19T16:38:49.747564"
+    },
+    "Dependencies Installation": {
+      "status": "error",
+      "details": "Command '['/home/linuxbrew/.linuxbrew/opt/python@3.13/bin/python3.13', '-m', 'pip', 'install', '-r', '/mnt/d/Work/AI/Projects/DocGen/requirements.txt']' returned non-zero exit status 1.",
+      "timestamp": "2025-09-19T16:38:50.198425"
+    },
+    "Development Dependencies": {
+      "status": "error",
+      "details": "Command '['/home/linuxbrew/.linuxbrew/opt/python@3.13/bin/python3.13', '-m', 'pip', 'install', 'pytest>=7.0.0']' returned non-zero exit status 1.",
+      "timestamp": "2025-09-19T16:38:50.559137"
+    },
+    "Project Structure": {
+      "status": "success",
+      "details": "Created 6 directories",
+      "timestamp": "2025-09-19T16:38:50.570240"
+    },
+    "Git Hooks": {
+      "status": "warning",
+      "details": "Not a git repository",
+      "timestamp": "2025-09-19T16:38:50.570565"
+    },
+    "Environment Config": {
+      "status": "success",
+      "details": "Created .env.example",
+      "timestamp": "2025-09-19T16:38:50.572699"
+    },
+    "MCP Configuration": {
+      "status": "success",
+      "details": "Created mcp_config.yaml",
+      "timestamp": "2025-09-19T16:38:50.609009"
+    },
+    "Import Test": {
+      "status": "error",
+      "details": "Import failed: No module named 'src'",
+      "timestamp": "2025-09-19T16:38:50.613774"
+    }
+  },
+  "success": false,
+  "errors": [
+    "Dependencies Installation: Command '['/home/linuxbrew/.linuxbrew/opt/python@3.13/bin/python3.13', '-m', 'pip', 'install', '-r', '/mnt/d/Work/AI/Projects/DocGen/requirements.txt']' returned non-zero exit status 1.",
+    "Development Dependencies: Command '['/home/linuxbrew/.linuxbrew/opt/python@3.13/bin/python3.13', '-m', 'pip', 'install', 'pytest>=7.0.0']' returned non-zero exit status 1.",
+    "Import Test: Import failed: No module named 'src'"
+  ],
+  "success_rate": 0.6
+}

@@ -1,0 +1,316 @@
+# {{ project.name }} - Project Plan
+
+**Version:** {{ project.version }}  
+**Generated:** {{ _template.generated_at | format_date }}  
+**Project Path:** {{ _metadata.project_path }}
+
+---
+
+## 1. Executive Summary
+
+### 1.1 Project Overview
+{{ project.description }}
+
+### 1.2 Project Objectives
+{% if project.objectives %}
+{% for objective in project.objectives %}
+- {{ objective }}
+{% endfor %}
+{% else %}
+*No specific objectives defined yet.*
+{% endif %}
+
+### 1.3 Success Metrics
+{% if project.success_metrics %}
+{% for metric in project.success_metrics %}
+- **{{ metric.name }}:** {{ metric.description }} (Target: {{ metric.target }})
+{% endfor %}
+{% else %}
+*No success metrics defined yet.*
+{% endif %}
+
+---
+
+## 2. Project Team
+
+### 2.1 Team Structure
+{% if team.lead %}
+**Project Lead:** {{ team.lead }}
+{% endif %}
+
+{% if team.members %}
+**Team Members:**
+{% for member in team.members %}
+- **{{ member.name }}** - {{ member.role }}
+  {% if member.responsibilities %}
+  - Responsibilities: {{ member.responsibilities | join(', ') }}
+  {% endif %}
+{% endfor %}
+{% else %}
+*No team members defined yet.*
+{% endif %}
+
+### 2.2 Communication Plan
+{% if team.communication_plan %}
+{% for item in team.communication_plan %}
+- **{{ item.type }}:** {{ item.description }} ({{ item.frequency }})
+{% endfor %}
+{% else %}
+*Communication plan not yet defined.*
+{% endif %}
+
+---
+
+## 3. Project Timeline
+
+### 3.1 Project Phases
+{% if timeline.phases %}
+{% for phase in timeline.phases %}
+#### Phase {{ phase.number }}: {{ phase.name }}
+**Duration:** {{ phase.duration }}  
+**Start Date:** {{ phase.start_date | format_date }}  
+**End Date:** {{ phase.end_date | format_date }}  
+**Description:** {{ phase.description }}  
+
+**Deliverables:**
+{% for deliverable in phase.deliverables %}
+- {{ deliverable }}
+{% endfor %}
+
+**Key Activities:**
+{% for activity in phase.activities %}
+- {{ activity }}
+{% endfor %}
+{% endfor %}
+{% else %}
+*Project phases not yet defined.*
+{% endif %}
+
+### 3.2 Milestones
+{% if timeline.milestones %}
+{% for milestone in timeline.milestones %}
+#### {{ milestone.name }}
+**Date:** {{ milestone.date | format_date }}  
+**Description:** {{ milestone.description }}  
+**Success Criteria:** {{ milestone.success_criteria }}  
+{% if milestone.dependencies %}
+**Dependencies:** {{ milestone.dependencies | join(', ') }}
+{% endif %}
+{% endfor %}
+{% else %}
+*No milestones defined yet.*
+{% endif %}
+
+### 3.3 Critical Path
+{% if timeline.critical_path %}
+{% for item in timeline.critical_path %}
+- **{{ item.task }}** ({{ item.duration }}) - Dependencies: {{ item.dependencies | join(', ') if item.dependencies else 'None' }}
+{% endfor %}
+{% else %}
+*Critical path not yet defined.*
+{% endif %}
+
+---
+
+## 4. Resource Planning
+
+### 4.1 Human Resources
+{% if resources.human %}
+{% for resource in resources.human %}
+- **{{ resource.role }}:** {{ resource.allocation }} ({{ resource.skills | join(', ') }})
+{% endfor %}
+{% else %}
+*Human resources not yet planned.*
+{% endif %}
+
+### 4.2 Technical Resources
+{% if resources.technical %}
+{% for resource in resources.technical %}
+- **{{ resource.name }}:** {{ resource.description }} ({{ resource.cost }})
+{% endfor %}
+{% else %}
+*Technical resources not yet planned.*
+{% endif %}
+
+### 4.3 Budget Overview
+{% if budget %}
+**Total Budget:** {{ budget.total }}  
+**Budget Breakdown:**
+{% for category, amount in budget.breakdown.items() %}
+- **{{ category }}:** {{ amount }}
+{% endfor %}
+{% else %}
+*Budget information not yet available.*
+{% endif %}
+
+---
+
+## 5. Risk Management
+
+### 5.1 Risk Register
+{% if risks %}
+{% for risk in risks %}
+#### {{ risk.title }}
+**Category:** {{ risk.category }}  
+**Description:** {{ risk.description }}  
+**Impact:** {{ risk.impact }} ({{ risk.impact_score }}/10)  
+**Probability:** {{ risk.probability }} ({{ risk.probability_score }}/10)  
+**Risk Score:** {{ risk.impact_score * risk.probability_score }}/100  
+**Mitigation Strategy:** {{ risk.mitigation }}  
+**Owner:** {{ risk.owner }}  
+**Status:** {{ risk.status }}
+{% endfor %}
+{% else %}
+*No risks identified yet.*
+{% endif %}
+
+### 5.2 Contingency Plans
+{% if contingency_plans %}
+{% for plan in contingency_plans %}
+#### {{ plan.scenario }}
+**Trigger:** {{ plan.trigger }}  
+**Response:** {{ plan.response }}  
+**Owner:** {{ plan.owner }}
+{% endfor %}
+{% else %}
+*No contingency plans defined yet.*
+{% endif %}
+
+---
+
+## 6. Quality Assurance
+
+### 6.1 Quality Standards
+{% if quality.standards %}
+{% for standard in quality.standards %}
+- {{ standard }}
+{% endfor %}
+{% else %}
+*Quality standards not yet defined.*
+{% endif %}
+
+### 6.2 Testing Strategy
+{% if quality.testing_strategy %}
+**Testing Approach:** {{ quality.testing_strategy.approach }}  
+**Testing Levels:**
+{% for level in quality.testing_strategy.levels %}
+- **{{ level.name }}:** {{ level.description }}
+{% endfor %}
+**Test Coverage Target:** {{ quality.testing_strategy.coverage_target }}%
+{% else %}
+*Testing strategy not yet defined.*
+{% endif %}
+
+### 6.3 Review Process
+{% if quality.review_process %}
+{% for process in quality.review_process %}
+- **{{ process.name }}:** {{ process.description }} ({{ process.frequency }})
+{% endfor %}
+{% else %}
+*Review process not yet defined.*
+{% endif %}
+
+---
+
+## 7. Communication & Reporting
+
+### 7.1 Stakeholder Communication
+{% if communication.stakeholders %}
+{% for stakeholder in communication.stakeholders %}
+#### {{ stakeholder.name }}
+**Role:** {{ stakeholder.role }}  
+**Communication Frequency:** {{ stakeholder.frequency }}  
+**Communication Method:** {{ stakeholder.method }}  
+**Information Needs:** {{ stakeholder.information_needs | join(', ') }}
+{% endfor %}
+{% else %}
+*Stakeholder communication plan not yet defined.*
+{% endif %}
+
+### 7.2 Reporting Schedule
+{% if communication.reporting %}
+{% for report in communication.reporting %}
+- **{{ report.name }}:** {{ report.frequency }} - {{ report.audience | join(', ') }}
+{% endfor %}
+{% else %}
+*Reporting schedule not yet defined.*
+{% endif %}
+
+---
+
+## 8. Change Management
+
+### 8.1 Change Control Process
+{% if change_management.process %}
+{{ change_management.process }}
+{% else %}
+*Change control process not yet defined.*
+{% endif %}
+
+### 8.2 Change Request Template
+{% if change_management.template %}
+{{ change_management.template }}
+{% else %}
+*Change request template not yet defined.*
+{% endif %}
+
+---
+
+## 9. Project Closure
+
+### 9.1 Closure Criteria
+{% if closure.criteria %}
+{% for criterion in closure.criteria %}
+- {{ criterion }}
+{% endfor %}
+{% else %}
+*Project closure criteria not yet defined.*
+{% endif %}
+
+### 9.2 Lessons Learned
+{% if closure.lessons_learned %}
+{% for lesson in closure.lessons_learned %}
+- **{{ lesson.category }}:** {{ lesson.description }}
+{% endfor %}
+{% else %}
+*Lessons learned will be documented during project closure.*
+{% endif %}
+
+### 9.3 Knowledge Transfer
+{% if closure.knowledge_transfer %}
+{% for item in closure.knowledge_transfer %}
+- **{{ item.topic }}:** {{ item.description }} - Owner: {{ item.owner }}
+{% endfor %}
+{% else %}
+*Knowledge transfer plan not yet defined.*
+{% endif %}
+
+---
+
+## 10. Appendices
+
+### 10.1 Project Charter
+{% if appendices.charter %}
+{{ appendices.charter }}
+{% else %}
+*Project charter not yet available.*
+{% endif %}
+
+### 10.2 Assumptions and Constraints
+{% if appendices.assumptions %}
+**Assumptions:**
+{% for assumption in appendices.assumptions %}
+- {{ assumption }}
+{% endfor %}
+{% endif %}
+
+{% if appendices.constraints %}
+**Constraints:**
+{% for constraint in appendices.constraints %}
+- {{ constraint }}
+{% endfor %}
+{% endif %}
+
+---
+
+*This project plan was generated automatically by DocGen CLI on {{ _template.generated_at | format_date }}.*

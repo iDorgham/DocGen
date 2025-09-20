@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  docgen-cli:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: docgen-cli-dev
+    volumes:
+      - ./src:/app/src
+      - ./assets:/app/assets
+      - ./tests:/app/tests
+      - ./test-project:/app/test-project
+    environment:
+      - PYTHONPATH=/app/src
+    command: ["python", "-m", "src.cli_main", "--help"]
+    profiles:
+      - dev
+
+  docgen-cli-prod:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    container_name: docgen-cli-prod
+    environment:
+      - PYTHONPATH=/app
+    command: ["docgen", "--help"]
+    profiles:
+      - prod
+
+  docgen-cli-test:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: docgen-cli-test
+    volumes:
+      - ./src:/app/src
+      - ./tests:/app/tests
+      - ./assets:/app/assets
+    environment:
+      - PYTHONPATH=/app/src
+    command: ["python", "-m", "pytest", "tests/", "-v", "--cov=src", "--cov-report=term-missing"]
+    profiles:
+      - test

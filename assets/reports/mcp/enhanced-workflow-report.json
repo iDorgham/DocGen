@@ -1,0 +1,420 @@
+{
+  "timestamp": "2025-09-20T01:19:42.300835",
+  "project_path": "/mnt/d/Work/AI/Projects/DocGen",
+  "workflow_results": [
+    {
+      "workflow_name": "Phase 1: Project Initialization",
+      "success": false,
+      "duration": 0.005385,
+      "results": {
+        "authentication": {
+          "browser_tools": {
+            "server": "browser_tools",
+            "authenticated": true,
+            "method": "local_browser",
+            "details": "Browser Tools accessible",
+            "setup_required": false
+          },
+          "byterover": {
+            "server": "byterover",
+            "authenticated": false,
+            "method": "extension",
+            "details": "Byterover extension not authenticated",
+            "setup_required": true
+          },
+          "context7": {
+            "server": "context7",
+            "authenticated": true,
+            "method": "public_api",
+            "details": "Context7 API accessible",
+            "setup_required": false
+          },
+          "dart": {
+            "server": "dart",
+            "authenticated": true,
+            "method": "workspace",
+            "details": "Dart workspace accessible",
+            "setup_required": false
+          },
+          "playwright": {
+            "server": "playwright",
+            "authenticated": false,
+            "method": "local_installation",
+            "details": "Playwright not installed",
+            "setup_required": true
+          },
+          "testsprite": {
+            "server": "testsprite",
+            "authenticated": false,
+            "method": "api_key",
+            "details": "No API key found",
+            "setup_required": true
+          }
+        },
+        "byterover_init": {
+          "success": false,
+          "error": "Authentication required for byterover",
+          "auth_required": true,
+          "setup_instructions": [
+            "1. Install Byterover extension in your IDE",
+            "2. Login through the extension interface",
+            "3. Ensure extension is connected to your workspace",
+            "4. Verify authentication in extension settings"
+          ]
+        },
+        "testsprite_bootstrap": {
+          "success": false,
+          "error": "Authentication required for testsprite",
+          "auth_required": true,
+          "setup_instructions": [
+            "1. Visit https://www.testsprite.com/dashboard/settings/apikey",
+            "2. Create a new API key",
+            "3. Set environment variable: export TESTSPRITE_API_KEY=\"your_key\"",
+            "4. Add to .env file: TESTSPRITE_API_KEY=your_key",
+            "5. Restart your terminal/IDE"
+          ]
+        },
+        "context7_config": {
+          "success": true,
+          "data": {
+            "function": "configure_libraries",
+            "args": [
+              [
+                "click",
+                "jinja2",
+                "pydantic",
+                "rich"
+              ]
+            ],
+            "kwargs": {},
+            "timestamp": "2025-09-20T01:19:42.263466",
+            "status": "success",
+            "authenticated": true
+          },
+          "duration": 0.001093,
+          "server": "context7",
+          "function": "configure_libraries"
+        },
+        "dart_init": {
+          "success": true,
+          "data": {
+            "function": "initialize_workspace",
+            "args": [
+              "docgen_cli_workspace"
+            ],
+            "kwargs": {},
+            "timestamp": "2025-09-20T01:19:42.265649",
+            "status": "success",
+            "authenticated": true
+          },
+          "duration": 0.001043,
+          "server": "dart",
+          "function": "initialize_workspace"
+        }
+      },
+      "errors": [
+        "Authentication required for byterover",
+        "Authentication required for testsprite"
+      ],
+      "timestamp": "2025-09-20T01:19:42.267859"
+    },
+    {
+      "workflow_name": "Phase 2: Active Development",
+      "success": false,
+      "duration": 0.006433,
+      "results": {
+        "context_retrieval": {
+          "success": false,
+          "error": "Authentication required for byterover",
+          "auth_required": true,
+          "setup_instructions": [
+            "1. Install Byterover extension in your IDE",
+            "2. Login through the extension interface",
+            "3. Ensure extension is connected to your workspace",
+            "4. Verify authentication in extension settings"
+          ]
+        },
+        "library_docs": {
+          "success": true,
+          "data": {
+            "function": "get_library_docs",
+            "args": [
+              "click",
+              "cli_commands",
+              5000
+            ],
+            "kwargs": {},
+            "timestamp": "2025-09-20T01:19:42.269920",
+            "status": "success",
+            "authenticated": true
+          },
+          "duration": 0.001053,
+          "server": "context7",
+          "function": "get_library_docs"
+        },
+        "task_creation": {
+          "success": true,
+          "data": {
+            "function": "create_task",
+            "args": [
+              "Complete MCP integration",
+              "high"
+            ],
+            "kwargs": {},
+            "timestamp": "2025-09-20T01:19:42.272042",
+            "status": "success",
+            "authenticated": true
+          },
+          "duration": 0.001045,
+          "server": "dart",
+          "function": "create_task"
+        },
+        "quality_audit": {
+          "success": true,
+          "data": {
+            "function": "runBestPracticesAudit",
+            "args": [],
+            "kwargs": {},
+            "timestamp": "2025-09-20T01:19:42.274185",
+            "status": "success",
+            "authenticated": true
+          },
+          "duration": 0.001077,
+          "server": "browser_tools",
+          "function": "runBestPracticesAudit"
+        }
+      },
+      "errors": [
+        "Authentication required for byterover"
+      ],
+      "timestamp": "2025-09-20T01:19:42.276355"
+    },
+    {
+      "workflow_name": "Phase 3: Testing & Validation",
+      "success": false,
+      "duration": 0.006643,
+      "results": {
+        "test_plans": {
+          "success": false,
+          "error": "Authentication required for testsprite",
+          "auth_required": true,
+          "setup_instructions": [
+            "1. Visit https://www.testsprite.com/dashboard/settings/apikey",
+            "2. Create a new API key",
+            "3. Set environment variable: export TESTSPRITE_API_KEY=\"your_key\"",
+            "4. Add to .env file: TESTSPRITE_API_KEY=your_key",
+            "5. Restart your terminal/IDE"
+          ]
+        },
+        "test_execution": {
+          "success": false,
+          "error": "Authentication required for testsprite",
+          "auth_required": true,
+          "setup_instructions": [
+            "1. Visit https://www.testsprite.com/dashboard/settings/apikey",
+            "2. Create a new API key",
+            "3. Set environment variable: export TESTSPRITE_API_KEY=\"your_key\"",
+            "4. Add to .env file: TESTSPRITE_API_KEY=your_key",
+            "5. Restart your terminal/IDE"
+          ]
+        },
+        "accessibility_audit": {
+          "success": true,
+          "data": {
+            "function": "runAccessibilityAudit",
+            "args": [],
+            "kwargs": {},
+            "timestamp": "2025-09-20T01:19:42.278422",
+            "status": "success",
+            "authenticated": true
+          },
+          "duration": 0.001136,
+          "server": "browser_tools",
+          "function": "runAccessibilityAudit"
+        },
+        "performance_audit": {
+          "success": true,
+          "data": {
+            "function": "runPerformanceAudit",
+            "args": [],
+            "kwargs": {},
+            "timestamp": "2025-09-20T01:19:42.280640",
+            "status": "success",
+            "authenticated": true
+          },
+          "duration": 0.001119,
+          "server": "browser_tools",
+          "function": "runPerformanceAudit"
+        },
+        "seo_audit": {
+          "success": true,
+          "data": {
+            "function": "runSEOAudit",
+            "args": [],
+            "kwargs": {},
+            "timestamp": "2025-09-20T01:19:42.282848",
+            "status": "success",
+            "authenticated": true
+          },
+          "duration": 0.001063,
+          "server": "browser_tools",
+          "function": "runSEOAudit"
+        }
+      },
+      "errors": [
+        "Authentication required for testsprite",
+        "Authentication required for testsprite"
+      ],
+      "timestamp": "2025-09-20T01:19:42.285064"
+    },
+    {
+      "workflow_name": "Phase 4: Documentation & Knowledge",
+      "success": false,
+      "duration": 0.004248,
+      "results": {
+        "knowledge_storage": {
+          "success": false,
+          "error": "Authentication required for byterover",
+          "auth_required": true,
+          "setup_instructions": [
+            "1. Install Byterover extension in your IDE",
+            "2. Login through the extension interface",
+            "3. Ensure extension is connected to your workspace",
+            "4. Verify authentication in extension settings"
+          ]
+        },
+        "documentation_creation": {
+          "success": true,
+          "data": {
+            "function": "create_doc",
+            "args": [
+              "MCP Integration Guide",
+              "Comprehensive MCP integration documentation"
+            ],
+            "kwargs": {},
+            "timestamp": "2025-09-20T01:19:42.287172",
+            "status": "success",
+            "authenticated": true
+          },
+          "duration": 0.001045,
+          "server": "dart",
+          "function": "create_doc"
+        },
+        "status_update": {
+          "success": true,
+          "data": {
+            "function": "update_task",
+            "args": [
+              "Complete MCP integration",
+              "completed"
+            ],
+            "kwargs": {},
+            "timestamp": "2025-09-20T01:19:42.289251",
+            "status": "success",
+            "authenticated": true
+          },
+          "duration": 0.001077,
+          "server": "dart",
+          "function": "update_task"
+        },
+        "report_generation": {
+          "success": false,
+          "error": "Authentication required for byterover",
+          "auth_required": true,
+          "setup_instructions": [
+            "1. Install Byterover extension in your IDE",
+            "2. Login through the extension interface",
+            "3. Ensure extension is connected to your workspace",
+            "4. Verify authentication in extension settings"
+          ]
+        }
+      },
+      "errors": [
+        "Authentication required for byterover",
+        "Authentication required for byterover"
+      ],
+      "timestamp": "2025-09-20T01:19:42.291421"
+    }
+  ],
+  "performance_metrics": {},
+  "auth_config": {
+    "authentication_status": {
+      "browser_tools": {
+        "details": "Browser Tools accessible",
+        "instructions": [
+          "Browser Tools uses local browser - no authentication required",
+          "Ensure browser is installed and accessible"
+        ],
+        "method": "local_browser",
+        "server": "browser_tools",
+        "setup_required": false,
+        "status": "authenticated"
+      },
+      "byterover": {
+        "details": "Byterover extension not authenticated",
+        "instructions": [
+          "1. Install Byterover extension in your IDE",
+          "2. Login through the extension interface",
+          "3. Ensure extension is connected to your workspace",
+          "4. Verify authentication in extension settings"
+        ],
+        "method": "extension",
+        "server": "byterover",
+        "setup_required": true,
+        "status": "requires_setup"
+      },
+      "context7": {
+        "details": "Context7 API accessible",
+        "instructions": [
+          "Context7 uses public API - no authentication required",
+          "Ensure internet connection for API access"
+        ],
+        "method": "public_api",
+        "server": "context7",
+        "setup_required": false,
+        "status": "authenticated"
+      },
+      "dart": {
+        "details": "Dart workspace accessible",
+        "instructions": [
+          "Dart uses workspace-based authentication",
+          "Ensure workspace is properly configured"
+        ],
+        "method": "workspace",
+        "server": "dart",
+        "setup_required": false,
+        "status": "authenticated"
+      },
+      "playwright": {
+        "details": "Playwright not installed",
+        "instructions": [
+          "1. Install Playwright: pip install playwright",
+          "2. Install browsers: playwright install chromium",
+          "3. Verify installation: playwright --version",
+          "4. Test browser launch: playwright codegen"
+        ],
+        "method": "local_installation",
+        "server": "playwright",
+        "setup_required": true,
+        "status": "requires_installation"
+      },
+      "testsprite": {
+        "details": "No API key found",
+        "instructions": [
+          "1. Visit https://www.testsprite.com/dashboard/settings/apikey",
+          "2. Create a new API key",
+          "3. Set environment variable: export TESTSPRITE_API_KEY=\"your_key\"",
+          "4. Add to .env file: TESTSPRITE_API_KEY=your_key",
+          "5. Restart your terminal/IDE"
+        ],
+        "method": "api_key",
+        "server": "testsprite",
+        "setup_required": true,
+        "status": "requires_setup"
+      }
+    },
+    "project_path": "/mnt/d/Work/AI/Projects/DocGen",
+    "setup_completed": true,
+    "timestamp": "2025-09-20T01:19:41.860900"
+  }
+}
