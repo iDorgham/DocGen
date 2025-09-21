@@ -82,7 +82,7 @@ performance = [
 ]
 
 [project.scripts]
-docgen = "src.cli_main:main"
+docgen = "src.cli.main:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
