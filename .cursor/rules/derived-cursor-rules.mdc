@@ -84,7 +84,7 @@ DocGen/
 │   │   ├── data_contracts.md        # Data model contracts and validation rules
 │   │   └── template_contracts.md    # Template system contracts and rendering specifications
 │   ├── data/                   # Sample data files
-│   ├── development/            # Development tools and scripts - DEPRECATED, scripts moved to assets/scripts/
+│   ├── development/            # Development tools and scripts - DEPRECATED, scripts moved to assets/development/scripts/
 │   ├── documentation/          # Documentation
 │   │   ├── archive/           # Historical documentation
 │   │   ├── generated/         # Generated documentation
@@ -419,6 +419,7 @@ assets/
 - After installing Playwright, re-run the complete integration workflow. This was requested on 2025-09-19.
 - **Plan Persistence**: Implementation plans must be saved immediately after user approval using `byterover-save-implementation-plan`. This ensures plan persistence across development sessions and prevents context loss.
 - When preparing for a stable v1.0 release, focus on polishing existing features, creating comprehensive user documentation and setting up a production deployment pipeline.
+- The release process can proceed immediately when the release is ready and approved.
 
 ### PROJECT DOCUMENTATION & CONTEXT SYSTEM
 - Use a "Product Requirements Document" Canvas.
@@ -541,6 +542,4 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..', '..', '..
             project_root = Path(__file__).parent.parent
             env_file = project_root / ".env"
 
-            if env_file.exists():
-                with open(env_file, 'r') as f:
-</
+            if env_file.exists
